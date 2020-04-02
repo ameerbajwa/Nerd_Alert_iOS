@@ -101,8 +101,9 @@
 			children = (
 				DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */,
 				DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */,
-				DEFDCC9F2435B2B800366CA5 /* ViewController.swift */,
-				DEFDCCA12435B2B800366CA5 /* Main.storyboard */,
+				DEFDCCCE2435B5EC00366CA5 /* Models */,
+				DEFDCCCF2435B5FD00366CA5 /* Views */,
+				DEFDCCCD2435B5D800366CA5 /* Controllers */,
 				DEFDCCA42435B2BC00366CA5 /* Assets.xcassets */,
 				DEFDCCA62435B2BC00366CA5 /* LaunchScreen.storyboard */,
 				DEFDCCA92435B2BC00366CA5 /* Info.plist */,
@@ -126,6 +127,29 @@
 				DEFDCCBF2435B2BC00366CA5 /* Info.plist */,
 			);
 			path = Nerd_Alert_iOSUITests;
+			sourceTree = "<group>";
+		};
+		DEFDCCCD2435B5D800366CA5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DEFDCC9F2435B2B800366CA5 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DEFDCCCE2435B5EC00366CA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DEFDCCCF2435B5FD00366CA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEFDCCA12435B2B800366CA5 /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
