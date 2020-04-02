@@ -19,6 +19,8 @@ class LogInController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        logInButton.layer.cornerRadius = 10
+        logInButton.layer.borderWidth = 3
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {

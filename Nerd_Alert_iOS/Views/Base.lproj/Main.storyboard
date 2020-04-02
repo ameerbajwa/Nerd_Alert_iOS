@@ -135,6 +135,7 @@
                         <outlet property="emailTextField" destination="7pT-hE-ggu" id="b8p-5a-5Dp"/>
                         <outlet property="passwordAgainTextField" destination="a0s-TW-bXN" id="X68-eC-Rh9"/>
                         <outlet property="passwordTextField" destination="c1U-JT-vZp" id="dCu-zg-oiv"/>
+                        <outlet property="signUpButton" destination="785-Iu-2Lk" id="RGQ-Th-yae"/>
                         <outlet property="usernameTextField" destination="MrW-FM-W7n" id="9FL-rF-nAQ"/>
                     </connections>
                 </viewController>

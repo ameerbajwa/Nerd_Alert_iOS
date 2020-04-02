@@ -17,6 +17,8 @@
 		DEFDCCBE2435B2BC00366CA5 /* Nerd_Alert_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCBD2435B2BC00366CA5 /* Nerd_Alert_iOSUITests.swift */; };
 		DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCD124363EDD00366CA5 /* LogInController.swift */; };
 		DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCD3243640B700366CA5 /* SignUpController.swift */; };
+		DEFDCCD6243651C900366CA5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCD5243651C900366CA5 /* User.swift */; };
+		DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCD72436535700366CA5 /* RestAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		DEFDCCBF2435B2BC00366CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEFDCCD124363EDD00366CA5 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		DEFDCCD3243640B700366CA5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		DEFDCCD5243651C900366CA5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DEFDCCD72436535700366CA5 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 		DEFDCCCE2435B5EC00366CA5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DEFDCCD5243651C900366CA5 /* User.swift */,
+				DEFDCCD72436535700366CA5 /* RestAPIManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,7 +297,9 @@
 			files = (
 				DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */,
 				DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */,
+				DEFDCCD6243651C900366CA5 /* User.swift in Sources */,
 				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,
+				DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */,
 				DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */,
 				DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */,
 			);
