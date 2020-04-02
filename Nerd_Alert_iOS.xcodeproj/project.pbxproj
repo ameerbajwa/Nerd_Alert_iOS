@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
 		DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */; };
-		DEFDCCA02435B2B800366CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9F2435B2B800366CA5 /* ViewController.swift */; };
+		DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */; };
 		DEFDCCA32435B2B800366CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEFDCCA12435B2B800366CA5 /* Main.storyboard */; };
 		DEFDCCA52435B2BC00366CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEFDCCA42435B2BC00366CA5 /* Assets.xcassets */; };
 		DEFDCCA82435B2BC00366CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEFDCCA62435B2BC00366CA5 /* LaunchScreen.storyboard */; };
 		DEFDCCB32435B2BC00366CA5 /* Nerd_Alert_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCB22435B2BC00366CA5 /* Nerd_Alert_iOSTests.swift */; };
 		DEFDCCBE2435B2BC00366CA5 /* Nerd_Alert_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCBD2435B2BC00366CA5 /* Nerd_Alert_iOSUITests.swift */; };
+		DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCD124363EDD00366CA5 /* LogInController.swift */; };
+		DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCCD3243640B700366CA5 /* SignUpController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,7 @@
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DEFDCC9F2435B2B800366CA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageController.swift; sourceTree = "<group>"; };
 		DEFDCCA22435B2B800366CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEFDCCA42435B2BC00366CA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEFDCCA72435B2BC00366CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		DEFDCCB92435B2BC00366CA5 /* Nerd_Alert_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Nerd_Alert_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFDCCBD2435B2BC00366CA5 /* Nerd_Alert_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nerd_Alert_iOSUITests.swift; sourceTree = "<group>"; };
 		DEFDCCBF2435B2BC00366CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEFDCCD124363EDD00366CA5 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
+		DEFDCCD3243640B700366CA5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +136,9 @@
 		DEFDCCCD2435B5D800366CA5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DEFDCC9F2435B2B800366CA5 /* ViewController.swift */,
+				DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */,
+				DEFDCCD124363EDD00366CA5 /* LogInController.swift */,
+				DEFDCCD3243640B700366CA5 /* SignUpController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,7 +289,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEFDCCA02435B2B800366CA5 /* ViewController.swift in Sources */,
+				DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */,
+				DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */,
+				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,
 				DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */,
 				DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */,
 			);
