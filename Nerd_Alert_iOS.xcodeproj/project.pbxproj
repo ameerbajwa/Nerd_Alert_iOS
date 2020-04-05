@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
 		DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */; };
 		DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DEBEC392243A5B4A00CB9FD2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DEFDCCD72436535700366CA5 /* RestAPIManager.swift */,
+				DE6C7D8F243A73D200AD4197 /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		DEFDCC8F2435B2B800366CA5 = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +161,8 @@
 		DEFDCCCE2435B5EC00366CA5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DEBEC392243A5B4A00CB9FD2 /* Services */,
 				DEFDCCD5243651C900366CA5 /* User.swift */,
-				DEFDCCD72436535700366CA5 /* RestAPIManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +310,7 @@
 				DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */,
 				DEFDCCD6243651C900366CA5 /* User.swift in Sources */,
 				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,
+				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
 				DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */,
 				DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */,
 				DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */,

@@ -25,9 +25,11 @@ class WelcomePageController: UIViewController {
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {
+        
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
+        
     }
     
 

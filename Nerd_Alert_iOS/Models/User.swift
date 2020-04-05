@@ -12,7 +12,7 @@ struct User {
     var id: Int
     var username: String
     var email: String
-    var password: String?
+    var password: String
     var dateCreated: Date
     var lastLogin: Date
     

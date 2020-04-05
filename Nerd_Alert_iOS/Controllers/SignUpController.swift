@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpController: UIViewController {
+class SignUpController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -19,13 +19,53 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        emailTextField.delegate = self
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        passwordAgainTextField.delegate = self
+
         signUpButton.layer.cornerRadius = 10
         signUpButton.layer.borderWidth = 3
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
+        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
+            // sign up POST API call
+            UserService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!)
+        } else {
+            // send error message that you need to fill all the textfields
+        }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
+            // sign up POST API call
+            textField.endEditing(true)
+            return true
+        } else {
+            // send error message that you need to fill all the textfields
+            textField.endEditing(true)
+            return false
+        }
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
+            return true
+        } else {
+            // send error message: need to fill all textfields
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        emailTextField.text! = ""
+        usernameTextField.text! = ""
+        passwordTextField.text! = ""
+        passwordAgainTextField.text! = ""
+    }
+    
+    
     
     /*
     // MARK: - Navigation
