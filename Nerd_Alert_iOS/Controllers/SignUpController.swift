@@ -16,6 +16,9 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordAgainTextField: UITextField!
     
     @IBOutlet weak var signUpButton: UIButton!
+    
+    let userService = UserService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +34,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBAction func signUpPressed(_ sender: UIButton) {
         if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
             // sign up POST API call
-            UserService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!)
+            userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!)
         } else {
             // send error message that you need to fill all the textfields
         }

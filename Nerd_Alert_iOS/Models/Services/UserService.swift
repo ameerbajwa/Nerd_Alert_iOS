@@ -10,6 +10,8 @@ import Foundation
 
 class UserService {
     
+    let restAPIManager = RestAPIManager()
+    
     
     func authenticateUser() {
         let commandURL = "/auth"
@@ -26,10 +28,7 @@ class UserService {
                                               "email": email]
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
             
-            RestAPIManager.httpRequest(
-                url: commandURL,
-                body: jsonData!,
-                method: "POST")
+            restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST")
         } else {
             // send error message back: passwords need to match
         }
