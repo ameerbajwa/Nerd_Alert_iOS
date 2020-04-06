@@ -12,7 +12,7 @@ import Foundation
 class RestAPIManager {
     let baseURL = "http://127.0.0.1:6373"
     
-    func httpRequest(url: String, body: Data, method: String) {
+    func httpRequest(url: String, body: Data?, method: String) {
         let apiURL = URL(string: baseURL + url)!
         print(apiURL)
         

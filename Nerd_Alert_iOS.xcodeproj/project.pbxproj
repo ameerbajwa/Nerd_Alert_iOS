@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
+		DED9D189243AD2D000E57D60 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D188243AD2D000E57D60 /* HomeViewController.swift */; };
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
 		DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */; };
 		DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DED9D188243AD2D000E57D60 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */,
 				DEFDCCD124363EDD00366CA5 /* LogInController.swift */,
 				DEFDCCD3243640B700366CA5 /* SignUpController.swift */,
+				DED9D188243AD2D000E57D60 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				DEFDCCD6243651C900366CA5 /* User.swift in Sources */,
 				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,
 				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
+				DED9D189243AD2D000E57D60 /* HomeViewController.swift in Sources */,
 				DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */,
 				DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */,
 				DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */,

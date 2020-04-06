@@ -30,6 +30,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBAction func logInPressed(_ sender: UIButton) {
         if usernameTextField.text != nil && passwordTextField.text != nil {
             // log in POST API CALL and user information GET API CALL
+            
             userService.authenticateUser(usernameTextField.text!, passwordTextField.text!)
         } else {
             // send error message all textfields need to be filled out
