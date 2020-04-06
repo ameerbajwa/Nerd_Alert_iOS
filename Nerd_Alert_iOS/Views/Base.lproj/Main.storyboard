@@ -30,7 +30,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4lv-dk-IWl"/>
-                                    <segue destination="ZyH-m7-Ygh" kind="show" identifier="welcomePageToLogInSegue" id="N3T-5x-2x9"/>
+                                    <segue destination="ZyH-m7-Ygh" kind="show" identifier="welcomePageToLogInSegue" id="3P1-4B-EmP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHE-MM-Nme">
@@ -91,12 +91,12 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1U-JT-vZp">
                                 <rect key="frame" x="30" y="346" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password Again" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a0s-TW-bXN">
                                 <rect key="frame" x="30" y="410" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="785-Iu-2Lk">
                                 <rect key="frame" x="50" y="494" width="314" height="48"/>
@@ -146,7 +146,7 @@
         <!--Log In Controller-->
         <scene sceneID="mMR-Fr-mEy">
             <objects>
-                <viewController id="ZyH-m7-Ygh" customClass="LogInController" sceneMemberID="viewController">
+                <viewController id="ZyH-m7-Ygh" customClass="LogInController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4OA-Mm-iJB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

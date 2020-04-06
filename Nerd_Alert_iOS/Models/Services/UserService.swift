@@ -13,8 +13,14 @@ class UserService {
     let restAPIManager = RestAPIManager()
     
     
-    func authenticateUser() {
+    func authenticateUser(_ username: String, _ password: String) {
         let commandURL = "/auth"
+        
+        let jsonBody: [String: String] = ["username": username, "password": password]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
+        
+        restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST")
+        
         // call /auth POST request to authenticate user from our flask web api server
     }
     

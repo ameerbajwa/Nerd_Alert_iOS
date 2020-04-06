@@ -10,7 +10,7 @@ import Foundation
 
 
 class RestAPIManager {
-    let baseURL = "http://127.0.0.1/6373"
+    let baseURL = "http://127.0.0.1:6373"
     
     func httpRequest(url: String, body: Data, method: String) {
         let apiURL = URL(string: baseURL + url)!
@@ -18,6 +18,7 @@ class RestAPIManager {
         
         var postRequest = URLRequest(url: apiURL)
         postRequest.httpMethod = method
+        postRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         postRequest.httpBody = body
         
         let task = URLSession.shared.dataTask(with: postRequest) { (data, response, error) in

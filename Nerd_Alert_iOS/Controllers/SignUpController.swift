@@ -40,33 +40,33 @@ class SignUpController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
-            // sign up POST API call
-            textField.endEditing(true)
-            return true
-        } else {
-            // send error message that you need to fill all the textfields
-            textField.endEditing(true)
-            return false
-        }
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
-            return true
-        } else {
-            // send error message: need to fill all textfields
-            return false
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        emailTextField.text! = ""
-        usernameTextField.text! = ""
-        passwordTextField.text! = ""
-        passwordAgainTextField.text! = ""
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
+//            // sign up POST API call
+//            textField.endEditing(true)
+//            return true
+//        } else {
+//            // send error message that you need to fill all the textfields
+//            textField.endEditing(true)
+//            return false
+//        }
+//    }
+//
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
+//            return true
+//        } else {
+//            // send error message: need to fill all textfields
+//            return false
+//        }
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        emailTextField.text! = ""
+//        usernameTextField.text! = ""
+//        passwordTextField.text! = ""
+//        passwordAgainTextField.text! = ""
+//    }
     
     
     
