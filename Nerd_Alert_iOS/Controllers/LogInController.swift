@@ -16,6 +16,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     
     let userService = UserService()
+    let userInfo: User
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +33,21 @@ class LogInController: UIViewController, UITextFieldDelegate {
             // log in POST API CALL and user information GET API CALL
             
             userService.authenticateUser(usernameTextField.text!, passwordTextField.text!)
+            // userInfo = userService.retrieveUserInfo()
+            self.performSegue(withIdentifier: "logInToHomePage", sender: self)
         } else {
             // send error message all textfields need to be filled out
+        }
+    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "logInToHomePage" {
+            let destinationRVC = segue.destination as! HomeViewController
+            destinationRVC.user = userInfo
         }
     }
     
@@ -60,15 +74,5 @@ class LogInController: UIViewController, UITextFieldDelegate {
 //        usernameTextField.text! = ""
 //        passwordTextField.text! = ""
 //    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -24,7 +24,7 @@ class QuizQuestion {
 //    func injectQuizQuestions(_ questions: Data) {
 //        let commandURL = "/quiz_questions"
 //        
-//        for i in range(0..questions) {
+//        for i in 0..questions.count {
 //            let json: [String: Any] = ["question_"+String(i): [""]]
 //        }
 //        

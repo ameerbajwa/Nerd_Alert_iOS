@@ -10,13 +10,18 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var quizTableView: UITableView!
+    
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        quizTableView.delegate = self
+        quizTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -27,4 +32,23 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+
+extension HomeViewController: UITableViewDelegate {
+    
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+        // returns number of quizzes user can take, or number of users' quizzes they can edit
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "quizCell", for: indexPath)
+        cell.textLabel?.text = "Quiz"
+        return cell
+    }
+    
+    
 }

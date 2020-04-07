@@ -137,6 +137,7 @@
                         <outlet property="passwordTextField" destination="c1U-JT-vZp" id="dCu-zg-oiv"/>
                         <outlet property="signUpButton" destination="785-Iu-2Lk" id="RGQ-Th-yae"/>
                         <outlet property="usernameTextField" destination="MrW-FM-W7n" id="9FL-rF-nAQ"/>
+                        <segue destination="AIy-vr-vxl" kind="show" identifier="signUpToHomPage" id="gTq-bL-KKL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6k-hw-6Hf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -204,11 +205,59 @@
                         <outlet property="logInButton" destination="bIf-QG-1Jf" id="Mga-7W-fuH"/>
                         <outlet property="passwordTextField" destination="TNF-li-GxI" id="cF4-gG-WI5"/>
                         <outlet property="usernameTextField" destination="h98-Ce-XQi" id="IoD-hb-esB"/>
+                        <segue destination="AIy-vr-vxl" kind="show" identifier="logInToHomePage" id="7hA-y3-2T4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Pc-wV-HOc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2042.0289855072465" y="-265.17857142857144"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="RiP-R7-9lE">
+            <objects>
+                <viewController id="AIy-vr-vxl" customClass="HomeViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ABo-zR-l0H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a9V-pf-ABT">
+                                <rect key="frame" x="0.0" y="443" width="414" height="419"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quizCell" id="Q0d-GF-VRM">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q0d-GF-VRM" id="BNf-Kg-B6E">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bh3-UM-oXO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="391"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a9V-pf-ABT" firstAttribute="bottom" secondItem="Fye-LA-PkR" secondAttribute="bottom" id="3al-SS-rJv"/>
+                            <constraint firstItem="a9V-pf-ABT" firstAttribute="trailing" secondItem="Fye-LA-PkR" secondAttribute="trailing" id="OvD-vM-tBb"/>
+                            <constraint firstItem="a9V-pf-ABT" firstAttribute="leading" secondItem="Fye-LA-PkR" secondAttribute="leading" id="bZx-z2-mOo"/>
+                            <constraint firstItem="bh3-UM-oXO" firstAttribute="leading" secondItem="Fye-LA-PkR" secondAttribute="leading" id="eKv-4e-LbV"/>
+                            <constraint firstItem="bh3-UM-oXO" firstAttribute="top" secondItem="Fye-LA-PkR" secondAttribute="top" id="tOO-ct-xam"/>
+                            <constraint firstItem="bh3-UM-oXO" firstAttribute="trailing" secondItem="Fye-LA-PkR" secondAttribute="trailing" id="xDz-q8-9RC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fye-LA-PkR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3uV-ZM-VfK"/>
+                    <connections>
+                        <outlet property="quizTableView" destination="a9V-pf-ABT" id="6ok-JT-hP0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36o-HC-dLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3115.9420289855075" y="138.61607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9dT-0f-CaO">
@@ -229,4 +278,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gTq-bL-KKL"/>
+    </inferredMetricsTieBreakers>
 </document>

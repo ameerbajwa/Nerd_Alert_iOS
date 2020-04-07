@@ -18,6 +18,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     
     let userService = UserService()
+    let userInfo: User
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +36,22 @@ class SignUpController: UIViewController, UITextFieldDelegate {
         if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
             // sign up POST API call
             userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!)
+            print("user signed in")
+            //userInfo = userService.retrieveUserInfo()
+            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)
         } else {
             // send error message that you need to fill all the textfields
+        }
+    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "signUpToHomePage" {
+            let destinationRVC = segue.destination as! HomeViewController
+            destinationRVC.user = userInfo
         }
     }
     
@@ -67,17 +82,5 @@ class SignUpController: UIViewController, UITextFieldDelegate {
 //        passwordTextField.text! = ""
 //        passwordAgainTextField.text! = ""
 //    }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
