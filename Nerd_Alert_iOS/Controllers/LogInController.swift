@@ -16,7 +16,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     
     let userService = UserService()
-    let userInfo: User
+//    let userInfo: User
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +29,45 @@ class LogInController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {
+        print("Log In Button Pressed")
         if usernameTextField.text != nil && passwordTextField.text != nil {
             // log in POST API CALL and user information GET API CALL
             
-            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!)
+            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
+                print("From Swift Application")
+                print(response)
+            },
+                onFailure: { (error) -> Void in
+                   print("From Swift Application")
+                   print(error)
+                }
+            )
             // userInfo = userService.retrieveUserInfo()
-            self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+            
+            userService.retrieveUserInfo(usernameTextField.text!, onSuccess: { (response) -> Void in
+                print("From Swift Application")
+                print(response)
+            }) { (error) -> Void in
+                print("From Swift Application")
+                print(error)
+            }
+            
+//            self.performSegue(withIdentifier: "logInToHomePage", sender: self)
         } else {
             // send error message all textfields need to be filled out
         }
     }
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "logInToHomePage" {
-            let destinationRVC = segue.destination as! HomeViewController
-            destinationRVC.user = userInfo
-        }
-    }
+//    // MARK: - Navigation
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//        if segue.identifier == "logInToHomePage" {
+//            let destinationRVC = segue.destination as! HomeViewController
+//            destinationRVC.user = userInfo
+//        }
+//    }
     
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 //        if usernameTextField.text != nil && passwordTextField.text != nil {

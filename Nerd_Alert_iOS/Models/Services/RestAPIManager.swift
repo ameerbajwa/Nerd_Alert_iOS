@@ -12,23 +12,29 @@ import Foundation
 class RestAPIManager {
     let baseURL = "http://127.0.0.1:6373"
     
-    func httpRequest(url: String, body: Data?, method: String) {
+    func httpRequest(url: String, body: Data?, method: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let apiURL = URL(string: baseURL + url)!
         print(apiURL)
         
-        var postRequest = URLRequest(url: apiURL)
-        postRequest.httpMethod = method
-        postRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        postRequest.httpBody = body
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = method
+        if let safeBody = body {
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = safeBody
+        }
         
-        let task = URLSession.shared.dataTask(with: postRequest) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
+                print("From Web Server")
                 print(error?.localizedDescription ?? "No data")
+                onFailure(["Error": error?.localizedDescription ?? "No data"])
                 return
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
+                print("From Web Server")
                 print(responseJSON)
+                onSuccess(responseJSON)
             }
         }
         

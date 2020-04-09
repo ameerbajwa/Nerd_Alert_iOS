@@ -18,7 +18,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     
     let userService = UserService()
-    let userInfo: User
+//    let userInfo: User
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +35,17 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBAction func signUpPressed(_ sender: UIButton) {
         if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
             // sign up POST API call
-            userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!)
+            userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!, onSuccess: {(response) -> Void in
+                print("From Swift Application")
+                print(response)
+            },
+                onFailure: { (error) -> Void in
+                   print("From Swift Application")
+                   print(error)
+                })
             print("user signed in")
             //userInfo = userService.retrieveUserInfo()
-            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)
+//            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)
         } else {
             // send error message that you need to fill all the textfields
         }
@@ -46,14 +53,14 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "signUpToHomePage" {
-            let destinationRVC = segue.destination as! HomeViewController
-            destinationRVC.user = userInfo
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//        if segue.identifier == "signUpToHomePage" {
+//            let destinationRVC = segue.destination as! HomeViewController
+//            destinationRVC.user = userInfo
+//        }
+//    }
     
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 //        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {

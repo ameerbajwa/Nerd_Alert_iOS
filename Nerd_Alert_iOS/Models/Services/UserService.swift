@@ -12,29 +12,40 @@ class UserService {
     
     let restAPIManager = RestAPIManager()
     
-    func authenticateUser(_ username: String, _ password: String) {
+    func authenticateUser(_ username: String, _ password: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void ) {
         let commandURL = "/auth"
         
         let jsonBody: [String: String] = ["username": username, "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         
-        restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST")
-        retrieveUserInfo(username)
+        restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST",
+                onSuccess: {response -> Void in
+                    onSuccess(response)
+                },
+                onFailure: { repsonse -> Void in
+                    onFailure(repsonse)
+                })
+//        retrieveUserInfo(username)
         
         // call /auth POST request to authenticate user from our flask web api server
     }
     
-    func retrieveUserInfo(_ username: String) {
+    func retrieveUserInfo(_ username: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/userInfo"
         
         let jsonBody: [String: String] = ["username": username]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         
-        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET")
+        restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "GET",                                   onSuccess: {response -> Void in
+                  onSuccess(response)
+              },
+              onFailure: { repsonse -> Void in
+                  onFailure(repsonse)
+              })
     }
     
     
-    func registerUser(_ email: String, _ username: String, _ password: String, _ passwordAgain: String) {
+    func registerUser(_ email: String, _ username: String, _ password: String, _ passwordAgain: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/register_user"
         if password == passwordAgain {
             
@@ -43,7 +54,13 @@ class UserService {
                                               "email": email]
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
             
-            restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST")
+            restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST",
+                onSuccess: {response -> Void in
+                    onSuccess(response)
+                },
+                onFailure: { repsonse -> Void in
+                    onFailure(repsonse)
+                })
         } else {
             // send error message back: passwords need to match
         }
