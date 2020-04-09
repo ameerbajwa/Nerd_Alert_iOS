@@ -35,14 +35,15 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBAction func signUpPressed(_ sender: UIButton) {
         if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
             // sign up POST API call
+            
             userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!, onSuccess: {(response) -> Void in
-                print("From Swift Application")
+                print("From Swift Application : registerUser API called")
                 print(response)
             },
                 onFailure: { (error) -> Void in
-                   print("From Swift Application")
+                   print("From Swift Application : registerUser API called")
                    print(error)
-                })
+            })
             print("user signed in")
             //userInfo = userService.retrieveUserInfo()
 //            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)

@@ -15,6 +15,7 @@ class WelcomePageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Welcome to the Nerd Alert App! Find out if your a big ole nerd or some who doesn't have a clue from all these different quizzes!")
         // Do any additional setup after loading the view.
         
         logInButton.layer.cornerRadius = 10

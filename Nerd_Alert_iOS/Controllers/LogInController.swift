@@ -34,21 +34,21 @@ class LogInController: UIViewController, UITextFieldDelegate {
             // log in POST API CALL and user information GET API CALL
             
             userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
-                print("From Swift Application")
+                print("From Swift Application : authenticateUser API called")
                 print(response)
             },
                 onFailure: { (error) -> Void in
-                   print("From Swift Application")
+                   print("From Swift Application : authenticateUser API called")
                    print(error)
                 }
             )
             // userInfo = userService.retrieveUserInfo()
             
             userService.retrieveUserInfo(usernameTextField.text!, onSuccess: { (response) -> Void in
-                print("From Swift Application")
+                print("From Swift Application : retrieveUserInfo API called")
                 print(response)
             }) { (error) -> Void in
-                print("From Swift Application")
+                print("From Swift Application : retrieveUserInfo API called")
                 print(error)
             }
             
