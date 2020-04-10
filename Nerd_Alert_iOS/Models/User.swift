@@ -15,14 +15,16 @@ struct User {
     var password: String
     var dateCreated: Date
     var lastLogin: Date
+    var accessToken: String?
     
-    init(id: Int, username: String, email: String, password: String, dateCreated: Date, lastLogin: Date) {
+    init(id: Int, username: String, email: String, password: String, dateCreated: Date, lastLogin: Date, accessToken: String?) {
         self.id = id
         self.username = username
         self.email = email
         self.password = password
         self.dateCreated = dateCreated
         self.lastLogin = lastLogin
+        self.accessToken = accessToken
     }
     
 }

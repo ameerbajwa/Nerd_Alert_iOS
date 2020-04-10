@@ -12,8 +12,8 @@ class QuizService {
     
     let restAPIManager = RestAPIManager()
     
-    func retrieveQuizzes(_ user_id: Int, _ quiz_name: String, _ createdBy: String, _ source: String, _ users_quizzes: Bool, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
-        let commandURL = "/quiz"
+    func retrieveQuizzes(_ user_id: Int, _ quiz_name: String, _ createdBy: String, _ source: String, _ users_quizzes: Bool, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/retrieve_quiz"
         
         let jsonBody: [String: Any] = ["user_id": user_id,
                                        "quiz_name": quiz_name,
@@ -31,8 +31,8 @@ class QuizService {
                                    })
     }
     
-    func injectQuiz(_ quiz_name: String, _ source: String, _ title_of_source: String, _ createdBy: String, createdBy_user_id: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
-        let commandURL = "/quiz"
+    func injectQuiz(_ quiz_name: String, _ source: String, _ title_of_source: String, _ createdBy: String, createdBy_user_id: String, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/generate_quiz"
         
         let jsonBody: [String: String] = ["quiz_name": quiz_name,
                                           "source": source,

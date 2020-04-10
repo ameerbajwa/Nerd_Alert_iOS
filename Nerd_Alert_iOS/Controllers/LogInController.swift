@@ -16,7 +16,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     
     let userService = UserService()
-//    let userInfo: User
+    var accessToken: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
             userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
                 print("From Swift Application : authenticateUser API called")
                 print(response)
+//                self.accessToken = response["access_token"] as! String?
             },
                 onFailure: { (error) -> Void in
                    print("From Swift Application : authenticateUser API called")
@@ -47,6 +48,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
             userService.retrieveUserInfo(usernameTextField.text!, onSuccess: { (response) -> Void in
                 print("From Swift Application : retrieveUserInfo API called")
                 print(response)
+//                var userInfo = self.userService.parseRetrieveUserInfoResponse(response, self.accessToken)
             }) { (error) -> Void in
                 print("From Swift Application : retrieveUserInfo API called")
                 print(error)

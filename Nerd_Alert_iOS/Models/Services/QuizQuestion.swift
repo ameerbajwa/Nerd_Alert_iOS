@@ -12,8 +12,8 @@ class QuizQuestion {
     
     let restAPIManager = RestAPIManager()
     
-    func retrieveQuizQuestions(_ quiz_id: Int, _ user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
-        let commandURL = "/quiz_questions"
+    func retrieveQuizQuestions(_ quiz_id: Int, _ user_id: Int, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/generate_quiz_questions"
         
         let jsonBody: [String: Int] = ["quiz_id": quiz_id, "user_id": user_id]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)

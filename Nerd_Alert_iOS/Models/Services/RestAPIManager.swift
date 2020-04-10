@@ -12,7 +12,7 @@ import Foundation
 class RestAPIManager {
     let baseURL = "http://127.0.0.1:6373"
     
-    func httpRequest(url: String, body: Data?, method: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func httpRequest(url: String, body: Data?, method: String, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let apiURL = URL(string: baseURL + url)!
         print(apiURL)
         
@@ -31,7 +31,7 @@ class RestAPIManager {
                 return
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
+            if let responseJSON = responseJSON as? Data {
                 print("From Web Server")
                 print(responseJSON)
                 onSuccess(responseJSON)
