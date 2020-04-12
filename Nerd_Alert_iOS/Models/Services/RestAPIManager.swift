@@ -30,12 +30,23 @@ class RestAPIManager {
                 onFailure(["Error": error?.localizedDescription ?? "No data"])
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? Data {
-                print("From Web Server")
-                print(responseJSON)
-                onSuccess(responseJSON)
+            
+            do {
+                let userInfo = try JSONDecoder().decode(User.self, from: data)
+                print(userInfo)
+            } catch {
+                print("Error")
             }
+
+            
+            onSuccess(data)
+
+//            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+//            if let responseJSON = data as? Data {
+//                print("From Web Server")
+//                print(responseJSON)
+//                onSuccess(responseJSON)
+//            }
         }
         
         task.resume()

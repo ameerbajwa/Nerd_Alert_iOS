@@ -33,28 +33,54 @@ class LogInController: UIViewController, UITextFieldDelegate {
         if usernameTextField.text != nil && passwordTextField.text != nil {
             // log in POST API CALL and user information GET API CALL
             
-            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
-                print("From Swift Application : authenticateUser API called")
-                print(response)
-//                self.accessToken = response["access_token"] as! String?
-            },
-                onFailure: { (error) -> Void in
-                   print("From Swift Application : authenticateUser API called")
-                   print(error)
-                }
-            )
-            // userInfo = userService.retrieveUserInfo()
+//            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
+//                print("From Swift Application : authenticateUser API called")
+////                print(response)
+////                self.accessToken = response["access_token"] as! String?
+//                let jsonString = try? JSONSerialization.jsonObject(with: response, options: .mutableContainers)
+//                print(jsonString!)
+////                self.accessToken = jsonString["access_token"]
+//
+//            },
+//                onFailure: { (error) -> Void in
+//                   print("From Swift Application : authenticateUser API called")
+//                   print(error)
+//                }
+//            )
             
-            userService.retrieveUserInfo(usernameTextField.text!, onSuccess: { (response) -> Void in
+            self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
                 print("From Swift Application : retrieveUserInfo API called")
                 print(response)
-//                var userInfo = self.userService.parseRetrieveUserInfoResponse(response, self.accessToken)
+                do {
+                    let userInfo = try JSONDecoder().decode(User.self, from: response)
+    //                    userinfo["accessToken"] = jsonString.access_token
+                    print(userInfo)
+                } catch {
+                    print("Error")
+                }
+
+                
+//                    let userInfo = try? JSONDecoder().decode(User.self, from: response)
+//                    print(userInfo!)
+                
+//                    var userInfo = self.userService.parseRetrieveUserInfoResponse(response, self.accessToken)
+                
+//                    self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+//
+//                    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//                        // Get the new view controller using segue.destination.
+//                        // Pass the selected object to the new view controller.
+//                        if segue.identifier == "logInToHomePage" {
+//                            let destinationRVC = segue.destination as! HomeViewController
+//                            destinationRVC.user = userInfo
+//                        }
+//                    }
+                
             }) { (error) -> Void in
                 print("From Swift Application : retrieveUserInfo API called")
                 print(error)
             }
             
-//            self.performSegue(withIdentifier: "logInToHomePage", sender: self)
         } else {
             // send error message all textfields need to be filled out
         }
@@ -62,14 +88,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     
 //    // MARK: - Navigation
 //
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//        if segue.identifier == "logInToHomePage" {
-//            let destinationRVC = segue.destination as! HomeViewController
-//            destinationRVC.user = userInfo
-//        }
-//    }
+
     
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 //        if usernameTextField.text != nil && passwordTextField.text != nil {

@@ -20,6 +20,9 @@ class HomeViewController: UIViewController {
         quizTableView.delegate = self
         quizTableView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        print(user!.id)
+        print(user!.username)
     }
     
     /*

@@ -25,7 +25,6 @@ class UserService {
                 onFailure: { repsonse -> Void in
                     onFailure(repsonse)
                 })
-//        retrieveUserInfo(username)
         
         // call /auth POST request to authenticate user from our flask web api server
     }
@@ -69,9 +68,9 @@ class UserService {
     }
     
     
-    func parseRetrieveUserInfoResponse(_ body: [String: Any], _ accessToken: String?) -> User {
-        let userInfo = User(id: body["user_id"] as! Int, username: body["username"] as! String, email: body["email"] as! String, password: body["password"] as! String, dateCreated: body["dateCreated"] as! Date, lastLogin: body["lastLogin"] as! Date, accessToken: accessToken!)
-        return userInfo
-    }
+//    func parseRetrieveUserInfoResponse(_ body: [String: Any], _ accessToken: String?) -> User {
+//        let userInfo = User(id: body["user_id"] as! Int, username: body["username"] as! String, email: body["email"] as! String, password: body["password"] as! String, dateCreated: body["date_created"] as! Date, lastLogin: body["last_login"] as! Date, accessToken: accessToken!)
+//        return userInfo
+//    }
     
 }

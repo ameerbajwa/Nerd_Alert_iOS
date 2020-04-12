@@ -1,0 +1,20 @@
+PODS:
+  - Marshal (1.2.7)
+  - ObjectMapper (3.5.2)
+
+DEPENDENCIES:
+  - Marshal (~> 1.2.7)
+  - ObjectMapper (~> 3.4)
+
+SPEC REPOS:
+  trunk:
+    - Marshal
+    - ObjectMapper
+
+SPEC CHECKSUMS:
+  Marshal: ef480864a6af10a63f67be7e55bb5d8fe67a16d9
+  ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
+
+PODFILE CHECKSUM: aa6bb793f639c042c44b913a2405e17059dac3f8
+
+COCOAPODS: 1.9.1
