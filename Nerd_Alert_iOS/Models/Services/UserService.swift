@@ -12,36 +12,36 @@ class UserService {
     
     let restAPIManager = RestAPIManager()
     
-    func authenticateUser(_ username: String, _ password: String, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void ) {
+    func authenticateUser(_ username: String, _ password: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void ) {
         let commandURL = "/auth"
         
         let jsonBody: [String: String] = ["username": username, "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         
         restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST",
-                onSuccess: {response -> Void in
-                    onSuccess(response)
+                onSuccess: {responseJSON -> Void in
+                    onSuccess(responseJSON)
                 },
-                onFailure: { repsonse -> Void in
-                    onFailure(repsonse)
+                onFailure: { responseJSON -> Void in
+                    onFailure(responseJSON)
                 })
         
         // call /auth POST request to authenticate user from our flask web api server
     }
     
-    func retrieveUserInfo(_ username: String, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func retrieveUserInfo(_ username: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/user_info/\(username)"
         
-        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET", onSuccess: {response -> Void in
-                  onSuccess(response)
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET", onSuccess: {responseJSON -> Void in
+                  onSuccess(responseJSON)
               },
-              onFailure: { repsonse -> Void in
-                  onFailure(repsonse)
+              onFailure: { responseJSON -> Void in
+                  onFailure(responseJSON)
               })
     }
     
     
-    func registerUser(_ email: String, _ username: String, _ password: String, _ passwordAgain: String, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func registerUser(_ email: String, _ username: String, _ password: String, _ passwordAgain: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/register_user"
         if password == passwordAgain {
             
@@ -51,11 +51,11 @@ class UserService {
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
             
             restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST",
-                onSuccess: {response -> Void in
-                    onSuccess(response)
+                onSuccess: {responseJSON -> Void in
+                    onSuccess(responseJSON)
                 },
-                onFailure: { repsonse -> Void in
-                    onFailure(repsonse)
+                onFailure: { responseJSON -> Void in
+                    onFailure(responseJSON)
                 })
         } else {
             // send error message back: passwords need to match
@@ -63,11 +63,5 @@ class UserService {
 
         // call /register_user POST request to create user from our flask web api server
     }
-    
-    
-//    func parseRetrieveUserInfoResponse(_ body: [String: Any], _ accessToken: String?) -> User {
-//        let userInfo = User(id: body["user_id"] as! Int, username: body["username"] as! String, email: body["email"] as! String, password: body["password"] as! String, dateCreated: body["date_created"] as! Date, lastLogin: body["last_login"] as! Date, accessToken: accessToken!)
-//        return userInfo
-//    }
     
 }

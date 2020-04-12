@@ -16,7 +16,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     
     let userService = UserService()
-    var accessToken: String?
+    var accessTokenJSON: [String: Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,57 +33,51 @@ class LogInController: UIViewController, UITextFieldDelegate {
         if usernameTextField.text != nil && passwordTextField.text != nil {
             // log in POST API CALL and user information GET API CALL
             
-//            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
-//                print("From Swift Application : authenticateUser API called")
-////                print(response)
-////                self.accessToken = response["access_token"] as! String?
-//                let jsonString = try? JSONSerialization.jsonObject(with: response, options: .mutableContainers)
-//                print(jsonString!)
-////                self.accessToken = jsonString["access_token"]
-//
-//            },
-//                onFailure: { (error) -> Void in
-//                   print("From Swift Application : authenticateUser API called")
-//                   print(error)
-//                }
-//            )
-            
-            self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
-                print("From Swift Application : retrieveUserInfo API called")
+            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
+                print("From Swift Application : authenticateUser API called")
                 print(response)
-                                
-                do {
-                    guard let json = try JSONSerialization.jsonObject(with: response, options: .mutableContainers) as? [String: Any] else { return }
-                    let userInfo = User(json: json)
+                self.accessTokenJSON = response
+                
+                self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
+                    print("From Swift Application : retrieveUserInfo API called")
+                    print(response)
+                    
+                    var userInfo = User(json: response)
+
+                    if let accessToken = self.accessTokenJSON["access_token"] as? String {
+                        userInfo.accessToken = accessToken
+                    } else {
+                        print("couldn't pass accessToken value to userInfo struct")
+                    }
+
                     print(userInfo)
-                } catch let jsonErr {
-                    print("Error serializing json:", jsonErr)
+                    
+    //                    self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+    //
+    //                    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //                        // Get the new view controller using segue.destination.
+    //                        // Pass the selected object to the new view controller.
+    //                        if segue.identifier == "logInToHomePage" {
+    //                            let destinationRVC = segue.destination as! HomeViewController
+    //                            destinationRVC.user = userInfo
+    //                        }
+    //                    }
+                    
+                }) { (error) -> Void in
+                    print("From Swift Application : retrieveUserInfo API called")
+                    print(error)
                 }
 
-                
-//                    let userInfo = try? JSONDecoder().decode(User.self, from: response)
-//                    print(userInfo!)
-                
-//                    var userInfo = self.userService.parseRetrieveUserInfoResponse(response, self.accessToken)
-                
-//                    self.performSegue(withIdentifier: "logInToHomePage", sender: self)
-//
-//                    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//                        // Get the new view controller using segue.destination.
-//                        // Pass the selected object to the new view controller.
-//                        if segue.identifier == "logInToHomePage" {
-//                            let destinationRVC = segue.destination as! HomeViewController
-//                            destinationRVC.user = userInfo
-//                        }
-//                    }
-                
-            }) { (error) -> Void in
-                print("From Swift Application : retrieveUserInfo API called")
-                print(error)
-            }
+            },
+                onFailure: { (error) -> Void in
+                   print("From Swift Application : authenticateUser API called")
+                   print(error)
+                }
+            )
             
         } else {
             // send error message all textfields need to be filled out
+            print("Need to fill out username and password textfields")
         }
     }
     

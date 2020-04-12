@@ -12,18 +12,18 @@ class QuizQuestion {
     
     let restAPIManager = RestAPIManager()
     
-    func retrieveQuizQuestions(_ quiz_id: Int, _ user_id: Int, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func retrieveQuizQuestions(_ quiz_id: Int, _ user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/generate_quiz_questions"
         
         let jsonBody: [String: Int] = ["quiz_id": quiz_id, "user_id": user_id]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         
         restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "GET",
-                                   onSuccess: {response -> Void in
-                                       onSuccess(response)
+                                   onSuccess: { responseJSON -> Void in
+                                       onSuccess(responseJSON)
                                    },
-                                   onFailure: { repsonse -> Void in
-                                       onFailure(repsonse)
+                                   onFailure: { responseJSON -> Void in
+                                       onFailure(responseJSON)
                                    })
     }
     
