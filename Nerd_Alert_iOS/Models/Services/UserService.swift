@@ -32,10 +32,7 @@ class UserService {
     func retrieveUserInfo(_ username: String, onSuccess: @escaping (Data) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/user_info/\(username)"
         
-//        let jsonBody: [String: String] = ["username": username]
-//        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
-        
-        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET",                                   onSuccess: {response -> Void in
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET", onSuccess: {response -> Void in
                   onSuccess(response)
               },
               onFailure: { repsonse -> Void in

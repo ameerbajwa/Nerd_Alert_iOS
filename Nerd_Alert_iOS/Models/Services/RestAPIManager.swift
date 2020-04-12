@@ -31,14 +31,6 @@ class RestAPIManager {
                 return
             }
             
-            do {
-                let userInfo = try JSONDecoder().decode(User.self, from: data)
-                print(userInfo)
-            } catch {
-                print("Error")
-            }
-
-            
             onSuccess(data)
 
 //            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])

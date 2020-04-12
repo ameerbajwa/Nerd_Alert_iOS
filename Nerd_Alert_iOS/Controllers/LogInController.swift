@@ -51,12 +51,13 @@ class LogInController: UIViewController, UITextFieldDelegate {
             self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
                 print("From Swift Application : retrieveUserInfo API called")
                 print(response)
+                                
                 do {
-                    let userInfo = try JSONDecoder().decode(User.self, from: response)
-    //                    userinfo["accessToken"] = jsonString.access_token
+                    guard let json = try JSONSerialization.jsonObject(with: response, options: .mutableContainers) as? [String: Any] else { return }
+                    let userInfo = User(json: json)
                     print(userInfo)
-                } catch {
-                    print("Error")
+                } catch let jsonErr {
+                    print("Error serializing json:", jsonErr)
                 }
 
                 
