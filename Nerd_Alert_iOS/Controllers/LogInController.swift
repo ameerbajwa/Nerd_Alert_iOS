@@ -17,6 +17,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     
     let userService = UserService()
     var accessTokenJSON: [String: Any] = [:]
+    var userInfo: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,39 +31,47 @@ class LogInController: UIViewController, UITextFieldDelegate {
     
     @IBAction func logInPressed(_ sender: UIButton) {
         print("Log In Button Pressed")
+
         if usernameTextField.text != nil && passwordTextField.text != nil {
             // log in POST API CALL and user information GET API CALL
-            
+
             userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
                 print("From Swift Application : authenticateUser API called")
                 print(response)
                 self.accessTokenJSON = response
-                
+
                 self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
                     print("From Swift Application : retrieveUserInfo API called")
                     print(response)
-                    
-                    var userInfo = User(json: response)
+
+                    self.userInfo = User(json: response)
 
                     if let accessToken = self.accessTokenJSON["access_token"] as? String {
-                        userInfo.accessToken = accessToken
+                        self.userInfo?.accessToken = accessToken
                     } else {
                         print("couldn't pass accessToken value to userInfo struct")
                     }
 
-                    print(userInfo)
-                    
-    //                    self.performSegue(withIdentifier: "logInToHomePage", sender: self)
-    //
-    //                    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //                        // Get the new view controller using segue.destination.
-    //                        // Pass the selected object to the new view controller.
-    //                        if segue.identifier == "logInToHomePage" {
-    //                            let destinationRVC = segue.destination as! HomeViewController
-    //                            destinationRVC.user = userInfo
-    //                        }
-    //                    }
-                    
+                    DispatchQueue.main.async {
+                        if let id = self.userInfo?.id {
+                            if id > 0 {
+                                self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+                                print(self.userInfo)
+
+                                func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                                    if segue.identifier == "logInToHomePage" && segue.destination is HomePageViewController {
+                                        let vc = segue.destination as? HomePageViewController
+                                        vc?.user = self.userInfo
+                                    }
+                                }
+                            } else {
+                                print("user has no id, could not return any information on user")
+                            }
+                        } else {
+                            print("userInfo class has not been properly populated")
+                        }
+                    }
+
                 }) { (error) -> Void in
                     print("From Swift Application : retrieveUserInfo API called")
                     print(error)
@@ -74,11 +83,12 @@ class LogInController: UIViewController, UITextFieldDelegate {
                    print(error)
                 }
             )
-            
+
         } else {
             // send error message all textfields need to be filled out
             print("Need to fill out username and password textfields")
         }
+
     }
     
 //    // MARK: - Navigation

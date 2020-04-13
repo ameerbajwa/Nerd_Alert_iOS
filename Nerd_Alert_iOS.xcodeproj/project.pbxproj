@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2C6113D705877C354D4EC89F /* Pods_Nerd_Alert_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC835B93638C70DBE0B8426 /* Pods_Nerd_Alert_iOS.framework */; };
 		476D84374920195B7127BF26 /* Pods_Nerd_Alert_iOS_Nerd_Alert_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D06FD945C478D3A6054BB /* Pods_Nerd_Alert_iOS_Nerd_Alert_iOSUITests.framework */; };
 		5E7F1B824D2A185DA5CC9DEF /* Pods_Nerd_Alert_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8B5A30B1DD94010751EDC9 /* Pods_Nerd_Alert_iOSTests.framework */; };
+		DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */; };
 		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
-		DED9D189243AD2D000E57D60 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D188243AD2D000E57D60 /* HomeViewController.swift */; };
 		DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18A243C22BA00E57D60 /* QuizService.swift */; };
 		DED9D18D243CD52900E57D60 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18C243CD52900E57D60 /* QuizQuestion.swift */; };
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
@@ -53,8 +53,8 @@
 		71AC8977F0B2495BC78616E2 /* Pods-Nerd_Alert_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS.debug.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS/Pods-Nerd_Alert_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9A5522C4835E9F0864CCDDD2 /* Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90E2631C1793A031CAB1FE7 /* Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		DED9D188243AD2D000E57D60 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DED9D18A243C22BA00E57D60 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
 		DED9D18C243CD52900E57D60 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,7 +127,6 @@
 				3D3BF889DCA421EE151E3F56 /* Pods-Nerd_Alert_iOSTests.debug.xcconfig */,
 				002EBADADFE9268C137E9948 /* Pods-Nerd_Alert_iOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -203,7 +202,7 @@
 				DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */,
 				DEFDCCD124363EDD00366CA5 /* LogInController.swift */,
 				DEFDCCD3243640B700366CA5 /* SignUpController.swift */,
-				DED9D188243AD2D000E57D60 /* HomeViewController.swift */,
+				DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -471,7 +470,7 @@
 				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,
 				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
 				DED9D18D243CD52900E57D60 /* QuizQuestion.swift in Sources */,
-				DED9D189243AD2D000E57D60 /* HomeViewController.swift in Sources */,
+				DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */,
 				DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */,
 				DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */,
 				DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */,
