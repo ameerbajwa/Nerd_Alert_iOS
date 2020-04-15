@@ -18,7 +18,8 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     
     let userService = UserService()
-//    let userInfo: User
+    var accessTokenJSON: [String: Any] = [:]
+    var userInfo: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +34,68 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
-        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
+        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" && passwordTextField.text! == passwordAgainTextField.text! {
             // sign up POST API call
             
             userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!, onSuccess: {(response) -> Void in
                 print("From Swift Application : registerUser API called")
                 print(response)
+                print("new user created")
+                
+                DispatchQueue.main.async {
+                    self.userService.authenticateUser(self.usernameTextField.text!, self.passwordTextField.text!, onSuccess: {(response) -> Void in
+                        print("From Swift Application : authenticateUser API called")
+                        print(response)
+                        self.accessTokenJSON = response
+                            
+                        DispatchQueue.main.async {
+                            self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
+                                print("From Swift Application : retrieveUserInfo API called")
+                                print(response)
+
+                                self.userInfo = User(json: response)
+
+                                if let accessToken = self.accessTokenJSON["access_token"] as? String {
+                                    self.userInfo?.accessToken = accessToken
+                                } else {
+                                    print("couldn't pass accessToken value to userInfo struct")
+                                }
+                                
+                                print("user information obtained and ready to be segued to home page view controller")
+                                print(self.userInfo!)
+                                
+                                if let id = self.userInfo?.id {
+                                    if id > 0 {
+                                        DispatchQueue.main.async {
+                                            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)
+                                        }
+                                    } else {
+                                        print("user has no id, could not return any information on user")
+                                    }
+                                } else {
+                                    print("userInfo class has not been properly populated")
+                                }
+
+                            }) { (error) -> Void in
+                                print("From Swift Application : retrieveUserInfo API called")
+                                print(error)
+                            }
+                        }
+
+                    },
+                        onFailure: { (error) -> Void in
+                           print("From Swift Application : authenticateUser API called")
+                           print(error)
+                        }
+                    )
+                }
+                
             },
                 onFailure: { (error) -> Void in
                    print("From Swift Application : registerUser API called")
                    print(error)
             })
-            print("user signed in")
+            
             //userInfo = userService.retrieveUserInfo()
 //            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)
         } else {
@@ -52,43 +103,15 @@ class SignUpController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: - Navigation
+//  MARK: - Navigation
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//        if segue.identifier == "signUpToHomePage" {
-//            let destinationRVC = segue.destination as! HomeViewController
-//            destinationRVC.user = userInfo
-//        }
-//    }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
-//            // sign up POST API call
-//            textField.endEditing(true)
-//            return true
-//        } else {
-//            // send error message that you need to fill all the textfields
-//            textField.endEditing(true)
-//            return false
-//        }
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" {
-//            return true
-//        } else {
-//            // send error message: need to fill all textfields
-//            return false
-//        }
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        emailTextField.text! = ""
-//        usernameTextField.text! = ""
-//        passwordTextField.text! = ""
-//        passwordAgainTextField.text! = ""
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "signUpToHomePage" && segue.destination is HomePageViewController {
+            let destinationRVC = segue.destination as! HomePageViewController
+            destinationRVC.user = userInfo
+        }
+    }
 
 }

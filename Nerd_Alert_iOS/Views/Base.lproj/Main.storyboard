@@ -137,6 +137,7 @@
                         <outlet property="passwordTextField" destination="c1U-JT-vZp" id="dCu-zg-oiv"/>
                         <outlet property="signUpButton" destination="785-Iu-2Lk" id="RGQ-Th-yae"/>
                         <outlet property="usernameTextField" destination="MrW-FM-W7n" id="9FL-rF-nAQ"/>
+                        <segue destination="Aau-hP-ra0" kind="show" identifier="signUpToHomePage" id="dFW-d3-aEu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6k-hw-6Hf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -287,4 +288,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dFW-d3-aEu"/>
+    </inferredMetricsTieBreakers>
 </document>
