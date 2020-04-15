@@ -16,6 +16,13 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         quizTableView.dataSource = self
+        
+        if let u = user {
+            print("User Information who just logged in")
+            print(u)
+        } else {
+            print("User is not defined from log in page")
+        }
 
         // Do any additional setup after loading the view.
     }
