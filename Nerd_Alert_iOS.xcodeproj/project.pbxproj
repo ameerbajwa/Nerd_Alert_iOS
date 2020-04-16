@@ -11,6 +11,7 @@
 		476D84374920195B7127BF26 /* Pods_Nerd_Alert_iOS_Nerd_Alert_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D06FD945C478D3A6054BB /* Pods_Nerd_Alert_iOS_Nerd_Alert_iOSUITests.framework */; };
 		5E7F1B824D2A185DA5CC9DEF /* Pods_Nerd_Alert_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8B5A30B1DD94010751EDC9 /* Pods_Nerd_Alert_iOSTests.framework */; };
 		DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */; };
+		DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB632447A02300DA82E6 /* Quiz.swift */; };
 		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
 		DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18A243C22BA00E57D60 /* QuizService.swift */; };
 		DED9D18D243CD52900E57D60 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18C243CD52900E57D60 /* QuizQuestion.swift */; };
@@ -54,6 +55,7 @@
 		9A5522C4835E9F0864CCDDD2 /* Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90E2631C1793A031CAB1FE7 /* Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		DE56DB632447A02300DA82E6 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		DED9D18A243C22BA00E57D60 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
 		DED9D18C243CD52900E57D60 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				DEBEC392243A5B4A00CB9FD2 /* Services */,
 				DEFDCCD5243651C900366CA5 /* User.swift */,
+				DE56DB632447A02300DA82E6 /* Quiz.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 			files = (
 				DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */,
 				DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */,
+				DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */,
 				DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */,
 				DEFDCCD6243651C900366CA5 /* User.swift in Sources */,
 				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,

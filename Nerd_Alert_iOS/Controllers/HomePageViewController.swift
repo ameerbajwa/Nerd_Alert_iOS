@@ -11,7 +11,12 @@ import UIKit
 class HomePageViewController: UIViewController {
 
     @IBOutlet weak var quizTableView: UITableView!
+    var quizSerivce = QuizService()
     var user: User?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        QuizService.retrieveQuizzes()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
