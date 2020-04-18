@@ -12,7 +12,7 @@ class QuizService {
     
     let restAPIManager = RestAPIManager()
     
-    func retrieveQuizzes(_ user_id: Int, _ quiz_name: String, _ createdBy: String, _ source: String, _ users_quizzes: Bool, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func retrieveQuizzes(_ user_id: Int, _ quiz_name: String?, _ createdBy: String?, _ source: String?, _ users_quizzes: Bool, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/retrieve_quiz"
         
         let jsonBody: [String: Any] = ["user_id": user_id,

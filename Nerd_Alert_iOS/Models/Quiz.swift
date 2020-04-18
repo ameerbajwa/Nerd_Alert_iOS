@@ -11,6 +11,7 @@ import Foundation
 struct Quiz: Decodable {
     var id: Int
     var name: String
+    var description: String
     var source: String
     var titleOfSource: String
     var createdBy: String
@@ -21,6 +22,7 @@ struct Quiz: Decodable {
     init(json: [String: Any]) {
         id = json["quiz_id"] as? Int ?? 0
         name = json["quiz_name"] as? String ?? "BLANK"
+        description = json["quiz_description"] as? String ?? "BLANK"
         source = json["source"] as? String ?? "BLANK"
         titleOfSource = json["title_of_source"] as? String ?? "BLANK"
         createdBy = json["createdBy"] as? String ?? "BLANK"

@@ -15,7 +15,7 @@ class RestAPIManager {
     func httpRequest(url: String, body: Data?, method: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let apiURL = URL(string: baseURL + url)!
         print(apiURL)
-        
+                
         var request = URLRequest(url: apiURL)
         request.httpMethod = method
         if let safeBody = body {
@@ -30,6 +30,7 @@ class RestAPIManager {
                 onFailure(["Error": error?.localizedDescription ?? "No data"])
                 return
             }
+            print("after API is called in the backend, now in the frontend")
             guard let responseJSON = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
             print("From Web Server")
             print(responseJSON)

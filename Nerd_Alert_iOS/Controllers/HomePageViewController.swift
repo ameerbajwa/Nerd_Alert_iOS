@@ -13,23 +13,31 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var quizTableView: UITableView!
     var quizSerivce = QuizService()
     var user: User?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        QuizService.retrieveQuizzes()
-    }
+    var quizzes: [Quiz] = []
+    var quiz: Quiz?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrievingQuizzes(false)
         quizTableView.dataSource = self
         
-        if let u = user {
-            print("User Information who just logged in")
-            print(u)
-        } else {
-            print("User is not defined from log in page")
-        }
-
         // Do any additional setup after loading the view.
+    }
+    
+    func retrievingQuizzes(_ users_quizzes: Bool) {
+        quizSerivce.retrieveQuizzes(user!.id, nil, nil, nil, users_quizzes, onSuccess: { (response) in
+            print("From Swift Application: retrieveQuizzes function called")
+            print(response.count)
+            
+            for i in response.keys {
+                self.quiz = Quiz(json: response[i] as! [String : Any])
+                self.quizzes.append(self.quiz!)
+            }
+                        
+        }, onFailure: { (error) in
+            print("From Swift Application: retrieveQuizzes function called and an error occured")
+            print(error)
+        })
     }
     
 
@@ -47,15 +55,15 @@ class HomePageViewController: UIViewController {
 
 extension HomePageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return quizzes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "quizCell", for: indexPath)
-        cell.textLabel?.text = "quiz"
+        cell.textLabel?.text = quizzes[indexPath.row].name
         cell.detailTextLabel?.text = "0/10"
         return cell
     }
-    
+        
     
 }
