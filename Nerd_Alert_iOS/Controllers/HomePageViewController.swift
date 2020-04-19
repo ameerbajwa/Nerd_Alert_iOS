@@ -20,7 +20,6 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         retrievingQuizzes(false)
         quizTableView.dataSource = self
-        
         // Do any additional setup after loading the view.
     }
     
@@ -65,5 +64,4 @@ extension HomePageViewController: UITableViewDataSource {
         return cell
     }
         
-    
 }
