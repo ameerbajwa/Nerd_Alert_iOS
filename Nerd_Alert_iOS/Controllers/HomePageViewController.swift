@@ -9,11 +9,6 @@
 import UIKit
 
 class HomePageViewController: UIViewController {
-
-    @IBOutlet weak var nerdAlertTitle: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var quizButtonLabel: UIButton!
-    @IBOutlet weak var createQuizButtonLabel: UIButton!
     
     @IBOutlet weak var topHalfView: UIView!
     var referenceToQuizDetailsView : quizDetails?
@@ -29,8 +24,14 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameLabel.text = user?.username
-        quizButtonLabel.titleLabel?.text = "View My Quizzes"
+        if let referenceToHomePageView = Bundle.main.loadNibNamed("homePage", owner: self, options: nil)?.first as? homePage {
+            topHalfView.addSubview(referenceToHomePageView)
+            referenceToHomePageView.frame.size.height = topHalfView.frame.size.height
+            referenceToHomePageView.frame.size.width = topHalfView.frame.size.width
+            referenceToHomePageView.homePageXibInit(username: user!.username)
+        } else {
+            print("could not load xib file")
+        }
         
         retrievingQuizzes(users_quizzes)
         quizTableView.dataSource = self
@@ -65,7 +66,7 @@ class HomePageViewController: UIViewController {
         retrievingQuizzes(users_quizzes)
         
         // teriary operator
-        quizButtonLabel.titleLabel?.text = users_quizzes ? "View Quizzes" : "View My Quizzes"
+//        quizButtonLabel.titleLabel?.text = users_quizzes ? "View Quizzes" : "View My Quizzes"
         
 //        if users_quizzes == true {
 //            quizButtonLabel.titleLabel?.text = "View Quizzes"
@@ -85,11 +86,6 @@ extension HomePageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(quizzes[indexPath.row].description)
         // display all the quiz details on the top half of the screen
-        
-        nerdAlertTitle.isHidden = true
-        usernameLabel.isHidden = true
-        quizButtonLabel.isHidden = true
-        createQuizButtonLabel.isHidden = true
         
         if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
             topHalfView.addSubview(referenceToQuizDetailsView)

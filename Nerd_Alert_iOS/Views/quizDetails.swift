@@ -37,7 +37,12 @@ class quizDetails: UIView {
         quizDescriptionLabel.text = description
         sourceLabel.text = "Source: \(source)"
         titleOfSourceLabel.text = title_of_source
-        scoreLabel.text = "Score: \(score)/10"
+        if score != "" {
+            takeQuizButton.isHidden = true
+            scoreLabel.text = "Score: \(score)/10"
+        } else {
+            scoreLabel.isHidden = true
+        }
     }
 
 }

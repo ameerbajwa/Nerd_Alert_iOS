@@ -10,6 +10,8 @@
 		2C6113D705877C354D4EC89F /* Pods_Nerd_Alert_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC835B93638C70DBE0B8426 /* Pods_Nerd_Alert_iOS.framework */; };
 		476D84374920195B7127BF26 /* Pods_Nerd_Alert_iOS_Nerd_Alert_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D06FD945C478D3A6054BB /* Pods_Nerd_Alert_iOS_Nerd_Alert_iOSUITests.framework */; };
 		5E7F1B824D2A185DA5CC9DEF /* Pods_Nerd_Alert_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8B5A30B1DD94010751EDC9 /* Pods_Nerd_Alert_iOSTests.framework */; };
+		DE093149244D6183004FCDE1 /* homePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE093148244D6183004FCDE1 /* homePage.xib */; };
+		DE09314B244D61A2004FCDE1 /* homePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09314A244D61A2004FCDE1 /* homePage.swift */; };
 		DE1CCACE244CB3E400E5CEBD /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CCACD244CB3E400E5CEBD /* QuizQuestion.swift */; };
 		DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */; };
 		DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB632447A02300DA82E6 /* Quiz.swift */; };
@@ -57,6 +59,8 @@
 		71AC8977F0B2495BC78616E2 /* Pods-Nerd_Alert_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS.debug.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS/Pods-Nerd_Alert_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9A5522C4835E9F0864CCDDD2 /* Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90E2631C1793A031CAB1FE7 /* Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests/Pods-Nerd_Alert_iOS-Nerd_Alert_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DE093148244D6183004FCDE1 /* homePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = homePage.xib; sourceTree = "<group>"; };
+		DE09314A244D61A2004FCDE1 /* homePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePage.swift; sourceTree = "<group>"; };
 		DE1CCACD244CB3E400E5CEBD /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		DE56DB632447A02300DA82E6 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				DEFDCCA12435B2B800366CA5 /* Main.storyboard */,
 				DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */,
 				DE8A5965244D04D200EA3EC4 /* quizDetails.swift */,
+				DE093148244D6183004FCDE1 /* homePage.xib */,
+				DE09314A244D61A2004FCDE1 /* homePage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEFDCCA82435B2BC00366CA5 /* LaunchScreen.storyboard in Resources */,
+				DE093149244D6183004FCDE1 /* homePage.xib in Resources */,
 				DEFDCCA52435B2BC00366CA5 /* Assets.xcassets in Resources */,
 				DEFDCCA32435B2B800366CA5 /* Main.storyboard in Resources */,
 				DE8A5964244CFBB200EA3EC4 /* quizDetails.xib in Resources */,
@@ -476,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE09314B244D61A2004FCDE1 /* homePage.swift in Sources */,
 				DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */,
 				DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */,
 				DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */,
