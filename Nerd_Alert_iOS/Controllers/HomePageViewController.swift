@@ -14,7 +14,9 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var quizButtonLabel: UIButton!
     @IBOutlet weak var createQuizButtonLabel: UIButton!
+    
     @IBOutlet weak var topHalfView: UIView!
+    var referenceToQuizDetailsView : quizDetails?
     
     @IBOutlet weak var quizTableView: UITableView!
     var quizSerivce = QuizService()
@@ -22,12 +24,15 @@ class HomePageViewController: UIViewController {
     var quizzes: [Quiz] = []
     var quiz: Quiz?
     
+    var users_quizzes: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         usernameLabel.text = user?.username
+        quizButtonLabel.titleLabel?.text = "View My Quizzes"
         
-        retrievingQuizzes(false)
+        retrievingQuizzes(users_quizzes)
         quizTableView.dataSource = self
         quizTableView.delegate = self
         
@@ -56,23 +61,23 @@ class HomePageViewController: UIViewController {
     }
     
     @IBAction func quizButtonPressed(_ sender: UIButton) {
-        retrievingQuizzes(true)
-//        quizButtonLabel.titleLabel?.text =
+        users_quizzes = !users_quizzes
+        retrievingQuizzes(users_quizzes)
+        
+        // teriary operator
+        quizButtonLabel.titleLabel?.text = users_quizzes ? "View Quizzes" : "View My Quizzes"
+        
+//        if users_quizzes == true {
+//            quizButtonLabel.titleLabel?.text = "View Quizzes"
+//        } else {
+//            quizButtonLabel.titleLabel?.text = "View My Quizzes"
+//        }
+        
     }
     
     @IBAction func createQuizButtonPressed(_ sender: UIButton) {
         // use only if user is also a creator
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -86,8 +91,16 @@ extension HomePageViewController: UITableViewDelegate {
         quizButtonLabel.isHidden = true
         createQuizButtonLabel.isHidden = true
         
-        let quizDetailsView = quizDetails.self
-        self.topHalfView.addSubview(quizDetailsView.init(coder: <#NSCoder#>) ?? <#default value#>)
+        if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
+            topHalfView.addSubview(referenceToQuizDetailsView)
+            referenceToQuizDetailsView.frame.size.height = topHalfView.frame.size.height
+            referenceToQuizDetailsView.frame.size.width = topHalfView.frame.size.width
+            referenceToQuizDetailsView.quizDetailsXibInit(quiz_name: quizzes[indexPath.row].name, created_by: quizzes[indexPath.row].createdBy, description: quizzes[indexPath.row].description, source: quizzes[indexPath.row].source, title_of_source: quizzes[indexPath.row].titleOfSource, score: "0")
+        } else {
+            print("xib file could not load to the topHalfView")
+        }
+        
+        
     }
 }
 

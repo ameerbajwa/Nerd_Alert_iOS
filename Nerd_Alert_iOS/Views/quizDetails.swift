@@ -12,19 +12,32 @@ class quizDetails: UIView {
     
     @IBOutlet var quizDetailsView: UIView!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        UINib(nibName: "quizDetails", bundle: nil).instantiate(withOwner: self, options: nil)
-        addSubview(quizDetailsView)
-        quizDetailsView.frame = self.bounds
+    @IBOutlet weak var quizNameLabel: UILabel!
+    @IBOutlet weak var createdByLabel: UILabel!
+    @IBOutlet weak var quizDescriptionLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var titleOfSourceLabel: UILabel!
+    @IBOutlet weak var takeQuizButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        UINib(nibName: "quizDetails", bundle: nil).instantiate(withOwner: self, options: nil)
+//        addSubview(quizDetailsView)
+//        quizDetailsView.frame = self.bounds
+//    }
+    
+    override class func awakeFromNib() {
+        // change any label, button viewing
     }
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    func quizDetailsXibInit(quiz_name: String, created_by: String, description: String, source: String, title_of_source: String, score: String) {
+        quizNameLabel.text = quiz_name
+        createdByLabel.text = "Created By: \(created_by)"
+        quizDescriptionLabel.text = description
+        sourceLabel.text = "Source: \(source)"
+        titleOfSourceLabel.text = title_of_source
+        scoreLabel.text = "Score: \(score)/10"
     }
-    */
 
 }

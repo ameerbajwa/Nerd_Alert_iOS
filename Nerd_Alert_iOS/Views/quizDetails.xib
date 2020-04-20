@@ -9,7 +9,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="quizDetails" customModule="Nerd_Alert_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="createdByLabel" destination="UKC-bD-NlL" id="hO6-ij-eg7"/>
+                <outlet property="quizDescriptionLabel" destination="DZQ-v3-2L8" id="1xn-qT-mr7"/>
                 <outlet property="quizDetailsView" destination="iN0-l3-epB" id="Ebj-bz-jbV"/>
+                <outlet property="quizNameLabel" destination="ZMb-EH-ojL" id="QT9-Tb-uyc"/>
+                <outlet property="scoreLabel" destination="GS5-V3-WmG" id="LZY-ee-PNm"/>
+                <outlet property="sourceLabel" destination="io6-ws-5d2" id="AAa-pV-5nk"/>
+                <outlet property="takeQuizButton" destination="gfE-uV-FVq" id="iMJ-sZ-L5Z"/>
+                <outlet property="titleOfSourceLabel" destination="ioF-0W-iZx" id="Tpd-Cw-vzg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
