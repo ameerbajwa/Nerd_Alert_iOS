@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Pm-gX-Uyw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -220,6 +220,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ro7-us-KIl">
+                                <rect key="frame" x="0.0" y="88" width="414" height="354"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NERD ALERT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUJ-r6-yYr">
+                                        <rect key="frame" x="115" y="73" width="184" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bns-8L-pPv">
+                                        <rect key="frame" x="30" y="165" width="354" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWt-BN-eOJ">
+                                        <rect key="frame" x="50" y="266" width="117" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="View My Quizzes"/>
+                                        <connections>
+                                            <action selector="quizButtonPressed:" destination="Aau-hP-ra0" eventType="touchUpInside" id="W1e-WN-EWO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQm-r0-gWe">
+                                        <rect key="frame" x="282" y="266" width="81" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Create Quiz"/>
+                                        <connections>
+                                            <action selector="createQuizButtonPressed:" destination="Aau-hP-ra0" eventType="touchUpInside" id="QD7-XP-8BP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UUJ-r6-yYr" secondAttribute="trailing" constant="50" id="2vw-Q9-65I"/>
+                                    <constraint firstItem="UUJ-r6-yYr" firstAttribute="leading" secondItem="Ro7-us-KIl" secondAttribute="leading" constant="50" id="6sk-WO-zhf"/>
+                                    <constraint firstItem="UUJ-r6-yYr" firstAttribute="top" secondItem="Ro7-us-KIl" secondAttribute="top" constant="159" id="V4a-Bv-aF2"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P1E-L7-Xze">
                                 <rect key="frame" x="0.0" y="450" width="414" height="412"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -262,12 +302,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="6ap-E8-S8J"/>
                     <connections>
+                        <outlet property="createQuizButtonLabel" destination="CQm-r0-gWe" id="83n-Dt-gaU"/>
+                        <outlet property="nerdAlertTitle" destination="UUJ-r6-yYr" id="jJR-ZG-gCq"/>
+                        <outlet property="quizButtonLabel" destination="jWt-BN-eOJ" id="qoh-UO-Y1u"/>
                         <outlet property="quizTableView" destination="P1E-L7-Xze" id="dkZ-Sw-VoI"/>
+                        <outlet property="topHalfView" destination="Ro7-us-KIl" id="0dV-XI-CIF"/>
+                        <outlet property="usernameLabel" destination="bns-8L-pPv" id="NRY-EE-4fP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVJ-9a-b7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3280" y="146"/>
+            <point key="canvasLocation" x="3279.7101449275365" y="145.98214285714286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9dT-0f-CaO">

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QuizQuestion {
+class QuizQuestionSerivce {
     
     let restAPIManager = RestAPIManager()
     

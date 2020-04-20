@@ -10,6 +10,12 @@ import UIKit
 
 class HomePageViewController: UIViewController {
 
+    @IBOutlet weak var nerdAlertTitle: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var quizButtonLabel: UIButton!
+    @IBOutlet weak var createQuizButtonLabel: UIButton!
+    @IBOutlet weak var topHalfView: UIView!
+    
     @IBOutlet weak var quizTableView: UITableView!
     var quizSerivce = QuizService()
     var user: User?
@@ -18,12 +24,22 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        usernameLabel.text = user?.username
+        
         retrievingQuizzes(false)
         quizTableView.dataSource = self
-        // Do any additional setup after loading the view.
+        quizTableView.delegate = self
+        
+        // if user.creator == false {
+        //    quizButtonLabel.isHidden = true
+        //    createQuizButtonLabel.isHidden = true
+        // }
+        
     }
     
     func retrievingQuizzes(_ users_quizzes: Bool) {
+        self.quizzes = []
         quizSerivce.retrieveQuizzes(user!.id, nil, nil, nil, users_quizzes, onSuccess: { (response) in
             print("From Swift Application: retrieveQuizzes function called")
             print(response.count)
@@ -39,7 +55,15 @@ class HomePageViewController: UIViewController {
         })
     }
     
-
+    @IBAction func quizButtonPressed(_ sender: UIButton) {
+        retrievingQuizzes(true)
+//        quizButtonLabel.titleLabel?.text =
+    }
+    
+    @IBAction func createQuizButtonPressed(_ sender: UIButton) {
+        // use only if user is also a creator
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -50,6 +74,21 @@ class HomePageViewController: UIViewController {
     }
     */
 
+}
+
+extension HomePageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(quizzes[indexPath.row].description)
+        // display all the quiz details on the top half of the screen
+        
+        nerdAlertTitle.isHidden = true
+        usernameLabel.isHidden = true
+        quizButtonLabel.isHidden = true
+        createQuizButtonLabel.isHidden = true
+        
+        let quizDetailsView = quizDetails.self
+        self.topHalfView.addSubview(quizDetailsView.init(coder: <#NSCoder#>) ?? <#default value#>)
+    }
 }
 
 extension HomePageViewController: UITableViewDataSource {

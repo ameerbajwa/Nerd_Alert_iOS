@@ -32,7 +32,6 @@ class WelcomePageController: UIViewController {
     @IBAction func signUpPressed(_ sender: UIButton) {
         print("Going to Sign Up Page")
     }
-    
 
 }
 

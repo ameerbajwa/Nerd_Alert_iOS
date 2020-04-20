@@ -14,8 +14,10 @@
 		DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */; };
 		DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB632447A02300DA82E6 /* Quiz.swift */; };
 		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
+		DE8A5964244CFBB200EA3EC4 /* quizDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */; };
+		DE8A5966244D04D200EA3EC4 /* quizDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A5965244D04D200EA3EC4 /* quizDetails.swift */; };
 		DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18A243C22BA00E57D60 /* QuizService.swift */; };
-		DED9D18D243CD52900E57D60 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18C243CD52900E57D60 /* QuizQuestion.swift */; };
+		DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */; };
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
 		DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */; };
 		DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */; };
@@ -59,8 +61,10 @@
 		DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		DE56DB632447A02300DA82E6 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = quizDetails.xib; sourceTree = "<group>"; };
+		DE8A5965244D04D200EA3EC4 /* quizDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizDetails.swift; sourceTree = "<group>"; };
 		DED9D18A243C22BA00E57D60 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
-		DED9D18C243CD52900E57D60 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
+		DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionService.swift; sourceTree = "<group>"; };
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +144,7 @@
 				DEFDCCD72436535700366CA5 /* RestAPIManager.swift */,
 				DE6C7D8F243A73D200AD4197 /* UserService.swift */,
 				DED9D18A243C22BA00E57D60 /* QuizService.swift */,
-				DED9D18C243CD52900E57D60 /* QuizQuestion.swift */,
+				DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -226,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				DEFDCCA12435B2B800366CA5 /* Main.storyboard */,
+				DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */,
+				DE8A5965244D04D200EA3EC4 /* quizDetails.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				DEFDCCA82435B2BC00366CA5 /* LaunchScreen.storyboard in Resources */,
 				DEFDCCA52435B2BC00366CA5 /* Assets.xcassets in Resources */,
 				DEFDCCA32435B2B800366CA5 /* Main.storyboard in Resources */,
+				DE8A5964244CFBB200EA3EC4 /* quizDetails.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,9 +481,10 @@
 				DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */,
 				DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */,
 				DEFDCCD6243651C900366CA5 /* User.swift in Sources */,
+				DE8A5966244D04D200EA3EC4 /* quizDetails.swift in Sources */,
 				DEFDCCD224363EDD00366CA5 /* LogInController.swift in Sources */,
 				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
-				DED9D18D243CD52900E57D60 /* QuizQuestion.swift in Sources */,
+				DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */,
 				DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */,
 				DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */,
 				DE1CCACE244CB3E400E5CEBD /* QuizQuestion.swift in Sources */,
@@ -657,6 +665,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Nerd_Alert_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -675,6 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Nerd_Alert_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -691,7 +701,6 @@
 			baseConfigurationReference = 3D3BF889DCA421EE151E3F56 /* Pods-Nerd_Alert_iOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Nerd_Alert_iOSTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -713,7 +722,6 @@
 			baseConfigurationReference = 002EBADADFE9268C137E9948 /* Pods-Nerd_Alert_iOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Nerd_Alert_iOSTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
