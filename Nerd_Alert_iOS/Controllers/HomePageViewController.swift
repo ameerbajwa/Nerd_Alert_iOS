@@ -11,6 +11,7 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     @IBOutlet weak var topHalfView: UIView!
+    var referenceToHomePageView: homePage?
     var referenceToQuizDetailsView : quizDetails?
     
     @IBOutlet weak var quizTableView: UITableView!
@@ -61,9 +62,9 @@ class HomePageViewController: UIViewController {
         })
     }
     
-    @IBAction func quizButtonPressed(_ sender: UIButton) {
-        users_quizzes = !users_quizzes
-        retrievingQuizzes(users_quizzes)
+//    @IBAction func quizButtonPressed(_ sender: UIButton) {
+//        users_quizzes = !users_quizzes
+//        retrievingQuizzes(users_quizzes)
         
         // teriary operator
 //        quizButtonLabel.titleLabel?.text = users_quizzes ? "View Quizzes" : "View My Quizzes"
@@ -74,11 +75,7 @@ class HomePageViewController: UIViewController {
 //            quizButtonLabel.titleLabel?.text = "View My Quizzes"
 //        }
         
-    }
-    
-    @IBAction func createQuizButtonPressed(_ sender: UIButton) {
-        // use only if user is also a creator
-    }
+//    }
 
 }
 

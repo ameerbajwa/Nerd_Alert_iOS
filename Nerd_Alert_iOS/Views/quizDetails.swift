@@ -9,9 +9,7 @@
 import UIKit
 
 class quizDetails: UIView {
-    
-    @IBOutlet var quizDetailsView: UIView!
-    
+
     @IBOutlet weak var quizNameLabel: UILabel!
     @IBOutlet weak var createdByLabel: UILabel!
     @IBOutlet weak var quizDescriptionLabel: UILabel!
@@ -45,4 +43,6 @@ class quizDetails: UIView {
         }
     }
 
+    @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
+    }
 }
