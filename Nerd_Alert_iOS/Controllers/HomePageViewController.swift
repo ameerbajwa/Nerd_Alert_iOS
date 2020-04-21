@@ -29,12 +29,14 @@ class HomePageViewController: UIViewController {
             topHalfView.addSubview(referenceToHomePageView)
             referenceToHomePageView.frame.size.height = topHalfView.frame.size.height
             referenceToHomePageView.frame.size.width = topHalfView.frame.size.width
+            referenceToHomePageView.delegate = self
             referenceToHomePageView.homePageXibInit(username: user!.username)
+                        
         } else {
             print("could not load xib file")
         }
         
-        retrievingQuizzes(users_quizzes)
+        retrievingQuizzes(users_quizzes: users_quizzes)
         quizTableView.dataSource = self
         quizTableView.delegate = self
         
@@ -44,38 +46,6 @@ class HomePageViewController: UIViewController {
         // }
         
     }
-    
-    func retrievingQuizzes(_ users_quizzes: Bool) {
-        self.quizzes = []
-        quizSerivce.retrieveQuizzes(user!.id, nil, nil, nil, users_quizzes, onSuccess: { (response) in
-            print("From Swift Application: retrieveQuizzes function called")
-            print(response.count)
-            
-            for i in response.keys {
-                self.quiz = Quiz(json: response[i] as! [String : Any])
-                self.quizzes.append(self.quiz!)
-            }
-                        
-        }, onFailure: { (error) in
-            print("From Swift Application: retrieveQuizzes function called and an error occured")
-            print(error)
-        })
-    }
-    
-//    @IBAction func quizButtonPressed(_ sender: UIButton) {
-//        users_quizzes = !users_quizzes
-//        retrievingQuizzes(users_quizzes)
-        
-        // teriary operator
-//        quizButtonLabel.titleLabel?.text = users_quizzes ? "View Quizzes" : "View My Quizzes"
-        
-//        if users_quizzes == true {
-//            quizButtonLabel.titleLabel?.text = "View Quizzes"
-//        } else {
-//            quizButtonLabel.titleLabel?.text = "View My Quizzes"
-//        }
-        
-//    }
 
 }
 
@@ -109,4 +79,28 @@ extension HomePageViewController: UITableViewDataSource {
         return cell
     }
         
+}
+
+extension HomePageViewController: retrieveQuizzesDelegate {
+    func retrievingQuizzes(users_quizzes: Bool) {
+        print("retrieving quizzes from database")
+        self.quizzes = []
+        quizSerivce.retrieveQuizzes(user!.id, nil, nil, nil, users_quizzes, onSuccess: { (response) in
+            print("From Swift Application: retrieveQuizzes function called")
+            print(response.count)
+            
+            for i in response.keys {
+                self.quiz = Quiz(json: response[i] as! [String : Any])
+                self.quizzes.append(self.quiz!)
+            }
+            
+            DispatchQueue.main.async {
+                self.quizTableView.reloadData()
+            }
+                        
+        }, onFailure: { (error) in
+            print("From Swift Application: retrieveQuizzes function called and an error occured")
+            print(error)
+        })
+    }
 }

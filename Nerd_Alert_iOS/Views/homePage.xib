@@ -26,17 +26,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillProportionally" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="mv9-ot-XmF">
-                    <rect key="frame" x="49" y="244" width="308" height="30"/>
+                    <rect key="frame" x="49" y="244" width="246" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-zg-PDq">
-                            <rect key="frame" x="0.0" y="0.0" width="117" height="30"/>
-                            <state key="normal" title="View My Quizzes"/>
+                            <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
+                            <state key="normal" title="Quizzes"/>
                             <connections>
                                 <action selector="quizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="EpH-pW-dNM"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAA-8F-ctH">
-                            <rect key="frame" x="227" y="0.0" width="81" height="30"/>
+                            <rect key="frame" x="165" y="0.0" width="81" height="30"/>
                             <state key="normal" title="Create Quiz"/>
                             <connections>
                                 <action selector="createQuizButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="R8H-v8-yXC"/>
