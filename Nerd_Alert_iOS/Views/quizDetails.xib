@@ -56,6 +56,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppB-XT-DyX">
+                    <rect key="frame" x="12" y="304" width="79" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Home Page"/>
+                    <connections>
+                        <action selector="homePageButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="7qT-GT-Z7b"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -81,6 +89,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="createdByLabel" destination="UKC-bD-NlL" id="pev-qB-jVH"/>
+                <outlet property="homePageButton" destination="ppB-XT-DyX" id="Fec-Io-IiY"/>
                 <outlet property="quizDescriptionLabel" destination="DZQ-v3-2L8" id="UMa-om-TT2"/>
                 <outlet property="quizNameLabel" destination="ZMb-EH-ojL" id="RAc-QU-G8x"/>
                 <outlet property="scoreLabel" destination="GS5-V3-WmG" id="SEF-SF-NHK"/>

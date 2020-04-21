@@ -25,25 +25,10 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let referenceToHomePageView = Bundle.main.loadNibNamed("homePage", owner: self, options: nil)?.first as? homePage {
-            topHalfView.addSubview(referenceToHomePageView)
-            referenceToHomePageView.frame.size.height = topHalfView.frame.size.height
-            referenceToHomePageView.frame.size.width = topHalfView.frame.size.width
-            referenceToHomePageView.delegate = self
-            referenceToHomePageView.homePageXibInit(username: user!.username)
-                        
-        } else {
-            print("could not load xib file")
-        }
-        
+        gettingHomePageView()
         retrievingQuizzes(users_quizzes: users_quizzes)
         quizTableView.dataSource = self
         quizTableView.delegate = self
-        
-        // if user.creator == false {
-        //    quizButtonLabel.isHidden = true
-        //    createQuizButtonLabel.isHidden = true
-        // }
         
     }
 
@@ -58,7 +43,8 @@ extension HomePageViewController: UITableViewDelegate {
             topHalfView.addSubview(referenceToQuizDetailsView)
             referenceToQuizDetailsView.frame.size.height = topHalfView.frame.size.height
             referenceToQuizDetailsView.frame.size.width = topHalfView.frame.size.width
-            referenceToQuizDetailsView.quizDetailsXibInit(quiz_name: quizzes[indexPath.row].name, created_by: quizzes[indexPath.row].createdBy, description: quizzes[indexPath.row].description, source: quizzes[indexPath.row].source, title_of_source: quizzes[indexPath.row].titleOfSource, score: "0")
+            referenceToQuizDetailsView.delegate = self
+            referenceToQuizDetailsView.quizDetailsXibInit(quiz_name: quizzes[indexPath.row].name, created_by: quizzes[indexPath.row].createdBy, description: quizzes[indexPath.row].description, source: quizzes[indexPath.row].source, title_of_source: quizzes[indexPath.row].titleOfSource, score: "0", username: user?.username)
         } else {
             print("xib file could not load to the topHalfView")
         }
@@ -103,4 +89,20 @@ extension HomePageViewController: retrieveQuizzesDelegate {
             print(error)
         })
     }
+}
+
+extension HomePageViewController: homePageViewDelegate {
+    func gettingHomePageView() {
+        if let referenceToHomePageView = Bundle.main.loadNibNamed("homePage", owner: self, options: nil)?.first as? homePage {
+            topHalfView.addSubview(referenceToHomePageView)
+            referenceToHomePageView.frame.size.height = topHalfView.frame.size.height
+            referenceToHomePageView.frame.size.width = topHalfView.frame.size.width
+            referenceToHomePageView.delegate = self
+            referenceToHomePageView.homePageXibInit(username: user!.username)
+                        
+        } else {
+            print("could not load xib file")
+        }
+    }
+
 }
