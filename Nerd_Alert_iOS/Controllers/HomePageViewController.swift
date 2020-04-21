@@ -16,17 +16,20 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var quizTableView: UITableView!
     var quizSerivce = QuizService()
+//    var global: Global?
     var user: User?
     var quizzes: [Quiz] = []
     var quiz: Quiz?
     
-    var users_quizzes: Bool = false
+//    var users_quizzes: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("home page view controller called")
+//        global = Global(usersQuizzes: false)
         
         gettingHomePageView()
-        retrievingQuizzes(users_quizzes: users_quizzes)
+        retrievingQuizzes(users_quizzes: usersQuizzesInstance.usersQuizzes)
         quizTableView.dataSource = self
         quizTableView.delegate = self
         
@@ -93,6 +96,7 @@ extension HomePageViewController: retrieveQuizzesDelegate {
 
 extension HomePageViewController: homePageViewDelegate {
     func gettingHomePageView() {
+        print(usersQuizzesInstance.usersQuizzes)
         if let referenceToHomePageView = Bundle.main.loadNibNamed("homePage", owner: self, options: nil)?.first as? homePage {
             topHalfView.addSubview(referenceToHomePageView)
             referenceToHomePageView.frame.size.height = topHalfView.frame.size.height

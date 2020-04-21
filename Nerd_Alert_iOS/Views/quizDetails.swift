@@ -24,7 +24,7 @@ class quizDetails: UIView {
     @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet var delegate: homePageViewDelegate?
-    
+        
     override class func awakeFromNib() {
         // change any label, button viewing
     }
@@ -57,6 +57,7 @@ class quizDetails: UIView {
     }
     
     @IBAction func homePageButtonPressed(_ sender: UIButton) {
+        print(usersQuizzesInstance.usersQuizzes)
         self.delegate?.gettingHomePageView()
     }
     

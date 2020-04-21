@@ -32,8 +32,8 @@ class RestAPIManager {
             }
             print("after API is called in the backend, now in the frontend")
             guard let responseJSON = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
-            print("From Web Server")
-            print(responseJSON)
+//            print("From Web Server")
+//            print(responseJSON)
             onSuccess(responseJSON)
         }
         
