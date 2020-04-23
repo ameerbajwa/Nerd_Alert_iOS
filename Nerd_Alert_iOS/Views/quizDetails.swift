@@ -12,6 +12,10 @@ import UIKit
     func gettingHomePageView()
 }
 
+@objc protocol goToQuizPageDelegate {
+    func goToQuizPage(quiz_id: Int)
+}
+
 class quizDetails: UIView {
 
     @IBOutlet weak var quizNameLabel: UILabel!
@@ -23,41 +27,48 @@ class quizDetails: UIView {
     @IBOutlet weak var takeQuizButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    var quiz_id: Int?
+    
     @IBOutlet var delegate: homePageViewDelegate?
+    @IBOutlet var quizDelegate: goToQuizPageDelegate?
         
     override class func awakeFromNib() {
         // change any label, button viewing
     }
 
-    func quizDetailsXibInit(quiz_name: String, created_by: String, description: String, source: String, title_of_source: String, score: String, username: String?) {
+    func quizDetailsXibInit(quizId: Int, quiz_name: String, created_by: String, description: String, source: String, title_of_source: String, username: String?) {
         quizNameLabel.text = quiz_name
         createdByLabel.text = "Created By: \(created_by)"
         quizDescriptionLabel.text = description
         sourceLabel.text = "Source: \(source)"
         titleOfSourceLabel.text = title_of_source
+        quiz_id = quizId
+        
+        takeQuizButton.setTitle("Take A Quiz", for: .normal)
         
         if username == created_by {
             scoreLabel.isHidden = true
             takeQuizButton.setTitle("Edit Quiz", for: .normal)
-        } else {
-            if score != "" {
-                scoreLabel.isHidden = false
-                takeQuizButton.isHidden = true
-             } else {
-                scoreLabel.isHidden = true
-                takeQuizButton.setTitle("Take Quiz", for: .normal)
-                takeQuizButton.isHidden = false
-             }
-            
         }
+//        else {
+//            if score != "" {
+//                scoreLabel.isHidden = false
+//                takeQuizButton.isHidden = true
+//             } else {
+//                scoreLabel.isHidden = true
+//                takeQuizButton.setTitle("Take Quiz", for: .normal)
+//                takeQuizButton.isHidden = false
+//             }
+//        }
     }
 
     @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
-        
+        if quiz_id != nil {
+            self.quizDelegate?.goToQuizPage(quiz_id: quiz_id!)
+        }
     }
     
     @IBAction func homePageButtonPressed(_ sender: UIButton) {
-        print(usersQuizzesInstance.usersQuizzes)
         self.delegate?.gettingHomePageView()
     }
     

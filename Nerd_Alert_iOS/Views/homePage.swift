@@ -17,7 +17,6 @@ class homePage: UIView {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var quizActionButton: UIButton!
     @IBOutlet var delegate: retrieveQuizzesDelegate?
-//    var users_quizzes: Bool?
     
     override func awakeFromNib() {
         // programmatically design and edit labels and buttons
@@ -38,11 +37,9 @@ class homePage: UIView {
     }
     
     @IBAction func quizActionButtonPressed(_ sender: UIButton) {
-//        users_quizzes = !users_quizzes
         usersQuizzesInstance.usersQuizzes = !usersQuizzesInstance.usersQuizzes
         changingButtonTitles()
-        print(usersQuizzesInstance.usersQuizzes)
-        self.delegate?.retrievingQuizzes(users_quizzes: usersQuizzesInstance.usersQuizzes) // users_quizzes
+        self.delegate?.retrievingQuizzes(users_quizzes: usersQuizzesInstance.usersQuizzes)
     }
     
     @IBAction func createQuizButtonPressed(_ sender: UIButton) {

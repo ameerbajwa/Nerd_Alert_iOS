@@ -25,34 +25,32 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillProportionally" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="mv9-ot-XmF">
-                    <rect key="frame" x="49" y="244" width="246" height="30"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-zg-PDq">
-                            <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
-                            <state key="normal" title="Quizzes"/>
-                            <connections>
-                                <action selector="quizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="EpH-pW-dNM"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAA-8F-ctH">
-                            <rect key="frame" x="165" y="0.0" width="81" height="30"/>
-                            <state key="normal" title="Create Quiz"/>
-                            <connections>
-                                <action selector="createQuizButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="R8H-v8-yXC"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAA-8F-ctH">
+                    <rect key="frame" x="303" y="304" width="81" height="30"/>
+                    <state key="normal" title="Create Quiz"/>
+                    <connections>
+                        <action selector="createQuizButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="R8H-v8-yXC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-zg-PDq">
+                    <rect key="frame" x="30" y="304" width="55" height="30"/>
+                    <state key="normal" title="Quizzes"/>
+                    <connections>
+                        <action selector="quizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="EpH-pW-dNM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rf5-zg-PDq" secondAttribute="bottom" constant="20" id="1xE-lE-KIU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6hT-YO-00W" secondAttribute="trailing" constant="30" id="AcL-RZ-hav"/>
                 <constraint firstItem="6hT-YO-00W" firstAttribute="top" secondItem="hYY-uY-S2d" secondAttribute="bottom" constant="40" id="BMO-vm-F2v"/>
                 <constraint firstItem="6hT-YO-00W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="QJo-rw-B5W"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hYY-uY-S2d" secondAttribute="trailing" constant="30" id="Rds-Bf-WgA"/>
-                <constraint firstItem="mv9-ot-XmF" firstAttribute="top" secondItem="6hT-YO-00W" secondAttribute="bottom" constant="75" id="XHh-zr-4g8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zAA-8F-ctH" secondAttribute="trailing" constant="30" id="Zbr-a1-AsW"/>
                 <constraint firstItem="hYY-uY-S2d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="bKe-Ej-rUu"/>
+                <constraint firstItem="rf5-zg-PDq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="g5t-dL-SLX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zAA-8F-ctH" secondAttribute="bottom" constant="20" id="ijb-31-QrO"/>
                 <constraint firstItem="hYY-uY-S2d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="mg6-9b-huM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

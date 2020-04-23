@@ -43,6 +43,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppB-XT-DyX">
+                    <rect key="frame" x="12" y="304" width="79" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Home Page"/>
+                    <connections>
+                        <action selector="homePageButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="7qT-GT-Z7b"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-uV-FVq">
                     <rect key="frame" x="327" y="304" width="67" height="30"/>
                     <state key="normal" title="Take Quiz"/>
@@ -56,14 +64,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppB-XT-DyX">
-                    <rect key="frame" x="12" y="304" width="79" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Home Page"/>
-                    <connections>
-                        <action selector="homePageButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="7qT-GT-Z7b"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
