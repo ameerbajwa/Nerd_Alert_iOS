@@ -332,24 +332,36 @@
                                 <state key="normal" title="Choice D">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="choiceDButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="z2N-8S-qMM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEe-kK-t8P">
                                 <rect key="frame" x="30" y="731" width="354" height="30"/>
                                 <state key="normal" title="Choice C">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="choiceCButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="Enz-t6-82Y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-yq-AoA">
                                 <rect key="frame" x="30" y="671" width="354" height="30"/>
                                 <state key="normal" title="Choice B">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="choiceBButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="nHX-bZ-KKx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDu-Y8-SRI">
                                 <rect key="frame" x="30" y="611" width="354" height="30"/>
                                 <state key="normal" title="Choice A">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="choiceAButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="bxu-4Z-96P"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -389,10 +401,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="ahQ-wp-5bc"/>
                     <connections>
+                        <outlet property="backButton" destination="rjG-Vb-Vv8" id="mcG-sq-13o"/>
                         <outlet property="choiceAButton" destination="rDu-Y8-SRI" id="A0X-FC-Qtc"/>
                         <outlet property="choiceBButton" destination="ppa-yq-AoA" id="1U8-JI-hXl"/>
                         <outlet property="choiceCButton" destination="YEe-kK-t8P" id="GzS-d0-Pe8"/>
                         <outlet property="choiceDButton" destination="3qS-In-dtE" id="k2T-P4-BJC"/>
+                        <outlet property="nextButton" destination="fb3-AW-h5E" id="7PY-6x-6BE"/>
                         <outlet property="quizIterationLabel" destination="UJm-Z8-BLy" id="E8A-5w-0lV"/>
                         <outlet property="quizNameLabel" destination="ZeB-d8-ZJe" id="aBY-Bu-Wic"/>
                         <outlet property="quizQuestion" destination="xGM-M5-vm0" id="uCZ-Wd-OlQ"/>

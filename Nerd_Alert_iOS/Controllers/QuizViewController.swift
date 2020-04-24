@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var quizNameLabel: UILabel!
     @IBOutlet weak var quizIterationLabel: UILabel!
@@ -21,9 +21,13 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var choiceCButton: UIButton!
     @IBOutlet weak var choiceDButton: UIButton!
     
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var quiz_id: Int?
     var user_id: Int?
+    var question_number: Int = 0
+    var users_answers: [String: String?] = [:]
     
     var quizQuestionService = QuizQuestionSerivce()
     var quizQuestions: [QuizQuestion] = []
@@ -48,12 +52,81 @@ class QuizViewController: UIViewController {
             print(error)
         })
         
+        quizNameLabel.text = "Quiz blah blah"
+        changingQuestions()
+        
+    }
+    
+    func changingQuestions() {
+        
+        if question_number == 0 {
+            backButton.isHidden = true
+        } else if question_number == 9 {
+            nextButton.setTitle("Submit Quiz", for: .normal)
+        }
+        
+        quizQuestionNumberLabel.text = "Question #\(question_number+1)"
+        quizQuestion.text = quizQuestions[question_number].question
+        
+        if quizQuestions[question_number].choiceA == nil && quizQuestions[question_number].choiceB == nil && quizQuestions[question_number].choiceC == nil && quizQuestions[question_number].choiceD == nil {
+            choiceAButton.isHidden = true
+            choiceBButton.isHidden = true
+            choiceCButton.isHidden = true
+            choiceDButton.isHidden = true
+            
+        } else if quizQuestions[question_number].choiceC == nil && quizQuestions[question_number].choiceD == nil {
+            choiceCButton.isHidden = true
+            choiceDButton.isHidden = true
+            userAnswerTextField.isHidden = true
+            
+            choiceAButton.setTitle(quizQuestions[question_number].choiceA, for: .normal)
+            choiceBButton.setTitle(quizQuestions[question_number].choiceB, for: .normal)
+            
+        } else {
+            userAnswerTextField.isHidden = true
+            
+            choiceAButton.setTitle(quizQuestions[question_number].choiceA, for: .normal)
+            choiceBButton.setTitle(quizQuestions[question_number].choiceB, for: .normal)
+            choiceCButton.setTitle(quizQuestions[question_number].choiceC, for: .normal)
+            choiceDButton.setTitle(quizQuestions[question_number].choiceD, for: .normal)
+            
+        }
+    }
+    
+    @IBAction func choiceAButtonPressed(_ sender: UIButton) {
+        users_answers["\(question_number)"] = String((choiceAButton.titleLabel?.text?.prefix(2))!)
+    }
+    
+    @IBAction func choiceBButtonPressed(_ sender: UIButton) {
+        users_answers["\(question_number)"] = String((choiceBButton.titleLabel?.text?.prefix(2))!)
+    }
+    
+    @IBAction func choiceCButtonPressed(_ sender: UIButton) {
+        users_answers["\(question_number)"] = String((choiceCButton.titleLabel?.text?.prefix(2))!)
+    }
+    
+    @IBAction func choiceDButtonPressed(_ sender: UIButton) {
+        users_answers["\(question_number)"] = String((choiceDButton.titleLabel?.text?.prefix(2))!)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        users_answers["\(question_number)"] = textField.text!
     }
     
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
+        if nextButton.titleLabel?.text == "Next" {
+            question_number += 1
+            changingQuestions()
+        } else {
+            // will submit quiz, call the user quiz results api call to enter users quiz score and call user question results api call to enter users answers, segue to quiz results page
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        if question_number != 0 {
+            question_number -= 1
+            changingQuestions()
+        }
     }
 }
