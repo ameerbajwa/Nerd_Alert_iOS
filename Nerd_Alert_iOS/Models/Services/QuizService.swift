@@ -50,4 +50,17 @@ class QuizService {
                                    })
     }
     
+    func retreiveQuiz(_ quiz_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/find_quiz/\(quiz_id)"
+        
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET",
+                                   onSuccess: { responseJSON -> Void in
+                                       onSuccess(responseJSON)
+                                   },
+                                   onFailure: { responseJSON -> Void in
+                                       onFailure(responseJSON)
+                                   })
+
+    }
+    
 }

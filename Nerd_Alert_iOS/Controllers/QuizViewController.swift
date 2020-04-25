@@ -30,11 +30,21 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     var users_answers: [String: String?] = [:]
     
     var quizQuestionService = QuizQuestionSerivce()
+    var quizService = QuizService()
     var quizQuestions: [QuizQuestion] = []
     var question: QuizQuestion?
+    var quiz: Quiz?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("retreiving quiz name")
+        quizService.retreiveQuiz(quiz_id!, onSuccess: { (response) in
+            self.quiz = Quiz(json: response)
+        }, onFailure: { (error) in
+            print("From Swift Application: retrieveQuiz function called and an error occured")
+            print(error)
+        })
 
         // Do any additional setup after loading the view.
         print("retreiving questions from quiz")
@@ -52,7 +62,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             print(error)
         })
         
-        quizNameLabel.text = "Quiz blah blah"
+        quizNameLabel.text = quiz?.name
         changingQuestions()
         
     }
