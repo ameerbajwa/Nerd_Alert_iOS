@@ -412,6 +412,7 @@
                         <outlet property="quizQuestion" destination="xGM-M5-vm0" id="uCZ-Wd-OlQ"/>
                         <outlet property="quizQuestionNumberLabel" destination="SFJ-b5-QC6" id="9Mb-p7-1Lf"/>
                         <outlet property="userAnswerTextField" destination="5KW-fT-xP3" id="X0P-aT-XQx"/>
+                        <segue destination="TPQ-13-0iA" kind="show" identifier="quizToQuizResultsSegue" id="jDs-uN-N6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJW-tl-eWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -427,19 +428,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgf-cF-xCa">
-                                <rect key="frame" x="30" y="139" width="354" height="30"/>
+                                <rect key="frame" x="30" y="183" width="354" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFd-1i-xiC">
-                                <rect key="frame" x="30" y="219" width="354" height="27.5"/>
+                                <rect key="frame" x="30" y="263" width="354" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4y-Ha-e5z">
-                                <rect key="frame" x="30" y="346.5" width="354" height="30"/>
+                                <rect key="frame" x="30" y="390.5" width="354" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -459,6 +460,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Vq-9i-ACV"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gyk-wU-AOt"/>
                     <connections>
                         <outlet property="quizNameLabel" destination="w4y-Ha-e5z" id="0XN-Wp-3VQ"/>
                         <outlet property="scoreLabel" destination="EFd-1i-xiC" id="ftf-V7-YPj"/>

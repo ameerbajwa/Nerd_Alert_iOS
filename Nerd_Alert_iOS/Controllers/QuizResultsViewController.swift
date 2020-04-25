@@ -14,11 +14,31 @@ class QuizResultsViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var quizNameLabel: UILabel!
     
+    var user: User?
+    var quiz: Quiz?
+    var quizQuestions: [QuizQuestion] = []
+    var usersAnswers: [Int: String?] = [:]
+    
+    var quizQuestionsResults: [QuizQuestionsResults] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        for i in 0...9 {
+            quizQuestionsResults[i].userId = user!.id
+            quizQuestionsResults[i].quizId = quiz!.id
+            quizQuestionsResults[i].quizIteration = 1
+            quizQuestionsResults[i].questionId = quizQuestions[i].id
+            quizQuestionsResults[i].userAnswer = usersAnswers[i]!!
+            quizQuestionsResults[i].correctAnswer = quizQuestions[i].correctAnswer
+        }
+        
+        print("Quiz Question Results")
+        print(quizQuestionsResults)
+        
+        
     }
     
 

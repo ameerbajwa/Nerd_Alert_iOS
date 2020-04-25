@@ -43,7 +43,8 @@ class HomePageViewController: UIViewController, goToQuizPageDelegate {
             if let vc = segue.destination as? QuizViewController {
                 if changingQuizId != nil {
                     vc.quiz_id = changingQuizId!
-                    vc.user_id = user?.id
+                    vc.user = user
+//                    vc.user_id = user?.id
                 }
             }
         }

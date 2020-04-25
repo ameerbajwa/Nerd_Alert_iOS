@@ -25,15 +25,16 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var backButton: UIButton!
     
     var quiz_id: Int?
-    var user_id: Int?
     var question_number: Int = 0
-    var users_answers: [String: String?] = [:]
+    var users_answers: [Int: String?] = [:]
     
     var quizQuestionService = QuizQuestionSerivce()
     var quizService = QuizService()
+    
     var quizQuestions: [QuizQuestion] = []
     var question: QuizQuestion?
     var quiz: Quiz?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         print("retreiving questions from quiz")
-        quizQuestionService.retrieveQuizQuestions(quiz_id!, user_id!, onSuccess: { (response) in
+        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, onSuccess: { (response) in
             print("From Swift Application: retrieveQuizQuestions function called")
             print(response.count)
             
@@ -104,23 +105,23 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func choiceAButtonPressed(_ sender: UIButton) {
-        users_answers["\(question_number)"] = String((choiceAButton.titleLabel?.text?.prefix(2))!)
+        users_answers[question_number] = String((choiceAButton.titleLabel?.text?.prefix(2))!)
     }
     
     @IBAction func choiceBButtonPressed(_ sender: UIButton) {
-        users_answers["\(question_number)"] = String((choiceBButton.titleLabel?.text?.prefix(2))!)
+        users_answers[question_number] = String((choiceBButton.titleLabel?.text?.prefix(2))!)
     }
     
     @IBAction func choiceCButtonPressed(_ sender: UIButton) {
-        users_answers["\(question_number)"] = String((choiceCButton.titleLabel?.text?.prefix(2))!)
+        users_answers[question_number] = String((choiceCButton.titleLabel?.text?.prefix(2))!)
     }
     
     @IBAction func choiceDButtonPressed(_ sender: UIButton) {
-        users_answers["\(question_number)"] = String((choiceDButton.titleLabel?.text?.prefix(2))!)
+        users_answers[question_number] = String((choiceDButton.titleLabel?.text?.prefix(2))!)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        users_answers["\(question_number)"] = textField.text!
+        users_answers[question_number] = textField.text!
     }
     
     
@@ -130,6 +131,18 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             changingQuestions()
         } else {
             // will submit quiz, call the user quiz results api call to enter users quiz score and call user question results api call to enter users answers, segue to quiz results page
+            self.performSegue(withIdentifier: "quizToQuizResultsSegue", sender: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "quizToQuizResultsSegue" && segue.destination is QuizResultsViewController {
+            if let vc = segue.destination as? QuizResultsViewController {
+                vc.user = self.user
+                vc.quiz = self.quiz
+                vc.quizQuestions = self.quizQuestions
+                vc.usersAnswers = self.users_answers
+            }
         }
     }
     
