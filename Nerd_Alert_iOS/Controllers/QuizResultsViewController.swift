@@ -18,6 +18,7 @@ class QuizResultsViewController: UIViewController {
     var quiz: Quiz?
     var quizQuestions: [QuizQuestion] = []
     var usersAnswers: [Int: String?] = [:]
+    var quiz_iteration: Int?
     
     var quizQuestionsResultsService = QuizQuestionsResultsService()
     var quizResultsService = QuizResultsService()
@@ -34,7 +35,7 @@ class QuizResultsViewController: UIViewController {
         for i in 0...9 {
             quizQuestionsResults[i].userId = user!.id
             quizQuestionsResults[i].quizId = quiz!.id
-            quizQuestionsResults[i].quizIteration = 1
+            quizQuestionsResults[i].quizIteration = quiz_iteration!
             quizQuestionsResults[i].questionId = quizQuestions[i].id
             quizQuestionsResults[i].userAnswer = usersAnswers[i]!!
             quizQuestionsResults[i].correctAnswer = quizQuestions[i].correctAnswer
@@ -48,7 +49,7 @@ class QuizResultsViewController: UIViewController {
         print("Quiz Question Results")
         print(quizQuestionsResults)
         
-        quizResultsService.injectQuizResult(user!.id, quiz!.id, 1, score, onSuccess: { (response) in
+        quizResultsService.injectQuizResult(user!.id, quiz!.id, score, onSuccess: { (response) in
             print("Successfully entered user's score for this quiz")
             print(response)
             
@@ -73,7 +74,9 @@ class QuizResultsViewController: UIViewController {
         
     }
     
-
+    @IBAction func backToHomeButtonPressed(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 

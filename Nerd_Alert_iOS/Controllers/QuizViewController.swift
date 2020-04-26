@@ -27,9 +27,11 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     var quiz_id: Int?
     var question_number: Int = 0
     var users_answers: [Int: String?] = [:]
+    var quiz_iteration: Int = 0
     
     var quizQuestionService = QuizQuestionSerivce()
     var quizService = QuizService()
+    var quizResultsService = QuizResultsService()
     
     var quizQuestions: [QuizQuestion] = []
     var question: QuizQuestion?
@@ -41,13 +43,25 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         
         print("retreiving quiz name")
         quizService.retreiveQuiz(quiz_id!, onSuccess: { (response) in
+            print("From Swift Application: retrieveQuiz function called")
+            print(response)
             self.quiz = Quiz(json: response)
+            
         }, onFailure: { (error) in
             print("From Swift Application: retrieveQuiz function called and an error occured")
             print(error)
         })
+        
+        quizResultsService.retrieveQuizIteration(user!.id, quiz_id!, onSuccess: { (response) in
+            print("From Swift Application: retrieveQuizIteration function called")
+            print(response)
+            self.quiz_iteration = response["quiz_iteration"] as! Int
+            
+        }, onFailure: { (error) in
+            print("From Swift Application: retrieveQuizIteration function called and an error occured")
+            print(error)
+        })
 
-        // Do any additional setup after loading the view.
         print("retreiving questions from quiz")
         quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, onSuccess: { (response) in
             print("From Swift Application: retrieveQuizQuestions function called")
@@ -64,6 +78,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         })
         
         quizNameLabel.text = quiz?.name
+        quizIterationLabel.text = "Quiz #\(quiz_iteration)"
         changingQuestions()
         
     }
@@ -140,6 +155,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             if let vc = segue.destination as? QuizResultsViewController {
                 vc.user = self.user
                 vc.quiz = self.quiz
+                vc.quiz_iteration = self.quiz_iteration
                 vc.quizQuestions = self.quizQuestions
                 vc.usersAnswers = self.users_answers
             }

@@ -12,12 +12,11 @@ class QuizResultsService {
     
     let restAPIManager = RestAPIManager()
     
-    func injectQuizResult(_ userId: Int, _ quizId: Int, _ quizIteration: Int, _ score: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func injectQuizResult(_ userId: Int, _ quizId: Int, _ score: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/enter_user_quiz_results"
         
         let jsonBody: [String: Any] = ["user_id": userId,
                                        "quiz_id": quizId,
-                                       "quiz_iteration": quizIteration,
                                        "score": score]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         print(jsonData)
@@ -32,7 +31,25 @@ class QuizResultsService {
     }
     
     func retrieveQuizResults(_ userId: Int, _ quizId: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
-        let commandURL = "retrieve_user_quiz_results"
+        let commandURL = "/retrieve_user_quiz_results"
+        
+        let jsonBody: [String: Int] = ["user_id": userId,
+                                       "quiz_id": quizId]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
+        print(jsonData)
+        
+        restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST",
+                                   onSuccess: { responseJSON -> Void in
+                                       onSuccess(responseJSON)
+                                   },
+                                   onFailure: { responseJSON -> Void in
+                                       onFailure(responseJSON)
+                                   })
+        
+    }
+    
+    func retrieveQuizIteration(_ userId: Int, _ quizId: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/retrieve_quiz_iteration"
         
         let jsonBody: [String: Int] = ["user_id": userId,
                                        "quiz_id": quizId]
