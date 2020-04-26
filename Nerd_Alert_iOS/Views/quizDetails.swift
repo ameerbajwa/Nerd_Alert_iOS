@@ -25,7 +25,6 @@ class quizDetails: UIView {
     @IBOutlet weak var titleOfSourceLabel: UILabel!
     @IBOutlet weak var homePageButton: UIButton!
     @IBOutlet weak var takeQuizButton: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
     
     var quiz_id: Int?
     
@@ -44,10 +43,9 @@ class quizDetails: UIView {
         titleOfSourceLabel.text = title_of_source
         quiz_id = quizId
         
-        takeQuizButton.setTitle("Take A Quiz", for: .normal)
+        takeQuizButton.setTitle("Take Quiz", for: .normal)
         
         if username == created_by {
-            scoreLabel.isHidden = true
             takeQuizButton.setTitle("Edit Quiz", for: .normal)
         }
 //        else {
@@ -63,7 +61,9 @@ class quizDetails: UIView {
     }
 
     @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
+        print("taking quiz: \(quizNameLabel.text!)")
         if quiz_id != nil {
+            print(quiz_id)
             self.quizDelegate?.goToQuizPage(quiz_id: quiz_id!)
         }
     }

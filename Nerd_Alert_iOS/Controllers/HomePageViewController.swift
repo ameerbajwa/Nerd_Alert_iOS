@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomePageViewController: UIViewController, goToQuizPageDelegate {
+class HomePageViewController: UIViewController {
     
     @IBOutlet weak var topHalfView: UIView!
     var referenceToHomePageView: homePage?
@@ -31,23 +31,6 @@ class HomePageViewController: UIViewController, goToQuizPageDelegate {
         quizTableView.dataSource = self
         quizTableView.delegate = self
         
-    }
-    
-    func goToQuizPage(quiz_id: Int) {
-        changingQuizId = quiz_id
-        self.performSegue(withIdentifier: "homePageToQuizSegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "homePageToQuizSegue" && segue.destination is QuizViewController {
-            if let vc = segue.destination as? QuizViewController {
-                if changingQuizId != nil {
-                    vc.quiz_id = changingQuizId!
-                    vc.user = user
-//                    vc.user_id = user?.id
-                }
-            }
-        }
     }
 
 }
@@ -120,6 +103,27 @@ extension HomePageViewController: homePageViewDelegate {
                         
         } else {
             print("could not load xib file")
+        }
+    }
+}
+
+extension HomePageViewController: goToQuizPageDelegate {
+        
+    func goToQuizPage(quiz_id: Int) {
+        referenceToQuizDetailsView!.quizDelegate = self
+        changingQuizId = quiz_id
+        print("taking a quiz")
+        self.performSegue(withIdentifier: "homePageToQuizSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homePageToQuizSegue" && segue.destination is QuizViewController {
+            if let vc = segue.destination as? QuizViewController {
+                if changingQuizId != nil {
+                    vc.quiz_id = changingQuizId!
+                    vc.user = user
+                }
+            }
         }
     }
 }

@@ -45,9 +45,11 @@ class UserService {
         let commandURL = "/register_user"
         if password == passwordAgain {
             
-            let jsonBody: [String: String] = ["username": username,
+            let jsonBody: [String: Any] = ["username": username,
                                               "password": password,
-                                              "email": email]
+                                              "email": email,
+                                              "admin": 0,
+                                              "creator": 1]
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
             
             restAPIManager.httpRequest(url: commandURL, body: jsonData!, method: "POST",

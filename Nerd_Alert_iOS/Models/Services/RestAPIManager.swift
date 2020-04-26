@@ -31,7 +31,10 @@ class RestAPIManager {
                 return
             }
             print("after API is called in the backend, now in the frontend")
-            guard let responseJSON = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
+            guard let responseJSON = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+                print("Could not convert json object to a swift dictionary object")
+                return
+            }
             print("From Web Server")
             print(responseJSON)
             onSuccess(responseJSON)
