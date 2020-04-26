@@ -92,7 +92,8 @@ extension HomePageViewController: retrieveQuizzesDelegate {
     }
 }
 
-extension HomePageViewController: homePageViewDelegate {
+extension HomePageViewController: actionsFromQuizDetailsDelegate {
+    
     func gettingHomePageView() {
         if let referenceToHomePageView = Bundle.main.loadNibNamed("homePage", owner: self, options: nil)?.first as? homePage {
             topHalfView.addSubview(referenceToHomePageView)
@@ -105,15 +106,16 @@ extension HomePageViewController: homePageViewDelegate {
             print("could not load xib file")
         }
     }
-}
-
-extension HomePageViewController: goToQuizPageDelegate {
-        
+    
     func goToQuizPage(quiz_id: Int) {
-        referenceToQuizDetailsView!.quizDelegate = self
-        changingQuizId = quiz_id
-        print("taking a quiz")
-        self.performSegue(withIdentifier: "homePageToQuizSegue", sender: nil)
+        if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
+            referenceToQuizDetailsView.delegate = self
+            changingQuizId = quiz_id
+            self.performSegue(withIdentifier: "homePageToQuizSegue", sender: nil)
+        } else {
+            print("referenceToQuizDetailsView has not been identified as type quizDetails")
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -127,3 +129,45 @@ extension HomePageViewController: goToQuizPageDelegate {
         }
     }
 }
+
+//extension HomePageViewController: homePageViewDelegate {
+//    func gettingHomePageView() {
+//        if let referenceToHomePageView = Bundle.main.loadNibNamed("homePage", owner: self, options: nil)?.first as? homePage {
+//            topHalfView.addSubview(referenceToHomePageView)
+//            referenceToHomePageView.frame.size.height = topHalfView.frame.size.height
+//            referenceToHomePageView.frame.size.width = topHalfView.frame.size.width
+//            referenceToHomePageView.delegate = self
+//            referenceToHomePageView.homePageXibInit(username: user!.username)
+//
+//        } else {
+//            print("could not load xib file")
+//        }
+//    }
+//}
+//
+//extension HomePageViewController: goToQuizPageDelegate {
+//
+//    func goToQuizPage(quiz_id: Int) {
+//        print("taking a quiz")
+//        if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
+//            referenceToQuizDetailsView.quizDelegate = self
+//            changingQuizId = quiz_id
+//            print("taking a quiz")
+//            self.performSegue(withIdentifier: "homePageToQuizSegue", sender: nil)
+//        } else {
+//            print("referenceToQuizDetailsView has not been identified as type quizDetails")
+//        }
+//
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "homePageToQuizSegue" && segue.destination is QuizViewController {
+//            if let vc = segue.destination as? QuizViewController {
+//                if changingQuizId != nil {
+//                    vc.quiz_id = changingQuizId!
+//                    vc.user = user
+//                }
+//            }
+//        }
+//    }
+//}

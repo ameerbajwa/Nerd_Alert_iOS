@@ -8,13 +8,18 @@
 
 import UIKit
 
-@objc protocol homePageViewDelegate {
+@objc protocol actionsFromQuizDetailsDelegate {
     func gettingHomePageView()
-}
-
-@objc protocol goToQuizPageDelegate {
     func goToQuizPage(quiz_id: Int)
 }
+
+//@objc protocol homePageViewDelegate {
+//    func gettingHomePageView()
+//}
+//
+//@objc protocol goToQuizPageDelegate {
+//    func goToQuizPage(quiz_id: Int)
+//}
 
 class quizDetails: UIView {
 
@@ -28,8 +33,10 @@ class quizDetails: UIView {
     
     var quiz_id: Int?
     
-    @IBOutlet var delegate: homePageViewDelegate?
-    @IBOutlet var quizDelegate: goToQuizPageDelegate?
+    @IBOutlet var delegate: actionsFromQuizDetailsDelegate?
+    
+//    @IBOutlet var delegate: homePageViewDelegate?
+//    @IBOutlet var quizDelegate: goToQuizPageDelegate?
         
     override class func awakeFromNib() {
         // change any label, button viewing
@@ -61,10 +68,9 @@ class quizDetails: UIView {
     }
 
     @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
-        print("taking quiz: \(quizNameLabel.text!)")
         if quiz_id != nil {
-            print(quiz_id)
-            self.quizDelegate?.goToQuizPage(quiz_id: quiz_id!)
+            print("taking quiz: \(quizNameLabel.text!)")
+            self.delegate?.goToQuizPage(quiz_id: quiz_id!)
         }
     }
     
