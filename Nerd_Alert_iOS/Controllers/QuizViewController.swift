@@ -25,6 +25,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var backButton: UIButton!
     
     var quiz_id: Int?
+    var quiz_name: String?
     var question_number: Int = 0
     var users_answers: [Int: String?] = [:]
     var quiz_iteration: Int = 0
@@ -41,45 +42,53 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("retreiving quiz name")
-        quizService.retreiveQuiz(quiz_id!, onSuccess: { (response) in
-            print("From Swift Application: retrieveQuiz function called")
-            print(response)
-            self.quiz = Quiz(json: response)
-            
-        }, onFailure: { (error) in
-            print("From Swift Application: retrieveQuiz function called and an error occured")
-            print(error)
-        })
+//        print("retreiving quiz name")
+//        quizService.retreiveQuiz(quiz_id!, onSuccess: { (response) in
+//            print("From Swift Application: retrieveQuiz function called")
+//            print(response)
+//            self.quiz = Quiz(json: response)
+//            self.quizNameLabel.text = self.quiz?.name
+//
+//        }, onFailure: { (error) in
+//            print("From Swift Application: retrieveQuiz function called and an error occured")
+//            print(error)
+//        })
+        self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
+        print("retrieving the quiz iteration number the user will be taking")
         quizResultsService.retrieveQuizIteration(user!.id, quiz_id!, onSuccess: { (response) in
             print("From Swift Application: retrieveQuizIteration function called")
             print(response)
             self.quiz_iteration = response["quiz_iteration"] as! Int
+            self.quizIterationLabel.text = "Quiz #\(self.quiz_iteration)"
+            
+            DispatchQueue.main.async {
+                print("retreiving questions from quiz")
+                self.quizQuestionService.retrieveQuizQuestions(self.quiz_id!, self.user!.id, onSuccess: { (response) in
+                    print("From Swift Application: retrieveQuizQuestions function called")
+                    print(response.count)
+                    
+                    for i in response.keys {
+                        self.question = QuizQuestion(json: response[i] as! [String : Any])
+                        self.quizQuestions.append(self.question!)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.changingQuestions()
+                    }
+                    
+                }, onFailure: { (error) in
+                    print("From Swift Application: retrieveQuizzes function called and an error occured")
+                    print(error)
+                })
+            }
             
         }, onFailure: { (error) in
             print("From Swift Application: retrieveQuizIteration function called and an error occured")
             print(error)
         })
 
-        print("retreiving questions from quiz")
-        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, onSuccess: { (response) in
-            print("From Swift Application: retrieveQuizQuestions function called")
-            print(response.count)
-            
-            for i in response.keys {
-                self.question = QuizQuestion(json: response[i] as! [String : Any])
-                self.quizQuestions.append(self.question!)
-            }
-            
-        }, onFailure: { (error) in
-            print("From Swift Application: retrieveQuizzes function called and an error occured")
-            print(error)
-        })
-        
-        quizNameLabel.text = quiz?.name
-        quizIterationLabel.text = "Quiz #\(quiz_iteration)"
-        changingQuestions()
+
         
     }
     

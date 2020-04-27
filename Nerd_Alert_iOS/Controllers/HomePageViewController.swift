@@ -21,6 +21,7 @@ class HomePageViewController: UIViewController {
     var quiz: Quiz?
     
     var changingQuizId: Int?
+    var nameOfQuiz: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,10 +108,11 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         }
     }
     
-    func goToQuizPage(quiz_id: Int) {
+    func goToQuizPage(quiz_id: Int, quiz_name: String) {
         if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
             referenceToQuizDetailsView.delegate = self
             changingQuizId = quiz_id
+            nameOfQuiz = quiz_name
             self.performSegue(withIdentifier: "homePageToQuizSegue", sender: nil)
         } else {
             print("referenceToQuizDetailsView has not been identified as type quizDetails")
@@ -123,6 +125,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             if let vc = segue.destination as? QuizViewController {
                 if changingQuizId != nil {
                     vc.quiz_id = changingQuizId!
+                    vc.quiz_name = nameOfQuiz!
                     vc.user = user
                 }
             }

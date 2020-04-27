@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol actionsFromQuizDetailsDelegate {
     func gettingHomePageView()
-    func goToQuizPage(quiz_id: Int)
+    func goToQuizPage(quiz_id: Int, quiz_name: String)
 }
 
 //@objc protocol homePageViewDelegate {
@@ -70,7 +70,7 @@ class quizDetails: UIView {
     @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
         if quiz_id != nil {
             print("taking quiz: \(quizNameLabel.text!)")
-            self.delegate?.goToQuizPage(quiz_id: quiz_id!)
+            self.delegate?.goToQuizPage(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
         }
     }
     
