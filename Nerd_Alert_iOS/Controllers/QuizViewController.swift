@@ -74,6 +74,16 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                     DispatchQueue.main.async {
+                        
+                        self.choiceAButton.layer.cornerRadius = 10
+                        self.choiceAButton.layer.borderWidth = 3
+                        self.choiceBButton.layer.cornerRadius = 10
+                        self.choiceBButton.layer.borderWidth = 3
+                        self.choiceCButton.layer.cornerRadius = 10
+                        self.choiceCButton.layer.borderWidth = 3
+                        self.choiceDButton.layer.cornerRadius = 10
+                        self.choiceDButton.layer.borderWidth = 3
+                        
                         self.changingQuestions()
                     }
                     
@@ -94,22 +104,33 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     func changingQuestions() {
         
+        choiceAButton.isHighlighted = false
+        choiceBButton.isHighlighted = false
+        choiceCButton.isHighlighted = false
+        choiceDButton.isHighlighted = false
+        
         if question_number == 0 {
             backButton.isHidden = true
         } else if question_number == 9 {
+            backButton.isHidden = false
             nextButton.setTitle("Submit Quiz", for: .normal)
+        } else {
+            backButton.isHidden = false
         }
         
         quizQuestionNumberLabel.text = "Question #\(question_number+1)"
         quizQuestion.text = quizQuestions[question_number].question
         
-        if quizQuestions[question_number].choiceA == nil && quizQuestions[question_number].choiceB == nil && quizQuestions[question_number].choiceC == nil && quizQuestions[question_number].choiceD == nil {
+        if quizQuestions[question_number].choiceA == "BLANK" && quizQuestions[question_number].choiceB == "BLANK" && quizQuestions[question_number].choiceC == "BLANK" && quizQuestions[question_number].choiceD == "BLANK" {
             choiceAButton.isHidden = true
             choiceBButton.isHidden = true
             choiceCButton.isHidden = true
             choiceDButton.isHidden = true
+            userAnswerTextField.isHidden = false
             
-        } else if quizQuestions[question_number].choiceC == nil && quizQuestions[question_number].choiceD == nil {
+        } else if quizQuestions[question_number].choiceC == "BLANK" && quizQuestions[question_number].choiceD == "BLANK" {
+            choiceAButton.isHidden = false
+            choiceBButton.isHidden = false
             choiceCButton.isHidden = true
             choiceDButton.isHidden = true
             userAnswerTextField.isHidden = true
@@ -118,6 +139,10 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             choiceBButton.setTitle(quizQuestions[question_number].choiceB, for: .normal)
             
         } else {
+            choiceAButton.isHidden = false
+            choiceBButton.isHidden = false
+            choiceCButton.isHidden = false
+            choiceDButton.isHidden = false
             userAnswerTextField.isHidden = true
             
             choiceAButton.setTitle(quizQuestions[question_number].choiceA, for: .normal)
@@ -130,18 +155,34 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func choiceAButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceAButton.titleLabel?.text?.prefix(2))!)
+        choiceAButton.isHighlighted = true
+        choiceBButton.isHighlighted = false
+        choiceCButton.isHighlighted = false
+        choiceDButton.isHighlighted = false
     }
     
     @IBAction func choiceBButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceBButton.titleLabel?.text?.prefix(2))!)
+        choiceBButton.isHighlighted = true
+        choiceAButton.isHighlighted = false
+        choiceCButton.isHighlighted = false
+        choiceDButton.isHighlighted = false
     }
     
     @IBAction func choiceCButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceCButton.titleLabel?.text?.prefix(2))!)
+        choiceCButton.isHighlighted = true
+        choiceBButton.isHighlighted = false
+        choiceAButton.isHighlighted = false
+        choiceDButton.isHighlighted = false
     }
     
     @IBAction func choiceDButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceDButton.titleLabel?.text?.prefix(2))!)
+        choiceDButton.isHighlighted = true
+        choiceBButton.isHighlighted = false
+        choiceCButton.isHighlighted = false
+        choiceAButton.isHighlighted = false
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
@@ -155,6 +196,9 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             changingQuestions()
         } else {
             // will submit quiz, call the user quiz results api call to enter users quiz score and call user question results api call to enter users answers, segue to quiz results page
+            
+            print(users_answers)
+            
             self.performSegue(withIdentifier: "quizToQuizResultsSegue", sender: nil)
         }
     }
