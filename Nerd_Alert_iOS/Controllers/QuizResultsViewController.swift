@@ -14,16 +14,18 @@ class QuizResultsViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var quizNameLabel: UILabel!
     
-    var user: User?
-    var quiz: Quiz?
+    var user_id: Int?
+    var quiz_id: Int?
+    var quiz_name: String?
+    var quiz_iteration: Int?
     var quizQuestions: [QuizQuestion] = []
     var usersAnswers: [Int: String?] = [:]
-    var quiz_iteration: Int?
     
     var quizQuestionsResultsService = QuizQuestionsResultsService()
     var quizResultsService = QuizResultsService()
     
     var quizQuestionsResults: [QuizQuestionsResults] = []
+    var quizQuestionResult: QuizQuestionsResults?
     var quizResults: QuizResults?
     var score: Int = 0
     
@@ -33,43 +35,52 @@ class QuizResultsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         for i in 0...9 {
-            quizQuestionsResults[i].userId = user!.id
-            quizQuestionsResults[i].quizId = quiz!.id
-            quizQuestionsResults[i].quizIteration = quiz_iteration!
-            quizQuestionsResults[i].questionId = quizQuestions[i].id
-            quizQuestionsResults[i].userAnswer = usersAnswers[i]!!
-            quizQuestionsResults[i].correctAnswer = quizQuestions[i].correctAnswer
+            print(quizQuestions[i])
+            print(usersAnswers[i])
+        }
+        
+        for i in 0...9 {
             
+            let quizQuestionResult = QuizQuestionsResults(json: ["user_id": user_id!,
+                                                                 "quiz_id": quiz_id!,
+                                                                 "question_id": quizQuestions[i].id,
+                                                                 "quiz_iteration": quiz_iteration!,
+                                                                 "user_answer": usersAnswers[i]!!,
+                                                                 "correct_answer": quizQuestions[i].correctAnswer])
+
+            quizQuestionsResults.append(quizQuestionResult)
+
             if usersAnswers[i]!! == quizQuestions[i].correctAnswer {
                 score += 1
             }
-            
+
         }
-        
+
         print("Quiz Question Results")
         print(quizQuestionsResults)
+        print(score)
         
-        quizResultsService.injectQuizResult(user!.id, quiz!.id, score, onSuccess: { (response) in
-            print("Successfully entered user's score for this quiz")
-            print(response)
-            
-            self.usernameLabel.text = "\(self.user!.username) received"
-            self.scoreLabel.text = "\(self.score)/10"
-            self.quizNameLabel.text = "on \(self.quiz!.name) quiz"
-            
-            DispatchQueue.main.async{
-                self.quizQuestionsResultsService.injectQuizQuestionsResults(self.quizQuestionsResults, onSuccess: { (response) in
-                    print("Successfully enterd user's answers to each question for this quiz")
-                }, onFailure: { (error) in
-                    print("Error in injecting users' answers for this quiz \(self.quiz!.name)")
-                    print(error)
-                })
-            }
-            
-        }, onFailure: { (error) in
-            print("Error in injecting quiz result for user \(self.user!.username)")
-            print(error)
-        })
+//        quizResultsService.injectQuizResult(user!.id, quiz!.id, score, onSuccess: { (response) in
+//            print("Successfully entered user's score for this quiz")
+//            print(response)
+//
+//            self.usernameLabel.text = "\(self.user!.username) received"
+//            self.scoreLabel.text = "\(self.score)/10"
+//            self.quizNameLabel.text = "on \(self.quiz!.name) quiz"
+//
+//            DispatchQueue.main.async{
+//                self.quizQuestionsResultsService.injectQuizQuestionsResults(self.quizQuestionsResults, onSuccess: { (response) in
+//                    print("Successfully enterd user's answers to each question for this quiz")
+//                }, onFailure: { (error) in
+//                    print("Error in injecting users' answers for this quiz \(self.quiz!.name)")
+//                    print(error)
+//                })
+//            }
+//
+//        }, onFailure: { (error) in
+//            print("Error in injecting quiz result for user \(self.user!.username)")
+//            print(error)
+//        })
         
         
     }

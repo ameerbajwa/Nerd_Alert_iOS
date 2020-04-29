@@ -36,7 +36,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     var quizQuestions: [QuizQuestion] = []
     var question: QuizQuestion?
-    var quiz: Quiz?
+//    var quiz: Quiz?
     var user: User?
     
     override func viewDidLoad() {
@@ -104,10 +104,10 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     func changingQuestions() {
         
-        choiceAButton.isHighlighted = false
-        choiceBButton.isHighlighted = false
-        choiceCButton.isHighlighted = false
-        choiceDButton.isHighlighted = false
+        choiceAButton.isSelected = false
+        choiceBButton.isSelected = false
+        choiceCButton.isSelected = false
+        choiceDButton.isSelected = false
         
         if question_number == 0 {
             backButton.isHidden = true
@@ -155,50 +155,55 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func choiceAButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceAButton.titleLabel?.text?.prefix(2))!)
-        choiceAButton.isHighlighted = true
-        choiceBButton.isHighlighted = false
-        choiceCButton.isHighlighted = false
-        choiceDButton.isHighlighted = false
+        choiceAButton.isSelected = true
+        choiceBButton.isSelected = false
+        choiceCButton.isSelected = false
+        choiceDButton.isSelected = false
     }
     
     @IBAction func choiceBButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceBButton.titleLabel?.text?.prefix(2))!)
-        choiceBButton.isHighlighted = true
-        choiceAButton.isHighlighted = false
-        choiceCButton.isHighlighted = false
-        choiceDButton.isHighlighted = false
+        choiceBButton.isSelected = true
+        choiceAButton.isSelected = false
+        choiceCButton.isSelected = false
+        choiceDButton.isSelected = false
     }
     
     @IBAction func choiceCButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceCButton.titleLabel?.text?.prefix(2))!)
-        choiceCButton.isHighlighted = true
-        choiceBButton.isHighlighted = false
-        choiceAButton.isHighlighted = false
-        choiceDButton.isHighlighted = false
+        choiceCButton.isSelected = true
+        choiceBButton.isSelected = false
+        choiceAButton.isSelected = false
+        choiceDButton.isSelected = false
     }
     
     @IBAction func choiceDButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceDButton.titleLabel?.text?.prefix(2))!)
-        choiceDButton.isHighlighted = true
-        choiceBButton.isHighlighted = false
-        choiceCButton.isHighlighted = false
-        choiceAButton.isHighlighted = false
+        choiceDButton.isSelected = true
+        choiceBButton.isSelected = false
+        choiceCButton.isSelected = false
+        choiceAButton.isSelected = false
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        users_answers[question_number] = textField.text!
-    }
+//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+//        users_answers[question_number] = textField.text!
+//    }
     
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         if nextButton.titleLabel?.text == "Next" {
+            if userAnswerTextField.isHidden == false {
+                users_answers[question_number] = userAnswerTextField.text
+                userAnswerTextField.text = ""
+            }
             question_number += 1
             changingQuestions()
         } else {
             // will submit quiz, call the user quiz results api call to enter users quiz score and call user question results api call to enter users answers, segue to quiz results page
-            
-            print(users_answers)
-            
+            if userAnswerTextField.isHidden == false {
+                users_answers[question_number] = userAnswerTextField.text
+                userAnswerTextField.text = ""
+            }
             self.performSegue(withIdentifier: "quizToQuizResultsSegue", sender: nil)
         }
     }
@@ -206,8 +211,9 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "quizToQuizResultsSegue" && segue.destination is QuizResultsViewController {
             if let vc = segue.destination as? QuizResultsViewController {
-                vc.user = self.user
-                vc.quiz = self.quiz
+                vc.user_id = self.user!.id
+                vc.quiz_id = self.quiz_id
+                vc.quiz_name = self.quiz_name
                 vc.quiz_iteration = self.quiz_iteration
                 vc.quizQuestions = self.quizQuestions
                 vc.usersAnswers = self.users_answers
