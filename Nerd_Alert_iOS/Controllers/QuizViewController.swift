@@ -211,7 +211,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "quizToQuizResultsSegue" && segue.destination is QuizResultsViewController {
             if let vc = segue.destination as? QuizResultsViewController {
-                vc.user_id = self.user!.id
+                vc.user = self.user!
                 vc.quiz_id = self.quiz_id
                 vc.quiz_name = self.quiz_name
                 vc.quiz_iteration = self.quiz_iteration

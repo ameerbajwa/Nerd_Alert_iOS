@@ -14,7 +14,7 @@ class QuizResultsViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var quizNameLabel: UILabel!
     
-    var user_id: Int?
+    var user: User?
     var quiz_id: Int?
     var quiz_name: String?
     var quiz_iteration: Int?
@@ -41,7 +41,7 @@ class QuizResultsViewController: UIViewController {
         
         for i in 0...9 {
             
-            let quizQuestionResult = QuizQuestionsResults(json: ["user_id": user_id!,
+            let quizQuestionResult = QuizQuestionsResults(json: ["user_id": user!.id,
                                                                  "quiz_id": quiz_id!,
                                                                  "question_id": quizQuestions[i].id,
                                                                  "quiz_iteration": quiz_iteration!,
@@ -60,28 +60,27 @@ class QuizResultsViewController: UIViewController {
         print(quizQuestionsResults)
         print(score)
         
-//        quizResultsService.injectQuizResult(user!.id, quiz!.id, score, onSuccess: { (response) in
-//            print("Successfully entered user's score for this quiz")
-//            print(response)
-//
-//            self.usernameLabel.text = "\(self.user!.username) received"
-//            self.scoreLabel.text = "\(self.score)/10"
-//            self.quizNameLabel.text = "on \(self.quiz!.name) quiz"
-//
-//            DispatchQueue.main.async{
-//                self.quizQuestionsResultsService.injectQuizQuestionsResults(self.quizQuestionsResults, onSuccess: { (response) in
-//                    print("Successfully enterd user's answers to each question for this quiz")
-//                }, onFailure: { (error) in
-//                    print("Error in injecting users' answers for this quiz \(self.quiz!.name)")
-//                    print(error)
-//                })
-//            }
-//
-//        }, onFailure: { (error) in
-//            print("Error in injecting quiz result for user \(self.user!.username)")
-//            print(error)
-//        })
-        
+        quizResultsService.injectQuizResult(user!.id, quiz_id!, quiz_iteration!, score, onSuccess: { (response) in
+            print("Successfully entered user's score for this quiz")
+            print(response)
+
+            self.usernameLabel.text = "\(self.user!.username) received"
+            self.scoreLabel.text = "\(self.score)/10"
+            self.quizNameLabel.text = "on \(self.quiz_name!) quiz"
+
+            DispatchQueue.main.async{
+                self.quizQuestionsResultsService.injectQuizQuestionsResults(self.quizQuestionsResults, onSuccess: { (response) in
+                    print("Successfully enterd user's answers to each question for this quiz")
+                }, onFailure: { (error) in
+                    print("Error in injecting users' answers for this quiz \(self.quiz_name!)")
+                    print(error)
+                })
+            }
+
+        }, onFailure: { (error) in
+            print("Error in injecting quiz result for user \(self.user!.username)")
+            print(error)
+        })
         
     }
     
