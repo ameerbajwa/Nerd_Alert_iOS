@@ -315,13 +315,6 @@
                                     <action selector="nextButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="vbM-Oc-BoZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjG-Vb-Vv8">
-                                <rect key="frame" x="20" y="846" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="2Vo-L0-9By"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Answer Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5KW-fT-xP3">
                                 <rect key="frame" x="50" y="390" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -373,9 +366,7 @@
                             <constraint firstItem="5KW-fT-xP3" firstAttribute="top" secondItem="xGM-M5-vm0" secondAttribute="bottom" constant="100" id="3n0-l3-9kW"/>
                             <constraint firstItem="Def-NK-fMP" firstAttribute="trailing" secondItem="xGM-M5-vm0" secondAttribute="trailing" constant="30" id="9I2-IW-9QN"/>
                             <constraint firstItem="5KW-fT-xP3" firstAttribute="leading" secondItem="Def-NK-fMP" secondAttribute="leading" constant="50" id="B4J-yR-feK"/>
-                            <constraint firstAttribute="bottom" secondItem="rjG-Vb-Vv8" secondAttribute="bottom" constant="20" id="Bb7-Fw-3HX"/>
                             <constraint firstAttribute="bottom" secondItem="3qS-In-dtE" secondAttribute="bottom" constant="75" id="FkJ-UW-lXk"/>
-                            <constraint firstItem="rjG-Vb-Vv8" firstAttribute="leading" secondItem="5RL-5t-Y6n" secondAttribute="leading" constant="20" id="Fye-xH-s3t"/>
                             <constraint firstItem="ZeB-d8-ZJe" firstAttribute="top" secondItem="Def-NK-fMP" secondAttribute="top" constant="30" id="HJs-ZL-nyl"/>
                             <constraint firstItem="Def-NK-fMP" firstAttribute="trailing" secondItem="5KW-fT-xP3" secondAttribute="trailing" constant="50" id="Li2-UZ-zDE"/>
                             <constraint firstAttribute="trailing" secondItem="fb3-AW-h5E" secondAttribute="trailing" constant="20" id="Rhu-Pb-qiP"/>
@@ -401,7 +392,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="ahQ-wp-5bc"/>
                     <connections>
-                        <outlet property="backButton" destination="rjG-Vb-Vv8" id="mcG-sq-13o"/>
                         <outlet property="choiceAButton" destination="rDu-Y8-SRI" id="A0X-FC-Qtc"/>
                         <outlet property="choiceBButton" destination="ppa-yq-AoA" id="1U8-JI-hXl"/>
                         <outlet property="choiceCButton" destination="YEe-kK-t8P" id="GzS-d0-Pe8"/>

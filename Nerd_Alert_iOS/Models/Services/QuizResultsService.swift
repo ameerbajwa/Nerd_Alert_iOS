@@ -20,7 +20,6 @@ class QuizResultsService {
                                        "quiz_iteration": quizIteration,
                                        "score": score]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
-        print(jsonData)
         
         restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST",
                                    onSuccess: { responseJSON -> Void in
@@ -37,7 +36,6 @@ class QuizResultsService {
         let jsonBody: [String: Int] = ["user_id": userId,
                                        "quiz_id": quizId]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
-        print(jsonData)
         
         restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST",
                                    onSuccess: { responseJSON -> Void in
@@ -55,7 +53,6 @@ class QuizResultsService {
         let jsonBody: [String: Int] = ["user_id": userId,
                                        "quiz_id": quizId]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
-        print(jsonData)
         
         restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST",
                                    onSuccess: { responseJSON -> Void in

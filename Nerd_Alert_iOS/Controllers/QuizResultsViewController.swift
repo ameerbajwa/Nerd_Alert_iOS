@@ -64,11 +64,11 @@ class QuizResultsViewController: UIViewController {
             print("Successfully entered user's score for this quiz")
             print(response)
 
-            self.usernameLabel.text = "\(self.user!.username) received"
-            self.scoreLabel.text = "\(self.score)/10"
-            self.quizNameLabel.text = "on \(self.quiz_name!) quiz"
-
             DispatchQueue.main.async{
+                self.usernameLabel.text = "\(self.user!.username) received"
+                self.scoreLabel.text = "\(self.score)/10"
+                self.quizNameLabel.text = "on \(self.quiz_name!) quiz"
+                
                 self.quizQuestionsResultsService.injectQuizQuestionsResults(self.quizQuestionsResults, onSuccess: { (response) in
                     print("Successfully enterd user's answers to each question for this quiz")
                 }, onFailure: { (error) in
