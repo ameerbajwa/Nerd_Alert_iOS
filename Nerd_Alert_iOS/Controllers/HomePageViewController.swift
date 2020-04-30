@@ -13,12 +13,17 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var topHalfView: UIView!
     var referenceToHomePageView: homePage?
     var referenceToQuizDetailsView : quizDetails?
+    var referenceToQuizResultsView: quizResults?
     
     @IBOutlet weak var quizTableView: UITableView!
     var quizSerivce = QuizService()
+    var quizResultsService = QuizResultsService()
     var user: User?
+    
     var quizzes: [Quiz] = []
     var quiz: Quiz?
+    var quizScores: [QuizResults] = []
+    var quizScore: QuizResults?
     
     var changingQuizId: Int?
     var nameOfQuiz: String?
@@ -120,6 +125,37 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
 
     }
     
+    func goToQuizResults(quiz_id: Int, quiz_name: String) {
+        
+        quizResultsService.retrieveQuizResults(user!.id, quiz_id, onSuccess: { (response) in
+            print("called retrieveQuizResults API successfully")
+            print(response.count)
+            
+            for i in response.keys {
+                self.quizScore = QuizResults(json: response[i] as! [String : Any])
+                self.quizScores.append(self.quizScore!)
+            }
+            
+            DispatchQueue.main.async {
+                if let referenceToQuizResultsView = Bundle.main.loadNibNamed("quizResults", owner: self, options: nil)?.first as? quizResults {
+                    self.topHalfView.addSubview(referenceToQuizResultsView)
+                    referenceToQuizResultsView.frame.size.height = self.topHalfView.frame.size.height
+                    referenceToQuizResultsView.frame.size.width = self.topHalfView.frame.size.width
+                    referenceToQuizResultsView.delegate = self
+                    referenceToQuizResultsView.quizResultsXibInit(quiz_name: quiz_name, quiz_results: self.quizScores)
+                                
+                } else {
+                    print("could not load xib file")
+                }
+            }
+            
+        }, onFailure: { (error) in
+            print("calling retrieveQuizResults API resulted in an error")
+            print(error)
+        })
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homePageToQuizSegue" && segue.destination is QuizViewController {
             if let vc = segue.destination as? QuizViewController {
@@ -130,5 +166,15 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
                 }
             }
         }
+    }
+}
+
+extension HomePageViewController : actionsFromQuizResultsDelegate {
+    func viewQuizQuestionResults() {
+        
+    }
+    
+    func goBackToQuizDetails() {
+        
     }
 }

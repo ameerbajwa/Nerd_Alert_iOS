@@ -11,15 +11,8 @@ import UIKit
 @objc protocol actionsFromQuizDetailsDelegate {
     func gettingHomePageView()
     func goToQuizPage(quiz_id: Int, quiz_name: String)
+    func goToQuizResults(quiz_id: Int, quiz_name: String)
 }
-
-//@objc protocol homePageViewDelegate {
-//    func gettingHomePageView()
-//}
-//
-//@objc protocol goToQuizPageDelegate {
-//    func goToQuizPage(quiz_id: Int)
-//}
 
 class quizDetails: UIView {
 
@@ -78,4 +71,7 @@ class quizDetails: UIView {
         self.delegate?.gettingHomePageView()
     }
     
+    @IBAction func viewResultsButtonPressed(_ sender: UIButton) {
+        self.delegate?.goToQuizResults(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+    }
 }
