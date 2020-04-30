@@ -85,6 +85,15 @@ class QuizResultsViewController: UIViewController {
     }
     
     @IBAction func backToHomeButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "quizResultsToHomePageSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "quizResultsToHomePageSegue" && segue.destination is HomePageViewController {
+            if let vc = segue.destination as? HomePageViewController {
+                vc.user = user
+            }
+        }
     }
     
     /*
