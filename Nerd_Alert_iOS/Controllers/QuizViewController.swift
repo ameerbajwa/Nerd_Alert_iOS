@@ -16,6 +16,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var quizQuestion: UILabel!
     
     @IBOutlet weak var userAnswerTextField: UITextField!
+    @IBOutlet weak var goBackHomeButton: UIButton!
     @IBOutlet weak var choiceAButton: UIButton!
     @IBOutlet weak var choiceBButton: UIButton!
     @IBOutlet weak var choiceCButton: UIButton!
@@ -38,30 +39,45 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     var question: QuizQuestion?
     var user: User?
     
+    var error: Error?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
-        print("retrieving the quiz iteration number the user will be taking")
-        quizResultsService.retrieveQuizIteration(user!.id, quiz_id!, onSuccess: { (response) in
-            print("From Swift Application: retrieveQuizIteration function called")
-            print(response)
-            self.quiz_iteration = response["iteration"] as! Int
+        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, onSuccess: { (response) in
+            print("From Swift Application: retrieveQuizQuestions function called")
+            print(response.count)
             
-            DispatchQueue.main.async {
-                self.quizIterationLabel.text = "Quiz #\(self.quiz_iteration)"
-                print("retreiving questions from quiz")
-                self.quizQuestionService.retrieveQuizQuestions(self.quiz_id!, self.user!.id, onSuccess: { (response) in
-                    print("From Swift Application: retrieveQuizQuestions function called")
-                    print(response.count)
+            if response.count == 1 {
+                self.error = Error(json: response)
+                self.quizQuestion.text = self.error?.error_message
+                
+                self.quizIterationLabel.isHidden = true
+                self.quizQuestionNumberLabel.isHidden = true
+                self.choiceAButton.isHidden = true
+                self.choiceBButton.isHidden = true
+                self.choiceCButton.isHidden = true
+                self.choiceDButton.isHidden = true
+                self.userAnswerTextField.isHidden = true
+                self.nextButton.isHidden = true
+                
+            } else {
+                
+                self.goBackHomeButton.isHidden = true
+                
+                for i in response.keys {
+                    self.question = QuizQuestion(json: response[i] as! [String : Any])
+                    self.quizQuestions.append(self.question!)
+                }
+                
+                DispatchQueue.main.async {
                     
-                    for i in response.keys {
-                        self.question = QuizQuestion(json: response[i] as! [String : Any])
-                        self.quizQuestions.append(self.question!)
-                    }
-                    
-                    DispatchQueue.main.async {
+                    self.quizResultsService.retrieveQuizIteration(self.user!.id, self.quiz_id!, onSuccess: { (response) in
+                        print("From Swift Application: retrieveQuizIteration function called")
+                        print(response)
+                        self.quiz_iteration = response["iteration"] as! Int
                         
                         self.choiceAButton.layer.cornerRadius = 10
                         self.choiceAButton.layer.borderWidth = 3
@@ -73,18 +89,69 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
                         self.choiceDButton.layer.borderWidth = 3
                         
                         self.changingQuestions()
-                    }
-                    
-                }, onFailure: { (error) in
-                    print("From Swift Application: retrieveQuizzes function called and an error occured")
-                    print(error)
-                })
+                        
+                    }, onFailure: { (error) in
+                        print("From Swift Application: retrieveQuizIteration function called and an error occured")
+                        print(error)
+                    })
+                }
+                
             }
             
         }, onFailure: { (error) in
-            print("From Swift Application: retrieveQuizIteration function called and an error occured")
+            print("From Swift Application: retrieveQuizzes function called and an error occured")
             print(error)
         })
+        
+        
+//        print("retrieving the quiz iteration number the user will be taking")
+//        quizResultsService.retrieveQuizIteration(user!.id, quiz_id!, onSuccess: { (response) in
+//            print("From Swift Application: retrieveQuizIteration function called")
+//            print(response)
+//            self.quiz_iteration = response["iteration"] as! Int
+//            self.quizIterationLabel.text = "Quiz #\(self.quiz_iteration)"
+//
+//            DispatchQueue.main.async {
+//                self.quizIterationLabel.text = "Quiz #\(self.quiz_iteration)"
+//                print("retreiving questions from quiz")
+//                self.quizQuestionService.retrieveQuizQuestions(self.quiz_id!, self.user!.id, onSuccess: { (response) in
+//                    print("From Swift Application: retrieveQuizQuestions function called")
+//                    print(response.count)
+//
+//                    if response.count == 1 {
+//
+//                    }
+//
+//                    for i in response.keys {
+//                        self.question = QuizQuestion(json: response[i] as! [String : Any])
+//                        self.quizQuestions.append(self.question!)
+//                    }
+//
+//                    DispatchQueue.main.async {
+//
+//                        self.choiceAButton.layer.cornerRadius = 10
+//                        self.choiceAButton.layer.borderWidth = 3
+//                        self.choiceBButton.layer.cornerRadius = 10
+//                        self.choiceBButton.layer.borderWidth = 3
+//                        self.choiceCButton.layer.cornerRadius = 10
+//                        self.choiceCButton.layer.borderWidth = 3
+//                        self.choiceDButton.layer.cornerRadius = 10
+//                        self.choiceDButton.layer.borderWidth = 3
+//
+//                        self.changingQuestions()
+//                    }
+//
+//                }, onFailure: { (error) in
+//                    print("From Swift Application: retrieveQuizzes function called and an error occured")
+//                    print(error)
+//                })
+//            }
+//
+//        }, onFailure: { (error) in
+//            print("From Swift Application: retrieveQuizIteration function called and an error occured")
+//            print(error)
+//        })
+        
     }
     
     func changingQuestions() {
@@ -212,7 +279,11 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-//    @IBAction func backButtonPressed(_ sender: UIButton) {
+    @IBAction func goBackHomeButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //    @IBAction func backButtonPressed(_ sender: UIButton) {
 //        if question_number != 0 {
 //            question_number -= 1
 //            changingQuestions()
