@@ -44,6 +44,15 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.choiceAButton.layer.cornerRadius = 10
+        self.choiceAButton.layer.borderWidth = 3
+        self.choiceBButton.layer.cornerRadius = 10
+        self.choiceBButton.layer.borderWidth = 3
+        self.choiceCButton.layer.cornerRadius = 10
+        self.choiceCButton.layer.borderWidth = 3
+        self.choiceDButton.layer.cornerRadius = 10
+        self.choiceDButton.layer.borderWidth = 3
+        
         self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
         quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, onSuccess: { (response) in
@@ -65,7 +74,9 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
                 
             } else {
                 
-                self.goBackHomeButton.isHidden = true
+                DispatchQueue.main.async {
+                    self.goBackHomeButton.isHidden = true
+                }
                 
                 for i in response.keys {
                     self.question = QuizQuestion(json: response[i] as! [String : Any])
@@ -79,16 +90,9 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
                         print(response)
                         self.quiz_iteration = response["iteration"] as! Int
                         
-                        self.choiceAButton.layer.cornerRadius = 10
-                        self.choiceAButton.layer.borderWidth = 3
-                        self.choiceBButton.layer.cornerRadius = 10
-                        self.choiceBButton.layer.borderWidth = 3
-                        self.choiceCButton.layer.cornerRadius = 10
-                        self.choiceCButton.layer.borderWidth = 3
-                        self.choiceDButton.layer.cornerRadius = 10
-                        self.choiceDButton.layer.borderWidth = 3
-                        
-                        self.changingQuestions()
+                        DispatchQueue.main.async {
+                            self.changingQuestions()
+                        }
                         
                     }, onFailure: { (error) in
                         print("From Swift Application: retrieveQuizIteration function called and an error occured")
@@ -103,55 +107,6 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             print(error)
         })
         
-        
-//        print("retrieving the quiz iteration number the user will be taking")
-//        quizResultsService.retrieveQuizIteration(user!.id, quiz_id!, onSuccess: { (response) in
-//            print("From Swift Application: retrieveQuizIteration function called")
-//            print(response)
-//            self.quiz_iteration = response["iteration"] as! Int
-//            self.quizIterationLabel.text = "Quiz #\(self.quiz_iteration)"
-//
-//            DispatchQueue.main.async {
-//                self.quizIterationLabel.text = "Quiz #\(self.quiz_iteration)"
-//                print("retreiving questions from quiz")
-//                self.quizQuestionService.retrieveQuizQuestions(self.quiz_id!, self.user!.id, onSuccess: { (response) in
-//                    print("From Swift Application: retrieveQuizQuestions function called")
-//                    print(response.count)
-//
-//                    if response.count == 1 {
-//
-//                    }
-//
-//                    for i in response.keys {
-//                        self.question = QuizQuestion(json: response[i] as! [String : Any])
-//                        self.quizQuestions.append(self.question!)
-//                    }
-//
-//                    DispatchQueue.main.async {
-//
-//                        self.choiceAButton.layer.cornerRadius = 10
-//                        self.choiceAButton.layer.borderWidth = 3
-//                        self.choiceBButton.layer.cornerRadius = 10
-//                        self.choiceBButton.layer.borderWidth = 3
-//                        self.choiceCButton.layer.cornerRadius = 10
-//                        self.choiceCButton.layer.borderWidth = 3
-//                        self.choiceDButton.layer.cornerRadius = 10
-//                        self.choiceDButton.layer.borderWidth = 3
-//
-//                        self.changingQuestions()
-//                    }
-//
-//                }, onFailure: { (error) in
-//                    print("From Swift Application: retrieveQuizzes function called and an error occured")
-//                    print(error)
-//                })
-//            }
-//
-//        }, onFailure: { (error) in
-//            print("From Swift Application: retrieveQuizIteration function called and an error occured")
-//            print(error)
-//        })
-        
     }
     
     func changingQuestions() {
@@ -164,15 +119,6 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         if question_number == 9 {
             nextButton.setTitle("Submit Quiz", for: .normal)
         }
-        
-//        if question_number == 0 {
-//            backButton.isHidden = true
-//        } else if question_number == 9 {
-//            backButton.isHidden = false
-//            nextButton.setTitle("Submit Quiz", for: .normal)
-//        } else {
-//            backButton.isHidden = false
-//        }
         
         quizQuestionNumberLabel.text = "Question #\(question_number+1)"
         quizQuestion.text = quizQuestions[question_number].question
@@ -241,11 +187,6 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         choiceAButton.isSelected = false
     }
     
-//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-//        users_answers[question_number] = textField.text!
-//    }
-    
-    
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         if nextButton.titleLabel?.text == "Next" {
             if userAnswerTextField.isHidden == false {
@@ -282,11 +223,4 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     @IBAction func goBackHomeButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
-    //    @IBAction func backButtonPressed(_ sender: UIButton) {
-//        if question_number != 0 {
-//            question_number -= 1
-//            changingQuestions()
-//        }
-//    }
 }

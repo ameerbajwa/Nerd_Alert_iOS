@@ -28,12 +28,14 @@ class quizResults: UIView {
         let qrView = quizResultView()
         quizId = quiz_results[0].quizId
                 
-        for i in 0...quiz_results.count {
-            
-            qrView.quizNumberButton.setTitle("Quiz #\(quiz_results[i].quizIteration)", for: .normal)
-            qrView.quizScoreLabel.text = "Score: \(quiz_results[i].score)/10"
-            
-            quizResultScrollView.addSubview(qrView)
+        for i in 0..<quiz_results.count {
+            print(quiz_results[i])
+            print(quiz_results[i].quizIteration)
+        
+//            qrView.quizNumberButton.setTitle("Quiz #\(quiz_results[i].quizIteration)", for: .normal)
+//            qrView.quizScoreLabel.text = "Score: \(quiz_results[i].score)/10"
+//
+//            quizResultScrollView.addSubview(qrView)
         }
         
     }
