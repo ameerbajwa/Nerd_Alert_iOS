@@ -13,36 +13,38 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-pB-QSd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-pB-QSd">
                     <rect key="frame" x="186" y="44" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53x-Ux-NKj">
-                    <rect key="frame" x="45" y="97" width="46" height="30"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZR-IL-SXh">
+                    <rect key="frame" x="20" y="91" width="374" height="243"/>
+                    <viewLayoutGuide key="contentLayoutGuide" id="8vn-Ir-zuc"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="fnt-Bm-nYc"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-xe-zfC">
+                    <rect key="frame" x="230" y="6" width="164" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Go Back To Quiz Details"/>
                     <connections>
-                        <action selector="quizNumberButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="9Mg-qg-gTV"/>
+                        <action selector="returnToQuizDetailsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ea1-H8-6oG"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Eo-Q3-Ybb">
-                    <rect key="frame" x="107" y="102" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="SZR-IL-SXh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2JP-NI-CMa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="SZR-IL-SXh" secondAttribute="bottom" constant="20" id="boC-8p-Lxd"/>
+                <constraint firstItem="SZR-IL-SXh" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="qlw-Xq-QTd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SZR-IL-SXh" secondAttribute="trailing" constant="20" id="zTu-rr-Uje"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="quizNameLabel" destination="dC4-pB-QSd" id="oWF-c9-Eet"/>
-                <outlet property="quizNumberButton" destination="53x-Ux-NKj" id="Kim-GQ-Qgu"/>
-                <outlet property="quizNumberScoreLabel" destination="7Eo-Q3-Ybb" id="kvk-gV-HRB"/>
+                <outlet property="quizResultScrollView" destination="SZR-IL-SXh" id="juK-nO-3mC"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="-35.491071428571423"/>
         </view>
