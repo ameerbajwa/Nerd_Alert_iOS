@@ -13,8 +13,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-pB-QSd">
-                    <rect key="frame" x="186" y="44" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-pB-QSd">
+                    <rect key="frame" x="20" y="40" width="374" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -24,9 +24,8 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="8vn-Ir-zuc"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="fnt-Bm-nYc"/>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-xe-zfC">
-                    <rect key="frame" x="230" y="6" width="164" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-xe-zfC">
+                    <rect key="frame" x="230" y="5" width="164" height="30"/>
                     <state key="normal" title="Go Back To Quiz Details"/>
                     <connections>
                         <action selector="returnToQuizDetailsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ea1-H8-6oG"/>
@@ -36,8 +35,14 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="SZR-IL-SXh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2JP-NI-CMa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dC4-pB-QSd" secondAttribute="trailing" constant="20" id="AG6-ze-Gxh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="SZR-IL-SXh" secondAttribute="bottom" constant="20" id="boC-8p-Lxd"/>
+                <constraint firstItem="1DJ-xe-zfC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="feE-rp-rHs"/>
+                <constraint firstItem="SZR-IL-SXh" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="fny-nC-iBI"/>
+                <constraint firstItem="dC4-pB-QSd" firstAttribute="top" secondItem="1DJ-xe-zfC" secondAttribute="bottom" constant="5" id="hvv-gY-VcY"/>
+                <constraint firstAttribute="trailing" secondItem="1DJ-xe-zfC" secondAttribute="trailing" constant="20" id="nKk-kc-pLz"/>
                 <constraint firstItem="SZR-IL-SXh" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="qlw-Xq-QTd"/>
+                <constraint firstItem="dC4-pB-QSd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="smQ-KB-EFb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SZR-IL-SXh" secondAttribute="trailing" constant="20" id="zTu-rr-Uje"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

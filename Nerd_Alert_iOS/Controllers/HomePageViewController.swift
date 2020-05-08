@@ -68,7 +68,6 @@ extension HomePageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "quizCell", for: indexPath)
         cell.textLabel?.text = quizzes[indexPath.row].name
-        cell.detailTextLabel?.text = "0/10"
         return cell
     }
         

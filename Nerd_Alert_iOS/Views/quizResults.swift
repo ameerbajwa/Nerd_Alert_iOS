@@ -25,16 +25,27 @@ class quizResults: UIView {
     func quizResultsXibInit(quiz_name: String, quiz_results: [QuizResults]) {
         quizNameLabel.text = "Quiz: \(quiz_name)"
         
-        let qrView = quizResultView()
         quizId = quiz_results[0].quizId
+        quizResultScrollView.isPagingEnabled = true
                 
         for i in 0..<quiz_results.count {
+
             print(quiz_results[i])
             print(quiz_results[i].quizIteration)
             print(type(of: quiz_results[i].quizIteration))
-        
+
+            if let qrView = Bundle.main.loadNibNamed("quizResultView", owner: self, options: nil)?.first as? quizResultView {
+                quizResultScrollView.addSubview(qrView)
+                qrView.frame.size.height = quizResultScrollView.frame.size.height
+                qrView.frame.size.width = quizResultScrollView.frame.size.width
+                qrView.quizResultViewXibInit(quiz_iteration: quiz_results[i].quizIteration, score: quiz_results[i].score)
+            } else {
+                print("qrView was not loaded")
+            }
+
 //            qrView.quizNumberButton.setTitle("Quiz #\(quiz_results[i].quizIteration)", for: .normal)
 //            qrView.quizScoreLabel.text = "Score: \(quiz_results[i].score)/10"
+//
 //
 //            quizResultScrollView.addSubview(qrView)
         }
