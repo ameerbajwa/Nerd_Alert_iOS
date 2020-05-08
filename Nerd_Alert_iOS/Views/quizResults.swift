@@ -31,6 +31,7 @@ class quizResults: UIView {
         for i in 0..<quiz_results.count {
             print(quiz_results[i])
             print(quiz_results[i].quizIteration)
+            print(type(of: quiz_results[i].quizIteration))
         
 //            qrView.quizNumberButton.setTitle("Quiz #\(quiz_results[i].quizIteration)", for: .normal)
 //            qrView.quizScoreLabel.text = "Score: \(quiz_results[i].score)/10"

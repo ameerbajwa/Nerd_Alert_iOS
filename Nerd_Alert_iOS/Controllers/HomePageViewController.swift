@@ -179,15 +179,18 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
             print("retrieveQuiz API call successful")
             print(response)
             
-            if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
-                self.topHalfView.addSubview(referenceToQuizDetailsView)
-                referenceToQuizDetailsView.frame.size.height = self.topHalfView.frame.size.height
-                referenceToQuizDetailsView.frame.size.width = self.topHalfView.frame.size.width
-                referenceToQuizDetailsView.delegate = self
-                referenceToQuizDetailsView.quizDetailsXibInit(quizId: response["quiz_id"] as! Int, quiz_name: response["quiz_name"] as! String, created_by: response["createdBy"] as! String, description: response["quiz_description"] as! String, source: response["source"] as! String, title_of_source: response["title_of_source"] as! String, username: self.user?.username)
-            } else {
-                print("xib file could not load to the topHalfView")
+            DispatchQueue.main.async {
+                if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
+                    self.topHalfView.addSubview(referenceToQuizDetailsView)
+                    referenceToQuizDetailsView.frame.size.height = self.topHalfView.frame.size.height
+                    referenceToQuizDetailsView.frame.size.width = self.topHalfView.frame.size.width
+                    referenceToQuizDetailsView.delegate = self
+                    referenceToQuizDetailsView.quizDetailsXibInit(quizId: response["quiz_id"] as! Int, quiz_name: response["quiz_name"] as! String, created_by: response["createdBy"] as! String, description: response["quiz_description"] as! String, source: response["source"] as! String, title_of_source: response["title_of_source"] as! String, username: self.user?.username)
+                } else {
+                    print("xib file could not load to the topHalfView")
+                }
             }
+
             
         }, onFailure: { (error) in
             print("retreiveQuiz API call unsuccessful")
