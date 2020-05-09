@@ -130,21 +130,28 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             print("called retrieveQuizResults API successfully")
             print(response.count)
             
-            for i in response.keys {
-                self.quizScore = QuizResults(json: response[i] as! [String : Any])
-                self.quizScores.append(self.quizScore!)
-            }
-            
-            DispatchQueue.main.async {
-                if let referenceToQuizResultsView = Bundle.main.loadNibNamed("quizResults", owner: self, options: nil)?.first as? quizResults {
-                    self.topHalfView.addSubview(referenceToQuizResultsView)
-                    referenceToQuizResultsView.frame.size.height = self.topHalfView.frame.size.height
-                    referenceToQuizResultsView.frame.size.width = self.topHalfView.frame.size.width
-                    referenceToQuizResultsView.delegate = self
-                    referenceToQuizResultsView.quizResultsXibInit(quiz_name: quiz_name, quiz_results: self.quizScores)
-                                
-                } else {
-                    print("could not load xib file")
+            if response.count == 0 {
+                print("user hasn't taken any questions from this quiz")
+            } else {
+                print("user has taken questions from this quiz")
+                
+                for i in response.keys {
+                    self.quizScore = QuizResults(json: response[i] as! [String : Any])
+                    self.quizScores.append(self.quizScore!)
+                }
+                
+                DispatchQueue.main.async {
+                    if let referenceToQuizResultsView = Bundle.main.loadNibNamed("quizResults", owner: self, options: nil)?.first as? quizResults {
+                        print("switching topHalfView of controller to QuizResultsView")
+                        self.topHalfView.addSubview(referenceToQuizResultsView)
+                        referenceToQuizResultsView.frame.size.height = self.topHalfView.frame.size.height
+                        referenceToQuizResultsView.frame.size.width = self.topHalfView.frame.size.width
+                        referenceToQuizResultsView.delegate = self
+                        referenceToQuizResultsView.quizResultsXibInit(quiz_name: quiz_name, quiz_results: self.quizScores)
+                                    
+                    } else {
+                        print("could not load xib file")
+                    }
                 }
             }
             

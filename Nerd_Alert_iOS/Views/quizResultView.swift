@@ -15,7 +15,7 @@ class quizResultView: UIView {
     
     override func awakeFromNib() {
         // programmatically design and edit labels and buttons
-        print("awakeFromNib function being invoked")
+//        print("awakeFromNib function being invoked")
 
     }
     

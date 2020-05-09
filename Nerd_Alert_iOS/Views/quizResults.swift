@@ -33,26 +33,32 @@ class quizResults: UIView {
             print(quiz_results[i])
             print(quiz_results[i].quizIteration)
             print(type(of: quiz_results[i].quizIteration))
+            var scrollViewWidth: CGFloat = 0
 
             if let qrView = Bundle.main.loadNibNamed("quizResultView", owner: self, options: nil)?.first as? quizResultView {
                 quizResultScrollView.addSubview(qrView)
                 qrView.frame.size.height = quizResultScrollView.frame.size.height
                 qrView.frame.size.width = quizResultScrollView.frame.size.width
                 qrView.quizResultViewXibInit(quiz_iteration: quiz_results[i].quizIteration, score: quiz_results[i].score)
+                
             } else {
                 print("qrView was not loaded")
             }
-
-//            qrView.quizNumberButton.setTitle("Quiz #\(quiz_results[i].quizIteration)", for: .normal)
-//            qrView.quizScoreLabel.text = "Score: \(quiz_results[i].score)/10"
-//
-//
-//            quizResultScrollView.addSubview(qrView)
+            
+            scrollViewWidth += quizResultScrollView.frame.size.width
+            print(scrollViewWidth)
+            quizResultScrollView.contentSize = CGSize(width: scrollViewWidth, height: quizResultScrollView.frame.size.height)
+            
         }
+        
+        print(quizResultScrollView.frame.size.height)
+        print(quizResultScrollView.frame.size.width)
+        print(quizResultScrollView.contentSize)
         
     }
     
     @IBAction func returnToQuizDetailsButtonPressed(_ sender: UIButton) {
+        print("quiz id returning to: \(quizId!)")
         self.delegate?.goBackToQuizDetails(quiz_id: quizId!)
     }
     
