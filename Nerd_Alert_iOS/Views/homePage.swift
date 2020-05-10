@@ -8,15 +8,17 @@
 
 import UIKit
 
-@objc protocol retrieveQuizzesDelegate {
+@objc protocol homePageDelegate {
     func retrievingQuizzes(users_quizzes: Bool)
+    func createQuiz()
 }
 
 class homePage: UIView {
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var quizActionButton: UIButton!
-    @IBOutlet var delegate: retrieveQuizzesDelegate?
+    @IBOutlet weak var createQuizButton: UIButton!
+    @IBOutlet var delegate: homePageDelegate?
     
     override func awakeFromNib() {
         // programmatically design and edit labels and buttons
@@ -26,6 +28,12 @@ class homePage: UIView {
     func homePageXibInit(username: String) {
         usernameLabel.text = "Home of \(username)"
         changingButtonTitles()
+        
+        if usersQuizzesInstance.usersQuizzes == true {
+            createQuizButton.isHidden = true
+        } else {
+            createQuizButton.isHidden = false
+        }
     }
     
     func changingButtonTitles() {
@@ -43,6 +51,7 @@ class homePage: UIView {
     }
     
     @IBAction func createQuizButtonPressed(_ sender: UIButton) {
+        self.delegate?.createQuiz()
     }
     
     

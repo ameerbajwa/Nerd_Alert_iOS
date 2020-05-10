@@ -73,7 +73,7 @@ extension HomePageViewController: UITableViewDataSource {
         
 }
 
-extension HomePageViewController: retrieveQuizzesDelegate {
+extension HomePageViewController: homePageDelegate {
     func retrievingQuizzes(users_quizzes: Bool) {
         print("retrieving quizzes from database")
         self.quizzes = []
@@ -95,6 +95,19 @@ extension HomePageViewController: retrieveQuizzesDelegate {
             print(error)
         })
     }
+    
+    func createQuiz() {
+        self.performSegue(withIdentifier: "homePageToCreateQuizSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homePageToCreateQuizSegue" && segue.destination is CreateQuizViewController {
+            if let vc = segue.destination as? CreateQuizViewController {
+                vc.user = user
+            }
+        }
+    }
+    
 }
 
 extension HomePageViewController: actionsFromQuizDetailsDelegate {

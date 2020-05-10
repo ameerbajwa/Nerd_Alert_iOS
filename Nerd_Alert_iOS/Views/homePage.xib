@@ -56,6 +56,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="createQuizButton" destination="zAA-8F-ctH" id="adl-1m-k3X"/>
                 <outlet property="quizActionButton" destination="rf5-zg-PDq" id="XyR-DK-n1m"/>
                 <outlet property="usernameLabel" destination="6hT-YO-00W" id="eHN-Zl-lAR"/>
             </connections>

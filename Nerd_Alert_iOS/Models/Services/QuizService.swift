@@ -31,10 +31,10 @@ class QuizService {
                                    })
     }
     
-    func injectQuiz(_ quiz_name: String, _ source: String, _ title_of_source: String, _ createdBy: String, createdBy_user_id: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func injectQuiz(quiz_name: String, source: String, title_of_source: String, createdBy: String, createdBy_user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/generate_quiz"
         
-        let jsonBody: [String: String] = ["quiz_name": quiz_name,
+        let jsonBody: [String: Any] = ["quiz_name": quiz_name,
                                           "source": source,
                                           "title_of_source": title_of_source,
                                           "createdBy": createdBy,
