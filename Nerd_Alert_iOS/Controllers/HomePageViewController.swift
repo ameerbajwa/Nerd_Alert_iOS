@@ -38,6 +38,31 @@ class HomePageViewController: UIViewController {
         quizTableView.delegate = self
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homePageToCreateQuizSegue" && segue.destination is CreateQuizViewController {
+            if let vc = segue.destination as? CreateQuizViewController {
+                vc.user = user
+            }
+        }
+        
+        if segue.identifier == "homePageToQuizSegue" && segue.destination is QuizViewController {
+            if let vc = segue.destination as? QuizViewController {
+                if changingQuizId != nil {
+                    vc.quiz_id = changingQuizId!
+                    vc.quiz_name = nameOfQuiz!
+                    vc.user = user
+                }
+            }
+        }
+        
+        if segue.identifier == "homePageToEditQuizSegue" && segue.destination is EditQuizViewController {
+            if let vc = segue.destination as? EditQuizViewController {
+                vc.quiz_id = changingQuizId
+                vc.user_id = user?.id
+            }
+        }
+    }
 
 }
 
@@ -99,15 +124,6 @@ extension HomePageViewController: homePageDelegate {
     func createQuiz() {
         self.performSegue(withIdentifier: "homePageToCreateQuizSegue", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "homePageToCreateQuizSegue" && segue.destination is CreateQuizViewController {
-            if let vc = segue.destination as? CreateQuizViewController {
-                vc.user = user
-            }
-        }
-    }
-    
 }
 
 extension HomePageViewController: actionsFromQuizDetailsDelegate {
@@ -123,6 +139,11 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         } else {
             print("could not load xib file")
         }
+    }
+    
+    func goToEditQuizPage(quiz_id: Int) {
+        changingQuizId = quiz_id
+        self.performSegue(withIdentifier: "homePageToEditQuizSegue", sender: nil)
     }
     
     func goToQuizPage(quiz_id: Int, quiz_name: String) {
@@ -173,18 +194,6 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             print(error)
         })
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "homePageToQuizSegue" && segue.destination is QuizViewController {
-            if let vc = segue.destination as? QuizViewController {
-                if changingQuizId != nil {
-                    vc.quiz_id = changingQuizId!
-                    vc.quiz_name = nameOfQuiz!
-                    vc.user = user
-                }
-            }
-        }
     }
 }
 

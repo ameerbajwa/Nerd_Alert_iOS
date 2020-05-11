@@ -31,6 +31,7 @@
 		DEC2450C2463D9BE00BD333F /* quizResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC2450B2463D9BE00BD333F /* quizResultView.xib */; };
 		DEC2450E2463D9F700BD333F /* quizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2450D2463D9F700BD333F /* quizResultView.swift */; };
 		DEC24510246786F700BD333F /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2450F246786F700BD333F /* CreateQuizViewController.swift */; };
+		DEC245122469C4AE00BD333F /* EditQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC245112469C4AE00BD333F /* EditQuizViewController.swift */; };
 		DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18A243C22BA00E57D60 /* QuizService.swift */; };
 		DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */; };
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
@@ -93,6 +94,7 @@
 		DEC2450B2463D9BE00BD333F /* quizResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = quizResultView.xib; sourceTree = "<group>"; };
 		DEC2450D2463D9F700BD333F /* quizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizResultView.swift; sourceTree = "<group>"; };
 		DEC2450F246786F700BD333F /* CreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
+		DEC245112469C4AE00BD333F /* EditQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditQuizViewController.swift; sourceTree = "<group>"; };
 		DED9D18A243C22BA00E57D60 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
 		DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionService.swift; sourceTree = "<group>"; };
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 				DEFDCCD3243640B700366CA5 /* SignUpController.swift */,
 				DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */,
 				DEC2450F246786F700BD333F /* CreateQuizViewController.swift */,
+				DEC245112469C4AE00BD333F /* EditQuizViewController.swift */,
 				DE09315224520F1B004FCDE1 /* QuizViewController.swift */,
 				DE0931542454ACFB004FCDE1 /* QuizResultsViewController.swift */,
 			);
@@ -547,6 +550,7 @@
 				DEFDCCD82436535700366CA5 /* RestAPIManager.swift in Sources */,
 				DE09315D2454D3A9004FCDE1 /* QuizResultsService.swift in Sources */,
 				DE1CCACE244CB3E400E5CEBD /* QuizQuestion.swift in Sources */,
+				DEC245122469C4AE00BD333F /* EditQuizViewController.swift in Sources */,
 				DE0931572454BFCB004FCDE1 /* QuizQuestionsResults.swift in Sources */,
 				DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */,
 				DEFDCC9E2435B2B800366CA5 /* SceneDelegate.swift in Sources */,

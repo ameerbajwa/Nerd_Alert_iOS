@@ -11,6 +11,7 @@ import UIKit
 @objc protocol actionsFromQuizDetailsDelegate {
     func gettingHomePageView()
     func goToQuizPage(quiz_id: Int, quiz_name: String)
+    func goToEditQuizPage(quiz_id: Int)
     func goToQuizResults(quiz_id: Int, quiz_name: String)
 }
 
@@ -62,8 +63,14 @@ class quizDetails: UIView {
 
     @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
         if quiz_id != nil {
-            print("taking quiz: \(quizNameLabel.text!)")
-            self.delegate?.goToQuizPage(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+            if usersQuizzesInstance.usersQuizzes == true {
+                print("edit quiz: \(quizNameLabel.text!)")
+                self.delegate?.goToEditQuizPage(quiz_id: quiz_id!)
+            } else {
+                print("taking quiz: \(quizNameLabel.text!)")
+                self.delegate?.goToQuizPage(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+            }
+
         }
     }
     
