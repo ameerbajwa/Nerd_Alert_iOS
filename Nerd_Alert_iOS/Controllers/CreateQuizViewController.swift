@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateQuizViewController: UIViewController, UITextFieldDelegate {
+class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var quizNameTextField: UITextField!
     @IBOutlet weak var titleOfSourceTextField: UITextField!

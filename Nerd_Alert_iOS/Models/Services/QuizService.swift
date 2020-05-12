@@ -31,14 +31,15 @@ class QuizService {
                                    })
     }
     
-    func injectQuiz(quiz_name: String, source: String, title_of_source: String, createdBy: String, createdBy_user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+    func injectQuiz(quiz_name: String, quiz_description: String, source: String, title_of_source: String, createdBy: String, createdBy_user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/generate_quiz"
         
         let jsonBody: [String: Any] = ["quiz_name": quiz_name,
-                                          "source": source,
-                                          "title_of_source": title_of_source,
-                                          "createdBy": createdBy,
-                                          "createdBy_user_id": createdBy_user_id]
+                                       "quiz_description": quiz_description,
+                                       "source": source,
+                                       "title_of_source": title_of_source,
+                                       "createdBy": createdBy,
+                                       "createdBy_user_id": createdBy_user_id]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         
         restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST",
@@ -61,6 +62,22 @@ class QuizService {
                                        onFailure(responseJSON)
                                    })
 
+    }
+    
+    func reviseQuiz(quiz_name: String, quiz_description: String, source: String, title_of_source: String, quiz_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/update_quiz/\(quiz_id)"
+        
+        let jsonBody: [String: Any] = ["quiz_name": quiz_name,
+                                       "quiz_description": quiz_description,
+                                       "source": source,
+                                       "title_of_source": title_of_source]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
+        
+        restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "PUT", onSuccess: { responseJSON -> Void in
+            onSuccess(responseJSON)
+        }, onFailure: { responseJSON -> Void in
+            onFailure(responseJSON)
+        })
     }
     
 }

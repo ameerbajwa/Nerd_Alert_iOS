@@ -12,7 +12,7 @@ import UIKit
     func gettingHomePageView()
     func goToQuizPage(quiz_id: Int, quiz_name: String)
     func goToAddEditQuizQuestionsPage(quiz_id: Int)
-    func goToEditQuizPage(quiz_id: Int)
+    func goToEditQuizPage(quiz_id: Int, action: String)
     func goToQuizResults(quiz_id: Int, quiz_name: String)
 }
 
@@ -77,7 +77,7 @@ class quizDetails: UIView {
     @IBAction func secondaryQuizActionButtonPressed(_ sender: UIButton) {
         
         if secondaryQuizActionButton.titleLabel?.text == "Edit Quiz Details" {
-            self.delegate?.goToEditQuizPage(quiz_id: quiz_id!)
+            self.delegate?.goToEditQuizPage(quiz_id: quiz_id!, action: "Edit")
         } else {
             self.delegate?.goToQuizResults(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditQuizViewController: UIViewController {
+class CreateEditQuizQuestionsViewController: UIViewController {
     
     var quiz_id: Int?
     var user_id: Int?

@@ -25,6 +25,7 @@ class HomePageViewController: UIViewController {
     var quizScores: [QuizResults] = []
     var quizScore: QuizResults?
     
+    var quizAction: String?
     var changingQuizId: Int?
     var nameOfQuiz: String?
     
@@ -40,9 +41,11 @@ class HomePageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "homePageToCreateQuizSegue" && segue.destination is CreateQuizViewController {
-            if let vc = segue.destination as? CreateQuizViewController {
+        if segue.identifier == "homePageToCreateEditQuizSegue" && segue.destination is CreateEditQuizViewController {
+            if let vc = segue.destination as? CreateEditQuizViewController {
                 vc.user = user
+                vc.action = quizAction
+                vc.quizId = changingQuizId
             }
         }
         
@@ -56,8 +59,8 @@ class HomePageViewController: UIViewController {
             }
         }
         
-        if segue.identifier == "homePageToEditQuizSegue" && segue.destination is EditQuizViewController {
-            if let vc = segue.destination as? EditQuizViewController {
+        if segue.identifier == "homePageToEditQuizSegue" && segue.destination is CreateEditQuizQuestionsViewController {
+            if let vc = segue.destination as? CreateEditQuizQuestionsViewController {
                 vc.quiz_id = changingQuizId
                 vc.user_id = user?.id
             }
@@ -122,7 +125,7 @@ extension HomePageViewController: homePageDelegate {
     }
     
     func createQuiz() {
-        self.performSegue(withIdentifier: "homePageToCreateQuizSegue", sender: nil)
+        self.performSegue(withIdentifier: "homePageToCreateEditQuizSegue", sender: nil)
     }
 }
 
@@ -157,8 +160,9 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         
     }
     
-    func goToEditQuizPage(quiz_id: Int) {
+    func goToEditQuizPage(quiz_id: Int, action: String) {
         changingQuizId = quiz_id
+        quizAction = action
         self.performSegue(withIdentifier: "homePageToEditQuizSegue", sender: nil)
     }
     

@@ -263,7 +263,7 @@
                         <outlet property="quizTableView" destination="P1E-L7-Xze" id="dkZ-Sw-VoI"/>
                         <outlet property="topHalfView" destination="Ro7-us-KIl" id="0dV-XI-CIF"/>
                         <segue destination="fJd-cc-gI1" kind="show" identifier="homePageToQuizSegue" id="zMX-kp-yVn"/>
-                        <segue destination="G9p-ql-hh4" kind="show" identifier="homePageToCreateQuizSegue" id="L4r-Dm-Kyt"/>
+                        <segue destination="G9p-ql-hh4" kind="show" identifier="homePageToCreateEditQuizSegue" id="L4r-Dm-Kyt"/>
                         <segue destination="2Aw-9C-OCO" kind="show" identifier="homePageToEditQuizSegue" id="qK0-ge-Pfq"/>
                     </connections>
                 </viewController>
@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="3279.7101449275365" y="145.98214285714286"/>
         </scene>
-        <!--Create Quiz View Controller-->
+        <!--Create Edit Quiz View Controller-->
         <scene sceneID="STZ-hU-ngB">
             <objects>
-                <viewController id="G9p-ql-hh4" customClass="CreateQuizViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G9p-ql-hh4" customClass="CreateEditQuizViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wvU-sV-3KJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,13 +323,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWL-Tz-Fa9">
-                                <rect key="frame" x="300" y="748" width="84" height="30"/>
-                                <state key="normal" title="Submit Quiz"/>
-                                <connections>
-                                    <action selector="submitQuizButtonPressed:" destination="G9p-ql-hh4" eventType="touchUpInside" id="IwZ-VN-pte"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-XY-K3v">
                                 <rect key="frame" x="30" y="748" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
@@ -337,12 +330,21 @@
                                     <action selector="cancelButtonPressed:" destination="G9p-ql-hh4" eventType="touchUpInside" id="t42-BS-Kl0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVi-GT-WZF">
+                                <rect key="frame" x="305" y="748" width="79" height="30"/>
+                                <state key="normal" title="Quiz Action"/>
+                                <connections>
+                                    <action selector="quizActionButtonPressed:" destination="G9p-ql-hh4" eventType="touchUpInside" id="t0L-mh-8GA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="mMe-nV-4Cl" firstAttribute="bottom" secondItem="pVi-GT-WZF" secondAttribute="bottom" constant="30" id="4eT-PU-NqP"/>
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="bH8-7e-PfD" secondAttribute="trailing" constant="30" id="6m6-cy-yWf"/>
                             <constraint firstItem="CuM-zk-ve7" firstAttribute="leading" secondItem="mMe-nV-4Cl" secondAttribute="leading" constant="30" id="71x-Ig-yGZ"/>
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="CuM-zk-ve7" secondAttribute="trailing" constant="30" id="7wM-wh-P7b"/>
+                            <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="pVi-GT-WZF" secondAttribute="trailing" constant="30" id="8gf-Qc-eKT"/>
                             <constraint firstItem="8DL-Jl-ijp" firstAttribute="top" secondItem="eJB-hS-gV4" secondAttribute="bottom" constant="30" id="COS-4I-2sy"/>
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="8DL-Jl-ijp" secondAttribute="trailing" constant="30" id="Dif-lM-W2M"/>
                             <constraint firstItem="LEQ-xY-fzG" firstAttribute="top" secondItem="CuM-zk-ve7" secondAttribute="bottom" constant="30" id="Eog-UO-nLf"/>
@@ -360,12 +362,10 @@
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="JeU-v3-lj0" secondAttribute="trailing" constant="30" id="YJ7-Uf-tH6"/>
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="LEQ-xY-fzG" secondAttribute="trailing" constant="30" id="ZFS-IP-FKM"/>
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="IjB-nC-cnX" secondAttribute="trailing" constant="30" id="bx6-p6-2eC"/>
-                            <constraint firstItem="mMe-nV-4Cl" firstAttribute="bottom" secondItem="sWL-Tz-Fa9" secondAttribute="bottom" constant="30" id="fPx-xo-X8D"/>
                             <constraint firstItem="bH8-7e-PfD" firstAttribute="top" secondItem="zd8-6x-aSR" secondAttribute="bottom" constant="30" id="fig-K0-IKT"/>
                             <constraint firstItem="eJB-hS-gV4" firstAttribute="leading" secondItem="mMe-nV-4Cl" secondAttribute="leading" constant="30" id="jJe-t6-nZf"/>
                             <constraint firstItem="8DL-Jl-ijp" firstAttribute="leading" secondItem="mMe-nV-4Cl" secondAttribute="leading" constant="30" id="m5V-x2-gmF"/>
                             <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="zd8-6x-aSR" secondAttribute="trailing" constant="30" id="sby-Cu-oau"/>
-                            <constraint firstItem="mMe-nV-4Cl" firstAttribute="trailing" secondItem="sWL-Tz-Fa9" secondAttribute="trailing" constant="30" id="vqA-BQ-8nc"/>
                             <constraint firstItem="CuM-zk-ve7" firstAttribute="top" secondItem="8DL-Jl-ijp" secondAttribute="bottom" constant="30" id="wse-Eh-CbP"/>
                             <constraint firstItem="eJB-hS-gV4" firstAttribute="top" secondItem="mMe-nV-4Cl" secondAttribute="top" constant="75" id="zon-H6-Uat"/>
                         </constraints>
@@ -373,6 +373,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="LEo-CQ-Kud"/>
                     <connections>
+                        <outlet property="quizActionButton" destination="pVi-GT-WZF" id="sN3-Ad-nsP"/>
                         <outlet property="quizDescriptionTextField" destination="JeU-v3-lj0" id="PaH-hE-4Gl"/>
                         <outlet property="quizNameTextField" destination="8DL-Jl-ijp" id="xeZ-UE-Aww"/>
                         <outlet property="sourceTextField" destination="zd8-6x-aSR" id="50d-uF-iFE"/>
@@ -383,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="3590" y="-658"/>
         </scene>
-        <!--Edit Quiz View Controller-->
+        <!--Create Edit Quiz Questions View Controller-->
         <scene sceneID="YWg-i3-nIP">
             <objects>
-                <viewController id="2Aw-9C-OCO" customClass="EditQuizViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2Aw-9C-OCO" customClass="CreateEditQuizQuestionsViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pYJ-Od-EaK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
