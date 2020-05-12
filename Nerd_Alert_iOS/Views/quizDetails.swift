@@ -11,6 +11,7 @@ import UIKit
 @objc protocol actionsFromQuizDetailsDelegate {
     func gettingHomePageView()
     func goToQuizPage(quiz_id: Int, quiz_name: String)
+    func goToAddEditQuizQuestionsPage(quiz_id: Int)
     func goToEditQuizPage(quiz_id: Int)
     func goToQuizResults(quiz_id: Int, quiz_name: String)
 }
@@ -23,7 +24,8 @@ class quizDetails: UIView {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var titleOfSourceLabel: UILabel!
     @IBOutlet weak var homePageButton: UIButton!
-    @IBOutlet weak var takeQuizButton: UIButton!
+    @IBOutlet weak var quizActionButton: UIButton!
+    @IBOutlet weak var secondaryQuizActionButton: UIButton!
     
     var quiz_id: Int?
     
@@ -44,28 +46,22 @@ class quizDetails: UIView {
         titleOfSourceLabel.text = title_of_source
         quiz_id = quizId
         
-        takeQuizButton.setTitle("Take Quiz", for: .normal)
         
         if username == created_by {
-            takeQuizButton.setTitle("Edit Quiz", for: .normal)
+            quizActionButton.setTitle("Add/Edit Quiz Questions", for: .normal)
+            secondaryQuizActionButton.setTitle("Edit Quiz Details", for: .normal)
+        } else {
+            quizActionButton.setTitle("Take Quiz", for: .normal)
+            secondaryQuizActionButton.setTitle("View Quiz Results", for: .normal)
         }
-//        else {
-//            if score != "" {
-//                scoreLabel.isHidden = false
-//                takeQuizButton.isHidden = true
-//             } else {
-//                scoreLabel.isHidden = true
-//                takeQuizButton.setTitle("Take Quiz", for: .normal)
-//                takeQuizButton.isHidden = false
-//             }
-//        }
+
     }
 
-    @IBAction func takeQuizButtonPressed(_ sender: UIButton) {
+    @IBAction func quizActionButtonPressed(_ sender: UIButton) {
         if quiz_id != nil {
-            if usersQuizzesInstance.usersQuizzes == true {
+            if quizActionButton.titleLabel?.text == "Add/Edit Quiz Questions" { // usersQuizzesInstance.usersQuizzes == true
                 print("edit quiz: \(quizNameLabel.text!)")
-                self.delegate?.goToEditQuizPage(quiz_id: quiz_id!)
+                self.delegate?.goToAddEditQuizQuestionsPage(quiz_id: quiz_id!)
             } else {
                 print("taking quiz: \(quizNameLabel.text!)")
                 self.delegate?.goToQuizPage(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
@@ -78,7 +74,13 @@ class quizDetails: UIView {
         self.delegate?.gettingHomePageView()
     }
     
-    @IBAction func viewResultsButtonPressed(_ sender: UIButton) {
-        self.delegate?.goToQuizResults(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+    @IBAction func secondaryQuizActionButtonPressed(_ sender: UIButton) {
+        
+        if secondaryQuizActionButton.titleLabel?.text == "Edit Quiz Details" {
+            self.delegate?.goToEditQuizPage(quiz_id: quiz_id!)
+        } else {
+            self.delegate?.goToQuizResults(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+        }
+
     }
 }

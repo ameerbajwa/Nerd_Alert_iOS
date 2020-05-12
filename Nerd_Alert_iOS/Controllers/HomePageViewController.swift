@@ -141,11 +141,6 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         }
     }
     
-    func goToEditQuizPage(quiz_id: Int) {
-        changingQuizId = quiz_id
-        self.performSegue(withIdentifier: "homePageToEditQuizSegue", sender: nil)
-    }
-    
     func goToQuizPage(quiz_id: Int, quiz_name: String) {
         if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
             referenceToQuizDetailsView.delegate = self
@@ -156,6 +151,15 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             print("referenceToQuizDetailsView has not been identified as type quizDetails")
         }
 
+    }
+    
+    func goToAddEditQuizQuestionsPage(quiz_id: Int) {
+        
+    }
+    
+    func goToEditQuizPage(quiz_id: Int) {
+        changingQuizId = quiz_id
+        self.performSegue(withIdentifier: "homePageToEditQuizSegue", sender: nil)
     }
     
     func goToQuizResults(quiz_id: Int, quiz_name: String) {
