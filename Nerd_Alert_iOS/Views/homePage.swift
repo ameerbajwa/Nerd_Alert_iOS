@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol homePageDelegate {
     func retrievingQuizzes(users_quizzes: Bool)
-    func createQuiz()
+    func createQuiz(action: String)
 }
 
 class homePage: UIView {
@@ -29,18 +29,20 @@ class homePage: UIView {
         usernameLabel.text = "Home of \(username)"
         changingButtonTitles()
         
-        if usersQuizzesInstance.usersQuizzes == true {
-            createQuizButton.isHidden = true
-        } else {
-            createQuizButton.isHidden = false
-        }
+//        if usersQuizzesInstance.usersQuizzes == true {
+//            createQuizButton.isHidden = true
+//        } else {
+//            createQuizButton.isHidden = false
+//        }
     }
     
     func changingButtonTitles() {
         if usersQuizzesInstance.usersQuizzes == true { // users_quizzes == true
             quizActionButton.setTitle("View Quizzes", for: .normal)
+            createQuizButton.isHidden = false
         } else {
             quizActionButton.setTitle("View My Quizzes", for: .normal)
+            createQuizButton.isHidden = true
         }
     }
     
@@ -51,7 +53,7 @@ class homePage: UIView {
     }
     
     @IBAction func createQuizButtonPressed(_ sender: UIButton) {
-        self.delegate?.createQuiz()
+        self.delegate?.createQuiz(action: "Create")
     }
     
     

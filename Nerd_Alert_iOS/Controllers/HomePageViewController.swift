@@ -124,7 +124,9 @@ extension HomePageViewController: homePageDelegate {
         })
     }
     
-    func createQuiz() {
+    func createQuiz(action: String) {
+        changingQuizId = 0
+        quizAction = action
         self.performSegue(withIdentifier: "homePageToCreateEditQuizSegue", sender: nil)
     }
 }
@@ -163,7 +165,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
     func goToEditQuizPage(quiz_id: Int, action: String) {
         changingQuizId = quiz_id
         quizAction = action
-        self.performSegue(withIdentifier: "homePageToEditQuizSegue", sender: nil)
+        self.performSegue(withIdentifier: "homePageToCreateEditQuizSegue", sender: nil)
     }
     
     func goToQuizResults(quiz_id: Int, quiz_name: String) {

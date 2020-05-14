@@ -28,6 +28,7 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        quizDescriptionTextField.frame.size.height = 200
         
         if action == "Edit" {
             if let quiz_id = quizId {
@@ -43,6 +44,7 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
                             self.titleOfSourceTextField.text = selectedQuiz.titleOfSource
                             self.sourceTextField.text = selectedQuiz.source
                             self.quizDescriptionTextField.text = selectedQuiz.description
+                            self.quizActionButton.setTitle("Save Quiz Details", for: .normal)
                         }
                     }
                     
@@ -51,12 +53,14 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
                     print(error)
                 })
             }
+        } else {
+            quizActionButton.setTitle("Submit Quiz Details", for: .normal)
         }
         
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        
+         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func quizActionButtonPressed(_ sender: UIButton) {
@@ -68,6 +72,9 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
                 quizService.reviseQuiz(quiz_name: quizNameTextField.text!, quiz_description: quizDescriptionTextField.text!, source: sourceTextField.text!, title_of_source: titleOfSourceTextField.text!, quiz_id: quiz_id, onSuccess: { (response) in
                     print("reviseQuiz API call to PUT a new quiz to the database was successful")
                     print(response)
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     
                 }, onFailure: { (error) in
                     print("reviseQuiz API call was unsuccessful")
@@ -80,6 +87,9 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
             quizService.injectQuiz(quiz_name: quizNameTextField.text!, quiz_description: quizDescriptionTextField.text!, source: sourceTextField.text!, title_of_source: titleOfSourceTextField.text!, createdBy: user!.username, createdBy_user_id: user!.id, onSuccess: { (response) in
                 print("injectQuiz API call to POST a new quiz to the database was successful")
                 print(response)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
                 
             }, onFailure: { (error) in
                 print("injectQuiz API call was unsuccessful")
