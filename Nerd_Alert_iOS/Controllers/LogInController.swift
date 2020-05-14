@@ -35,42 +35,44 @@ class LogInController: UIViewController, UITextFieldDelegate {
         if usernameTextField.text != nil && passwordTextField.text != nil {
             // log in POST API CALL and user information GET API CALL
 
-            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: {(response) -> Void in
+            userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: { (response) -> Void in
                 print("From Swift Application : authenticateUser API called")
                 print(response)
                 self.accessTokenJSON = response
                     
                 DispatchQueue.main.async {
-                    self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
-                        print("From Swift Application : retrieveUserInfo API called")
-                        print(response)
-
-                        self.userInfo = User(json: response)
-
-                        if let accessToken = self.accessTokenJSON["access_token"] as? String {
-                            self.userInfo?.accessToken = accessToken
-                        } else {
-                            print("couldn't pass accessToken value to userInfo struct")
-                        }
+                    
+                    if let accessToken = self.accessTokenJSON["access_token"] as? String {
+                        self.userInfo?.accessToken = accessToken
                         
-                        print("user information obtained and ready to be segued to home page view controller")
-                        print(self.userInfo!)
-                        
-                        if let id = self.userInfo?.id {
-                            if id > 0 {
-                                DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+                        self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
+                            print("From Swift Application : retrieveUserInfo API called")
+                            print(response)
+
+                            self.userInfo = User(json: response)
+                            
+                            print("user information obtained and ready to be segued to home page view controller")
+                            print(self.userInfo!)
+                            
+                            if let id = self.userInfo?.id {
+                                if id > 0 {
+                                    DispatchQueue.main.async {
+                                        self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+                                    }
+                                } else {
+                                    print("user has no id, could not return any information on user")
                                 }
                             } else {
-                                print("user has no id, could not return any information on user")
+                                print("userInfo class has not been properly populated")
                             }
-                        } else {
-                            print("userInfo class has not been properly populated")
-                        }
 
-                    }) { (error) -> Void in
-                        print("From Swift Application : retrieveUserInfo API called")
-                        print(error)
+                        }) { (error) -> Void in
+                            print("From Swift Application : retrieveUserInfo API called")
+                            print(error)
+                        }
+                        
+                    } else {
+                        print("couldn't pass accessToken value to userInfo struct")
                     }
                 }
 
