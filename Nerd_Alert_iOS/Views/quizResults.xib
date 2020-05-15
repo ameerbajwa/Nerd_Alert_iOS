@@ -13,43 +13,63 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-pB-QSd">
-                    <rect key="frame" x="20" y="40" width="374" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-pB-QSd">
+                    <rect key="frame" x="20" y="45" width="374" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZR-IL-SXh">
-                    <rect key="frame" x="20" y="91" width="374" height="243"/>
-                    <viewLayoutGuide key="contentLayoutGuide" id="8vn-Ir-zuc"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="fnt-Bm-nYc"/>
-                </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-xe-zfC">
-                    <rect key="frame" x="230" y="5" width="164" height="30"/>
+                    <rect key="frame" x="20" y="5" width="374" height="30"/>
                     <state key="normal" title="Go Back To Quiz Details"/>
                     <connections>
                         <action selector="returnToQuizDetailsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ea1-H8-6oG"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8na-Jp-Yfm">
+                    <rect key="frame" x="20" y="85.5" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Iteration Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgF-sW-kbX">
+                    <rect key="frame" x="30" y="156.5" width="354" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOI-yg-tWS">
+                    <rect key="frame" x="20" y="304" width="374" height="30"/>
+                    <state key="normal" title="View Question Results"/>
+                    <connections>
+                        <action selector="viewQuestionResultsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ny2-JW-ADX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="SZR-IL-SXh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2JP-NI-CMa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dC4-pB-QSd" secondAttribute="trailing" constant="20" id="AG6-ze-Gxh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="SZR-IL-SXh" secondAttribute="bottom" constant="20" id="boC-8p-Lxd"/>
-                <constraint firstItem="1DJ-xe-zfC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="feE-rp-rHs"/>
-                <constraint firstItem="SZR-IL-SXh" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="fny-nC-iBI"/>
-                <constraint firstItem="dC4-pB-QSd" firstAttribute="top" secondItem="1DJ-xe-zfC" secondAttribute="bottom" constant="5" id="hvv-gY-VcY"/>
-                <constraint firstAttribute="trailing" secondItem="1DJ-xe-zfC" secondAttribute="trailing" constant="20" id="nKk-kc-pLz"/>
-                <constraint firstItem="SZR-IL-SXh" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="qlw-Xq-QTd"/>
-                <constraint firstItem="dC4-pB-QSd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="smQ-KB-EFb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SZR-IL-SXh" secondAttribute="trailing" constant="20" id="zTu-rr-Uje"/>
+                <constraint firstAttribute="trailing" secondItem="1DJ-xe-zfC" secondAttribute="trailing" constant="20" id="1z4-Ut-F7y"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dC4-pB-QSd" secondAttribute="trailing" constant="20" id="4iJ-da-Pyt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wOI-yg-tWS" secondAttribute="bottom" constant="20" id="4sh-iE-rS5"/>
+                <constraint firstItem="cgF-sW-kbX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="9Kq-ZH-PW8"/>
+                <constraint firstItem="1DJ-xe-zfC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CDN-cq-NcO"/>
+                <constraint firstItem="dC4-pB-QSd" firstAttribute="top" secondItem="1DJ-xe-zfC" secondAttribute="bottom" constant="10" id="FH5-XQ-8tu"/>
+                <constraint firstItem="1DJ-xe-zfC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Jo2-oR-uit"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wOI-yg-tWS" secondAttribute="trailing" constant="20" id="OBA-SU-K8B"/>
+                <constraint firstItem="dC4-pB-QSd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RcQ-Hq-jcB"/>
+                <constraint firstItem="8na-Jp-Yfm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ReI-gh-rso"/>
+                <constraint firstItem="wOI-yg-tWS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="SoQ-Ve-ttd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8na-Jp-Yfm" secondAttribute="trailing" constant="20" id="TUx-QV-NMY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cgF-sW-kbX" secondAttribute="trailing" constant="30" id="Uy3-3T-HrP"/>
+                <constraint firstItem="cgF-sW-kbX" firstAttribute="top" secondItem="8na-Jp-Yfm" secondAttribute="bottom" constant="50" id="jCv-Uy-LAD"/>
+                <constraint firstItem="8na-Jp-Yfm" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="mI6-if-N9v"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="overallScoreLabel" destination="8na-Jp-Yfm" id="s0w-DU-9sz"/>
+                <outlet property="quizIterationScore" destination="cgF-sW-kbX" id="y5c-q7-2e3"/>
                 <outlet property="quizNameLabel" destination="dC4-pB-QSd" id="oWF-c9-Eet"/>
-                <outlet property="quizResultScrollView" destination="SZR-IL-SXh" id="juK-nO-3mC"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="-35.491071428571423"/>
         </view>

@@ -16,44 +16,19 @@ import UIKit
 class quizResults: UIView {
     
     @IBOutlet weak var quizNameLabel: UILabel!
-    @IBOutlet weak var quizResultScrollView: UIScrollView!
+    @IBOutlet weak var overallScoreLabel: UILabel!
+    @IBOutlet weak var quizIterationScore: UILabel!
     
     @IBOutlet var delegate: actionsFromQuizResultsDelegate?
     
     var quizId : Int?
+    var quizResult: QuizResults?
     
-    func quizResultsXibInit(quiz_name: String, quiz_results: [QuizResults]) {
+    func quizResultsXibInit(quiz_name: String, quiz_result: QuizResults) {
         quizNameLabel.text = "Quiz: \(quiz_name)"
         
-        quizId = quiz_results[0].quizId
-        quizResultScrollView.isPagingEnabled = true
-                
-        for i in 0..<quiz_results.count {
-
-            print(quiz_results[i])
-            print(quiz_results[i].quizIteration)
-            print(type(of: quiz_results[i].quizIteration))
-            var scrollViewWidth: CGFloat = 0
-
-            if let qrView = Bundle.main.loadNibNamed("quizResultView", owner: self, options: nil)?.first as? quizResultView {
-                quizResultScrollView.addSubview(qrView)
-                qrView.frame.size.height = quizResultScrollView.frame.size.height
-                qrView.frame.size.width = quizResultScrollView.frame.size.width
-                qrView.quizResultViewXibInit(quiz_iteration: quiz_results[i].quizIteration, score: quiz_results[i].score)
-                
-            } else {
-                print("qrView was not loaded")
-            }
-            
-            scrollViewWidth += quizResultScrollView.frame.size.width
-            print(scrollViewWidth)
-            quizResultScrollView.contentSize = CGSize(width: scrollViewWidth, height: quizResultScrollView.frame.size.height)
-            
-        }
-        
-        print(quizResultScrollView.frame.size.height)
-        print(quizResultScrollView.frame.size.width)
-        print(quizResultScrollView.contentSize)
+        quizId = quiz_result.quizId
+        quizResult = quiz_result
         
     }
     
@@ -62,4 +37,9 @@ class quizResults: UIView {
         self.delegate?.goBackToQuizDetails(quiz_id: quizId!)
     }
     
+    @IBAction func viewQuestionResultsButtonPressed(_ sender: UIButton) {
+        if let quiz_result = quizResult {
+            print("viewing quiz '\(quizNameLabel.text)' iteration \(quiz_result.quizIteration)")
+        }
+    }
 }

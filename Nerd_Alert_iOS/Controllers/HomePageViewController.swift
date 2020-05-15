@@ -24,6 +24,7 @@ class HomePageViewController: UIViewController {
     var quiz: Quiz?
     var quizScores: [QuizResults] = []
     var quizScore: QuizResults?
+    var table: String = "Quizzes"
     
     var quizAction: String?
     var changingQuizId: Int?
@@ -71,31 +72,54 @@ class HomePageViewController: UIViewController {
 
 extension HomePageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(quizzes[indexPath.row].description)
-        // display all the quiz details on the top half of the screen
-                
-        if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
-            topHalfView.addSubview(referenceToQuizDetailsView)
-            referenceToQuizDetailsView.frame.size.height = topHalfView.frame.size.height
-            referenceToQuizDetailsView.frame.size.width = topHalfView.frame.size.width
-            referenceToQuizDetailsView.delegate = self
-            referenceToQuizDetailsView.quizDetailsXibInit(quizId: quizzes[indexPath.row].id, quiz_name: quizzes[indexPath.row].name, created_by: quizzes[indexPath.row].createdBy, description: quizzes[indexPath.row].description, source: quizzes[indexPath.row].source, title_of_source: quizzes[indexPath.row].titleOfSource, username: user?.username)
-        } else {
-            print("xib file could not load to the topHalfView")
+        if table == "Quizzes" {
+            print(quizzes[indexPath.row].description)
+            // display all the quiz details on the top half of the screen
+                    
+            if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
+                topHalfView.addSubview(referenceToQuizDetailsView)
+                referenceToQuizDetailsView.frame.size.height = topHalfView.frame.size.height
+                referenceToQuizDetailsView.frame.size.width = topHalfView.frame.size.width
+                referenceToQuizDetailsView.delegate = self
+                referenceToQuizDetailsView.quizDetailsXibInit(quizId: quizzes[indexPath.row].id, quiz_name: quizzes[indexPath.row].name, created_by: quizzes[indexPath.row].createdBy, description: quizzes[indexPath.row].description, source: quizzes[indexPath.row].source, title_of_source: quizzes[indexPath.row].titleOfSource, username: user?.username)
+            } else {
+                print("xib file could not load to the topHalfView")
+            }
+        } else if table == "Quiz Results" {
+            print(quizScores[indexPath.row])
+            // display all the quiz details on the top half of the screen
+                    
+            if let referenceToQuizResultDetailsView = Bundle.main.loadNibNamed("quizResults", owner: self, options: nil)?.first as? quizResults {
+                topHalfView.addSubview(referenceToQuizResultDetailsView)
+                referenceToQuizResultDetailsView.frame.size.height = topHalfView.frame.size.height
+                referenceToQuizResultDetailsView.frame.size.width = topHalfView.frame.size.width
+                referenceToQuizResultDetailsView.delegate = self
+                referenceToQuizResultDetailsView.quizResultsXibInit(quiz_name: nameOfQuiz!, quiz_result: quizScore!)
+            } else {
+                print("xib file could not load to the topHalfView")
+            }
         }
-        
-        
     }
 }
 
 extension HomePageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quizzes.count
+        if table == "Quizzes" {
+            return quizzes.count
+        } else if table == "Quiz Results" {
+            return quizScores.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "quizCell", for: indexPath)
-        cell.textLabel?.text = quizzes[indexPath.row].name
+        if table == "Quizzes" {
+            cell.textLabel?.text = quizzes[indexPath.row].name
+        } else if table == "Quiz Results" {
+            cell.textLabel?.text = "Quiz Iteration \(quizScores[indexPath.row].quizIteration)"
+        }
         return cell
     }
         
@@ -170,6 +194,8 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
     
     func goToQuizResults(quiz_id: Int, quiz_name: String) {
         
+        nameOfQuiz = quiz_name
+        
         quizResultsService.retrieveQuizResults(user!.id, quiz_id, onSuccess: { (response) in
             print("called retrieveQuizResults API successfully")
             print(response.count)
@@ -183,15 +209,17 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
                     self.quizScore = QuizResults(json: response[i] as! [String : Any])
                     self.quizScores.append(self.quizScore!)
                 }
-                
+
                 DispatchQueue.main.async {
+                    self.table = "Quiz Results"
+                    self.quizTableView.reloadData()
                     if let referenceToQuizResultsView = Bundle.main.loadNibNamed("quizResults", owner: self, options: nil)?.first as? quizResults {
                         print("switching topHalfView of controller to QuizResultsView")
                         self.topHalfView.addSubview(referenceToQuizResultsView)
                         referenceToQuizResultsView.frame.size.height = self.topHalfView.frame.size.height
                         referenceToQuizResultsView.frame.size.width = self.topHalfView.frame.size.width
                         referenceToQuizResultsView.delegate = self
-                        referenceToQuizResultsView.quizResultsXibInit(quiz_name: quiz_name, quiz_results: self.quizScores)
+                        referenceToQuizResultsView.quizResultsXibInit(quiz_name: quiz_name, quiz_result: self.quizScores[0])
                                     
                     } else {
                         print("could not load xib file")
@@ -224,6 +252,12 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
                     referenceToQuizDetailsView.frame.size.width = self.topHalfView.frame.size.width
                     referenceToQuizDetailsView.delegate = self
                     referenceToQuizDetailsView.quizDetailsXibInit(quizId: response["quiz_id"] as! Int, quiz_name: response["quiz_name"] as! String, created_by: response["createdBy"] as! String, description: response["quiz_description"] as! String, source: response["source"] as! String, title_of_source: response["title_of_source"] as! String, username: self.user?.username)
+                    
+                    DispatchQueue.main.async {
+                        self.table = "Quizzes"
+                        self.quizTableView.reloadData()
+                    }
+                    
                 } else {
                     print("xib file could not load to the topHalfView")
                 }
