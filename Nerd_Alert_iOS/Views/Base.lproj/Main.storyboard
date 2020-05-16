@@ -265,6 +265,7 @@
                         <segue destination="fJd-cc-gI1" kind="show" identifier="homePageToQuizSegue" id="zMX-kp-yVn"/>
                         <segue destination="G9p-ql-hh4" kind="show" identifier="homePageToCreateEditQuizSegue" id="L4r-Dm-Kyt"/>
                         <segue destination="2Aw-9C-OCO" kind="show" identifier="homePageToEditQuizSegue" id="qK0-ge-Pfq"/>
+                        <segue destination="EiA-Sa-kFa" kind="show" identifier="homePageToQuizQuestionResultsSegue" id="JZy-0P-EOX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVJ-9a-b7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -382,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uc0-Nq-MDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="-658"/>
+            <point key="canvasLocation" x="3280" y="-658"/>
         </scene>
         <!--Create Edit Quiz Questions View Controller-->
         <scene sceneID="YWg-i3-nIP">
@@ -467,7 +468,117 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ad5-o3-zFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4720" y="-417"/>
+            <point key="canvasLocation" x="4649" y="-658"/>
+        </scene>
+        <!--Quiz Question Results View Controller-->
+        <scene sceneID="7Mj-31-JvG">
+            <objects>
+                <viewController id="EiA-Sa-kFa" customClass="QuizQuestionResultsViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4br-Dr-k5D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ca-H8-rM3">
+                                <rect key="frame" x="10" y="10" width="41" height="30"/>
+                                <state key="normal" title="Home"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1q-NM-n9H">
+                                <rect key="frame" x="20" y="75" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyM-6j-jEN">
+                                <rect key="frame" x="20" y="135" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Teh-FD-G1M">
+                                <rect key="frame" x="20" y="186" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ald-s1-d2X">
+                                <rect key="frame" x="30" y="257" width="354" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAe-NQ-M9F">
+                                <rect key="frame" x="30" y="557" width="354" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice B" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xre-Gl-8KI">
+                                <rect key="frame" x="30" y="608.5" width="354" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice C" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-GT-Hhc">
+                                <rect key="frame" x="30" y="660" width="354" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice D" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxb-EG-bHT">
+                                <rect key="frame" x="30" y="711.5" width="354" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-aB-BVz">
+                                <rect key="frame" x="10" y="788" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-iv-Tar">
+                                <rect key="frame" x="372" y="788" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FzI-aB-BVz" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="10" id="0UP-WL-Suy"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="Teh-FD-G1M" secondAttribute="trailing" constant="20" id="42U-F8-maT"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="ald-s1-d2X" secondAttribute="trailing" constant="30" id="4IK-2x-SrM"/>
+                            <constraint firstItem="Uxb-EG-bHT" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="30" id="95b-uS-46a"/>
+                            <constraint firstItem="ald-s1-d2X" firstAttribute="top" secondItem="Teh-FD-G1M" secondAttribute="bottom" constant="50" id="C3b-gz-l77"/>
+                            <constraint firstItem="Teh-FD-G1M" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="20" id="C9s-UI-g7J"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="Uxb-EG-bHT" secondAttribute="trailing" constant="30" id="GsE-LI-FBU"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="wU1-iv-Tar" secondAttribute="trailing" constant="10" id="J2r-Jj-Wit"/>
+                            <constraint firstItem="ald-s1-d2X" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="30" id="Jpw-Gp-axr"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="W1q-NM-n9H" secondAttribute="trailing" constant="20" id="NBn-zO-Iuv"/>
+                            <constraint firstItem="aAe-NQ-M9F" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="30" id="OZ6-XH-Ayx"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="fI2-GT-Hhc" secondAttribute="trailing" constant="30" id="PCO-MG-odA"/>
+                            <constraint firstItem="FyM-6j-jEN" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="20" id="Q13-uf-4TU"/>
+                            <constraint firstItem="fI2-GT-Hhc" firstAttribute="top" secondItem="xre-Gl-8KI" secondAttribute="bottom" constant="30" id="QIl-3Z-fcH"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="bottom" secondItem="Uxb-EG-bHT" secondAttribute="bottom" constant="75" id="Qjt-lm-NRU"/>
+                            <constraint firstItem="xre-Gl-8KI" firstAttribute="top" secondItem="aAe-NQ-M9F" secondAttribute="bottom" constant="30" id="Tqj-SD-0dq"/>
+                            <constraint firstItem="xre-Gl-8KI" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="30" id="aWH-UJ-8pp"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="FyM-6j-jEN" secondAttribute="trailing" constant="20" id="d9i-MR-uoU"/>
+                            <constraint firstItem="wU1-iv-Tar" firstAttribute="bottom" secondItem="edG-Hg-gae" secondAttribute="bottom" constant="10" id="daX-VI-CfT"/>
+                            <constraint firstItem="Teh-FD-G1M" firstAttribute="top" secondItem="FyM-6j-jEN" secondAttribute="bottom" constant="30" id="kU0-Wi-DXM"/>
+                            <constraint firstItem="FzI-aB-BVz" firstAttribute="bottom" secondItem="edG-Hg-gae" secondAttribute="bottom" constant="10" id="kbZ-dL-GfV"/>
+                            <constraint firstItem="FyM-6j-jEN" firstAttribute="top" secondItem="W1q-NM-n9H" secondAttribute="bottom" constant="30" id="m4z-4m-yJL"/>
+                            <constraint firstItem="W1q-NM-n9H" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="20" id="nrt-eO-dhj"/>
+                            <constraint firstItem="Uxb-EG-bHT" firstAttribute="top" secondItem="fI2-GT-Hhc" secondAttribute="bottom" constant="30" id="oFd-xr-Jun"/>
+                            <constraint firstItem="fI2-GT-Hhc" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="30" id="pPX-s5-wLi"/>
+                            <constraint firstItem="9ca-H8-rM3" firstAttribute="leading" secondItem="edG-Hg-gae" secondAttribute="leading" constant="10" id="qWS-CF-FBL"/>
+                            <constraint firstItem="W1q-NM-n9H" firstAttribute="top" secondItem="edG-Hg-gae" secondAttribute="top" constant="75" id="qv8-0b-fAe"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="xre-Gl-8KI" secondAttribute="trailing" constant="30" id="vaU-VO-khD"/>
+                            <constraint firstItem="edG-Hg-gae" firstAttribute="trailing" secondItem="aAe-NQ-M9F" secondAttribute="trailing" constant="30" id="wut-hr-S9w"/>
+                            <constraint firstItem="9ca-H8-rM3" firstAttribute="top" secondItem="edG-Hg-gae" secondAttribute="top" constant="10" id="zYG-Jl-ohO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="edG-Hg-gae"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t5r-pn-xv8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMv-Ah-hSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4665" y="146"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="3cI-nI-RsE">
@@ -611,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJW-tl-eWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4390" y="744"/>
+            <point key="canvasLocation" x="3991" y="874"/>
         </scene>
         <!--Quiz Results View Controller-->
         <scene sceneID="Hgu-i0-5q3">
@@ -675,7 +786,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZW-82-gyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5536" y="744"/>
+            <point key="canvasLocation" x="5123" y="874"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9dT-0f-CaO">
@@ -697,6 +808,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="zMX-kp-yVn"/>
         <segue reference="Fcn-bh-Vzd"/>
     </inferredMetricsTieBreakers>
 </document>
