@@ -45,6 +45,12 @@
                         <action selector="viewQuestionResultsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ny2-JW-ADX"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioC-NX-h99">
+                    <rect key="frame" x="20" y="236.5" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -61,12 +67,16 @@
                 <constraint firstItem="wOI-yg-tWS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="SoQ-Ve-ttd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8na-Jp-Yfm" secondAttribute="trailing" constant="20" id="TUx-QV-NMY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cgF-sW-kbX" secondAttribute="trailing" constant="30" id="Uy3-3T-HrP"/>
+                <constraint firstItem="ioC-NX-h99" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="V5H-u6-Qmt"/>
                 <constraint firstItem="cgF-sW-kbX" firstAttribute="top" secondItem="8na-Jp-Yfm" secondAttribute="bottom" constant="50" id="jCv-Uy-LAD"/>
                 <constraint firstItem="8na-Jp-Yfm" firstAttribute="top" secondItem="dC4-pB-QSd" secondAttribute="bottom" constant="20" id="mI6-if-N9v"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ioC-NX-h99" secondAttribute="trailing" constant="20" id="rLh-xu-mlo"/>
+                <constraint firstItem="ioC-NX-h99" firstAttribute="top" secondItem="cgF-sW-kbX" secondAttribute="bottom" constant="50" id="ruF-KB-Sqw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="numberOfQuestionsLabel" destination="ioC-NX-h99" id="e7R-IO-Nvt"/>
                 <outlet property="overallScoreLabel" destination="8na-Jp-Yfm" id="s0w-DU-9sz"/>
                 <outlet property="quizIterationScore" destination="cgF-sW-kbX" id="y5c-q7-2e3"/>
                 <outlet property="quizNameLabel" destination="dC4-pB-QSd" id="oWF-c9-Eet"/>

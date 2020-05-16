@@ -18,28 +18,35 @@ class quizResults: UIView {
     @IBOutlet weak var quizNameLabel: UILabel!
     @IBOutlet weak var overallScoreLabel: UILabel!
     @IBOutlet weak var quizIterationScore: UILabel!
+    @IBOutlet weak var numberOfQuestionsLabel: UILabel!
     
     @IBOutlet var delegate: actionsFromQuizResultsDelegate?
     
-    var quizId : Int?
     var quizResult: QuizResults?
+    var overallscore: Int = 0
     
-    func quizResultsXibInit(quiz_name: String, quiz_result: QuizResults) {
-        quizNameLabel.text = "Quiz: \(quiz_name)"
-        
-        quizId = quiz_result.quizId
+    func quizResultsXibInit(quiz_name: String, quiz_result: QuizResults, quiz_results: [QuizResults], number_of_questions: Int) {
         quizResult = quiz_result
+        
+        for result in quiz_results {
+            overallscore += result.score
+        }
+        
+        quizNameLabel.text = "Quiz: \(quiz_name)"
+        overallScoreLabel.text = "User's overall score for this quiz: \(overallscore)/\(quiz_results.count*10)"
+        quizIterationScore.text = "Score: \(quizResult?.score)/10"
+        numberOfQuestionsLabel.text = "Questions answered over total questions: \(quiz_results.count*10)/\(number_of_questions)"
         
     }
     
     @IBAction func returnToQuizDetailsButtonPressed(_ sender: UIButton) {
-        print("quiz id returning to: \(quizId!)")
-        self.delegate?.goBackToQuizDetails(quiz_id: quizId!)
+        print("quiz id returning to: \(quizResult?.score)")
+        self.delegate?.goBackToQuizDetails(quiz_id: quizResult!.quizId)
     }
     
     @IBAction func viewQuestionResultsButtonPressed(_ sender: UIButton) {
         if let quiz_result = quizResult {
-            print("viewing quiz '\(quizNameLabel.text)' iteration \(quiz_result.quizIteration)")
+            print("viewing quiz '\(quizNameLabel.text)' iteration \(quizResult?.quizIteration)")
         }
     }
 }

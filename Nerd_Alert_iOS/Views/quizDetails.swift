@@ -23,12 +23,13 @@ class quizDetails: UIView {
     @IBOutlet weak var quizDescriptionLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var titleOfSourceLabel: UILabel!
+    @IBOutlet weak var numberOfQuestionsLabel: UILabel!
     @IBOutlet weak var homePageButton: UIButton!
     @IBOutlet weak var quizActionButton: UIButton!
     @IBOutlet weak var secondaryQuizActionButton: UIButton!
     
     var quiz_id: Int?
-    
+        
     @IBOutlet var delegate: actionsFromQuizDetailsDelegate?
     
 //    @IBOutlet var delegate: homePageViewDelegate?
@@ -44,6 +45,7 @@ class quizDetails: UIView {
         quizDescriptionLabel.text = description
         sourceLabel.text = "Source: \(source)"
         titleOfSourceLabel.text = title_of_source
+        
         quiz_id = quizId
         
         

@@ -27,6 +27,16 @@ class QuizQuestionSerivce {
                                    })
     }
     
+    func retrieveNumberOfQuizQuestions(_ quiz_id: Int, _ user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/retrieve_number_of_quiz_questions/quiz_id/\(quiz_id)/"
+        
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET", onSuccess: { responseJSON -> Void in
+            onSuccess(responseJSON)
+        }, onFailure: { responseJSON -> Void in
+            onFailure(responseJSON)
+        })
+    }
+    
 //    func injectQuizQuestions(_ questions: Data) {
 //        let commandURL = "/quiz_questions"
 //        

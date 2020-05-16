@@ -64,18 +64,27 @@
                         <action selector="secondaryQuizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="yAY-IP-rdO"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Questions:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEv-E0-Qya">
+                    <rect key="frame" x="20" y="240.5" width="374" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="OEv-E0-Qya" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="0Xk-s6-YJq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UKC-bD-NlL" secondAttribute="trailing" constant="50" id="4rt-6k-S1n"/>
                 <constraint firstItem="ioF-0W-iZx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="6NS-Bd-dLC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tN4-Dq-Vim" secondAttribute="trailing" constant="20" id="ARC-Yq-9qc"/>
                 <constraint firstItem="UKC-bD-NlL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="CiG-Ic-xtT"/>
+                <constraint firstItem="OEv-E0-Qya" firstAttribute="top" secondItem="ioF-0W-iZx" secondAttribute="bottom" constant="20" id="Cmv-jJ-RqD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tN4-Dq-Vim" secondAttribute="bottom" constant="20" id="Nzk-Tz-kmf"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ioF-0W-iZx" secondAttribute="trailing" constant="30" id="OUm-iC-sIP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="io6-ws-5d2" secondAttribute="trailing" constant="30" id="QMp-iE-QWl"/>
                 <constraint firstItem="ppB-XT-DyX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Qzb-51-q2P"/>
                 <constraint firstItem="ZMb-EH-ojL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="USh-Lu-pYe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OEv-E0-Qya" secondAttribute="trailing" constant="20" id="WvH-se-p0T"/>
                 <constraint firstItem="DZQ-v3-2L8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="cMl-So-kWd"/>
                 <constraint firstItem="io6-ws-5d2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="cyR-U9-zJa"/>
                 <constraint firstItem="ppB-XT-DyX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="gox-8O-5uX"/>
@@ -94,6 +103,7 @@
             <connections>
                 <outlet property="createdByLabel" destination="UKC-bD-NlL" id="pev-qB-jVH"/>
                 <outlet property="homePageButton" destination="ppB-XT-DyX" id="Fec-Io-IiY"/>
+                <outlet property="numberOfQuestionsLabel" destination="OEv-E0-Qya" id="MnO-Zi-ffX"/>
                 <outlet property="quizActionButton" destination="tN4-Dq-Vim" id="W35-QI-gIb"/>
                 <outlet property="quizDescriptionLabel" destination="DZQ-v3-2L8" id="UMa-om-TT2"/>
                 <outlet property="quizNameLabel" destination="ZMb-EH-ojL" id="RAc-QU-G8x"/>
