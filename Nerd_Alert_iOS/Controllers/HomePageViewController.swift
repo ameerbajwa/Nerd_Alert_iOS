@@ -29,6 +29,7 @@ class HomePageViewController: UIViewController {
     
     var quizAction: String?
     var changingQuizId: Int?
+    var changingQuizIteration: Int?
     var nameOfQuiz: String?
     var numberOfQuestions: Int?
     
@@ -66,6 +67,14 @@ class HomePageViewController: UIViewController {
             if let vc = segue.destination as? CreateEditQuizQuestionsViewController {
                 vc.quiz_id = changingQuizId
                 vc.user_id = user?.id
+            }
+        }
+        
+        if segue.identifier == "homePageToQuizQuestionResultsSegue" && segue.destination is QuizQuestionResultsViewController {
+            if let vc = segue.destination as? QuizQuestionResultsViewController {
+                vc.quiz_id = changingQuizId
+                vc.user_id = user?.id
+                vc.quiz_iteration = changingQuizIteration
             }
         }
     }
@@ -255,8 +264,10 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
 }
 
 extension HomePageViewController : actionsFromQuizResultsDelegate {
-    func viewQuizQuestionResults() {
-        
+    func viewQuizQuestionResults(quiz_id: Int, quiz_iteration: Int) {
+        changingQuizId = quiz_id
+        changingQuizIteration = quiz_iteration
+        self.performSegue(withIdentifier: "homePageToQuizQuestionResultsSegue", sender: nil)
     }
     
     func goBackToQuizDetails(quiz_id: Int) {

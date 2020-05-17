@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol actionsFromQuizResultsDelegate {
-    func viewQuizQuestionResults()
+    func viewQuizQuestionResults(quiz_id: Int, quiz_iteration: Int)
     func goBackToQuizDetails(quiz_id: Int)
 }
 
@@ -47,6 +47,7 @@ class quizResults: UIView {
     @IBAction func viewQuestionResultsButtonPressed(_ sender: UIButton) {
         if let quiz_result = quizResult {
             print("viewing quiz '\(quizNameLabel.text)' iteration \(quizResult?.quizIteration)")
+            self.delegate?.viewQuizQuestionResults(quiz_id: quizResult!.quizId, quiz_iteration: quizResult!.quizIteration)
         }
     }
 }

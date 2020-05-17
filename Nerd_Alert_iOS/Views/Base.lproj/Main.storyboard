@@ -481,6 +481,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ca-H8-rM3">
                                 <rect key="frame" x="10" y="10" width="41" height="30"/>
                                 <state key="normal" title="Home"/>
+                                <connections>
+                                    <action selector="homeButtonPressed:" destination="EiA-Sa-kFa" eventType="touchUpInside" id="WTG-hw-2U7"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1q-NM-n9H">
                                 <rect key="frame" x="20" y="75" width="374" height="30"/>
@@ -533,10 +536,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-aB-BVz">
                                 <rect key="frame" x="10" y="788" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="EiA-Sa-kFa" eventType="touchUpInside" id="C7r-tT-GLz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-iv-Tar">
                                 <rect key="frame" x="372" y="788" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="EiA-Sa-kFa" eventType="touchUpInside" id="gO0-9Z-utD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -575,6 +584,17 @@
                         <viewLayoutGuide key="safeArea" id="edG-Hg-gae"/>
                     </view>
                     <navigationItem key="navigationItem" id="t5r-pn-xv8"/>
+                    <connections>
+                        <outlet property="choiceALabel" destination="aAe-NQ-M9F" id="5eL-BD-hFH"/>
+                        <outlet property="choiceBLabel" destination="xre-Gl-8KI" id="uZP-i1-EHz"/>
+                        <outlet property="choiceCLabel" destination="fI2-GT-Hhc" id="akk-aV-Rry"/>
+                        <outlet property="choiceDLabel" destination="Uxb-EG-bHT" id="Z8L-Qd-SuQ"/>
+                        <outlet property="nextButton" destination="wU1-iv-Tar" id="Jar-dc-dJ2"/>
+                        <outlet property="questionLabel" destination="ald-s1-d2X" id="A47-0U-O0a"/>
+                        <outlet property="questionNumberLabel" destination="Teh-FD-G1M" id="LCF-Ne-9Pl"/>
+                        <outlet property="quizNameLabel" destination="W1q-NM-n9H" id="gQi-8C-U9o"/>
+                        <outlet property="quizNumberLabel" destination="FyM-6j-jEN" id="OtU-tC-jwT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMv-Ah-hSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -808,7 +828,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zMX-kp-yVn"/>
         <segue reference="Fcn-bh-Vzd"/>
     </inferredMetricsTieBreakers>
 </document>

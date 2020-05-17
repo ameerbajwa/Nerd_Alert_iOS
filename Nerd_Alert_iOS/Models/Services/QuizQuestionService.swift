@@ -37,6 +37,19 @@ class QuizQuestionSerivce {
         })
     }
     
+    func retrieveQuizQuestionsBasedOnIds(question_ids: [String], onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/retrieve_quiz_questions_by_ids"
+        
+        let jsonBody: [String: [String]] = ["question_ids": question_ids]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
+        
+        restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST", onSuccess: { responseJSON -> Void in
+            onSuccess(responseJSON)
+        }, onFailure: { responseJSON -> Void in
+            onFailure(responseJSON)
+        })
+    }
+    
 //    func injectQuizQuestions(_ questions: Data) {
 //        let commandURL = "/quiz_questions"
 //        
