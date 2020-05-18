@@ -35,6 +35,10 @@ class QuizQuestionResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print("user id: \(user_id!)")
+//        print("quiz id: \(quiz_id!)")
+//        print("quiz iteration: \(quiz_iteration!)")
 
         quizQuestionResultsService.retrieveQuizQuestionsResults(user_id!, quiz_id!, quiz_iteration!, onSuccess: { (response) in
             print("retrieveQuizQuestionsResults API call successful")

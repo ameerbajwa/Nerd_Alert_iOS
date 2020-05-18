@@ -39,15 +39,15 @@ class quizDetails: UIView {
         // change any label, button viewing
     }
 
-    func quizDetailsXibInit(quizId: Int, quiz_name: String, created_by: String, description: String, source: String, title_of_source: String, username: String?) {
+    func quizDetailsXibInit(quizId: Int, quiz_name: String, created_by: String, description: String, source: String, title_of_source: String, username: String?, numberOfQuestions: Int) {
         quizNameLabel.text = quiz_name
         createdByLabel.text = "Created By: \(created_by)"
         quizDescriptionLabel.text = description
         sourceLabel.text = "Source: \(source)"
         titleOfSourceLabel.text = title_of_source
+        numberOfQuestionsLabel.text = "Number of Questions: \(numberOfQuestions)"
         
         quiz_id = quizId
-        
         
         if username == created_by {
             quizActionButton.setTitle("Add/Edit Quiz Questions", for: .normal)

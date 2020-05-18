@@ -34,7 +34,7 @@ class quizResults: UIView {
         
         quizNameLabel.text = "Quiz: \(quiz_name)"
         overallScoreLabel.text = "User's overall score for this quiz: \(overallscore)/\(quiz_results.count*10)"
-        quizIterationScore.text = "Score: \(quizResult?.score)/10"
+        quizIterationScore.text = "Score: \(quizResult!.score)/10"
         numberOfQuestionsLabel.text = "Questions answered over total questions: \(quiz_results.count*10)/\(number_of_questions)"
         
     }

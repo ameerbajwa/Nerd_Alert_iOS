@@ -38,7 +38,7 @@ class QuizQuestionsResultsService {
     }
     
     func retrieveQuizQuestionsResults(_ userId: Int, _ quizId: Int, _ quizIteration: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
-        let commandURL = "retrieve_user_question_results"
+        let commandURL = "/retrieve_user_question_results"
         
         let jsonBody: [String: Int] = ["user_id": userId,
                                        "quiz_id": quizId,
