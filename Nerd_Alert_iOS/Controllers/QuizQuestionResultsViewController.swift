@@ -28,32 +28,37 @@ class QuizQuestionResultsViewController: UIViewController {
     var quizQuestionService = QuizQuestionSerivce()
     
     var quizQuestionResult: QuizQuestionsResults?
-    var quizQuestionResults: [QuizQuestionsResults] = []
+//    var quizQuestionResults: [QuizQuestionsResults] = []
+    var quizQuestionResults: [String: Any]?
     var questionIds: [String] = []
-    var quizQuestion: QuizQuestion?
-    var quizQuestions: [QuizQuestion] = []
+    var questionNumber: Int = 0
+//    var quizQuestion: QuizQuestion?
+//    var quizQuestions: [QuizQuestion] = []
+    
+    var quizQuestions: [String: Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print("user id: \(user_id!)")
-//        print("quiz id: \(quiz_id!)")
-//        print("quiz iteration: \(quiz_iteration!)")
 
         quizQuestionResultsService.retrieveQuizQuestionsResults(user_id!, quiz_id!, quiz_iteration!, onSuccess: { (response) in
             print("retrieveQuizQuestionsResults API call successful")
-            print(response)
+            print(response.count)
             
             for i in response.keys {
                 self.quizQuestionResult = QuizQuestionsResults(json: response[i] as! [String : Any])
                 self.questionIds.append(self.quizQuestionResult!.questionId)
-                self.quizQuestionResults.append(self.quizQuestionResult!)
+//                self.quizQuestionResults.append(self.quizQuestionResult!)
             }
+            self.quizQuestionResults = response
             
             DispatchQueue.main.async {
                 self.quizQuestionService.retrieveQuizQuestionsBasedOnIds(question_ids: self.questionIds, onSuccess: { (response) in
                     print("retrieveQuizQuestionsBasedOnIds API call successful")
-                    print(response)
+                    print(response.count)
+                    
+                    self.quizQuestions = response
+                    self.changingQuestions()
+                    
                 }, onFailure: { (error) in
                     print("ERROR retrieveQuizQuestionsBasedOnIds API call unsuccessful")
                     print(error)
@@ -76,6 +81,10 @@ class QuizQuestionResultsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func changingQuestions() {
+        
+    }
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
     }
