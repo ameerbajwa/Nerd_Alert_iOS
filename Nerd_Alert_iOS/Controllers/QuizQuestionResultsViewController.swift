@@ -37,6 +37,9 @@ class QuizQuestionResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(questionNumber)
+        backButton.isHidden = true
 
         quizQuestionResultsService.retrieveQuizQuestionsResults(user_id!, quiz_id!, quiz_iteration!, onSuccess: { (response) in
             print("retrieveQuizQuestionsResults API call successful")
@@ -71,12 +74,31 @@ class QuizQuestionResultsViewController: UIViewController {
         })
     }
     
+    func changingLabelColors(answer: String, color: UIColor, information: [String: Any]) {
+        switch information[answer] as? String {
+        case "A.":
+            choiceALabel.backgroundColor = color
+        case "B.":
+            choiceBLabel.backgroundColor = color
+        case "C.":
+            choiceCLabel.backgroundColor = color
+        case "D.":
+            choiceDLabel.backgroundColor = color
+        default:
+            choiceALabel.backgroundColor = UIColor.white
+            choiceBLabel.backgroundColor = UIColor.white
+            choiceCLabel.backgroundColor = UIColor.white
+            choiceDLabel.backgroundColor = UIColor.white
+        }
+    }
+    
     func changingQuestions() {
         
         quizNumberLabel.text = "Quiz #\(quiz_iteration!)"
         questionNumberLabel.text = "Question #\(questionNumber+1)"
         
         let question_info = quizQuestions[questionIds[questionNumber]]! as! [String: Any]
+        let user_question_info = quizQuestionResults[questionIds[questionNumber]]! as! [String: Any]
         
         questionLabel.text = question_info["question"] as? String
         choiceALabel.text = question_info["choice_A"] as? String
@@ -88,78 +110,12 @@ class QuizQuestionResultsViewController: UIViewController {
         choiceBLabel.backgroundColor = UIColor.white
         choiceCLabel.backgroundColor = UIColor.white
         choiceDLabel.backgroundColor = UIColor.white
-        
-        func changingLabelColors(answer: String, color: UIColor) {
-            switch question_info[answer] as? String {
-            case "A.":
-                choiceALabel.backgroundColor = color
-            case "B.":
-                choiceBLabel.backgroundColor = color
-            case "C.":
-                choiceCLabel.backgroundColor = color
-            case "D.":
-                choiceDLabel.backgroundColor = color
-            default:
-                choiceALabel.backgroundColor = UIColor.white
-                choiceBLabel.backgroundColor = UIColor.white
-                choiceCLabel.backgroundColor = UIColor.white
-                choiceDLabel.backgroundColor = UIColor.white
-            }
-        }
-        
 
-        if question_info["correct_answer"] as? String == question_info["user_answer"] as? String {
-//            switch question_info["correct_answer"] {
-//            case "A.":
-//                choiceALabel.backgroundColor = UIColor.green
-//            case "B.":
-//                choiceBLabel.backgroundColor = UIColor.green
-//            case "C.":
-//                choiceCLabel.backgroundColor = UIColor.green
-//            case "D.":
-//                choiceDLabel.backgroundColor = UIColor.green
-//            default:
-//                choiceALabel.backgroundColor = UIColor.white
-//                choiceBLabel.backgroundColor = UIColor.white
-//                choiceCLabel.backgroundColor = UIColor.white
-//                choiceDLabel.backgroundColor = UIColor.white
-//            }
-            changingLabelColors(answer: "correct_answer", color: UIColor.green)
+        if question_info["correct_answer"] as? String == user_question_info["user_answer"] as? String {
+            changingLabelColors(answer: "correct_answer", color: UIColor.green, information: question_info)
         } else {
-            changingLabelColors(answer: "correct_answer", color: UIColor.green)
-            changingLabelColors(answer: "user_answer", color: UIColor.red)
-
-//            switch question_info["correct_answer"] {
-//            case "A.":
-//                choiceALabel.backgroundColor = UIColor.green
-//            case "B.":
-//                choiceBLabel.backgroundColor = UIColor.green
-//            case "C.":
-//                choiceCLabel.backgroundColor = UIColor.green
-//            case "D.":
-//                choiceDLabel.backgroundColor = UIColor.green
-//            default:
-//                choiceALabel.backgroundColor = UIColor.white
-//                choiceBLabel.backgroundColor = UIColor.white
-//                choiceCLabel.backgroundColor = UIColor.white
-//                choiceDLabel.backgroundColor = UIColor.white
-//            }
-            
-//            switch question_info["user_answer"] {
-//            case "A.":
-//                choiceALabel.backgroundColor = UIColor.red
-//            case "B.":
-//                choiceBLabel.backgroundColor = UIColor.red
-//            case "C.":
-//                choiceCLabel.backgroundColor = UIColor.red
-//            case "D.":
-//                choiceDLabel.backgroundColor = UIColor.red
-//            default:
-//                choiceALabel.backgroundColor = UIColor.white
-//                choiceBLabel.backgroundColor = UIColor.white
-//                choiceCLabel.backgroundColor = UIColor.white
-//                choiceDLabel.backgroundColor = UIColor.white
-//            }
+            changingLabelColors(answer: "correct_answer", color: UIColor.green, information: question_info)
+            changingLabelColors(answer: "user_answer", color: UIColor.red, information: user_question_info)
         }
         
     }
@@ -169,7 +125,8 @@ class QuizQuestionResultsViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        if questionNumber > 1 {
+        print(questionNumber)
+        if questionNumber > 0 {
             questionNumber -= 1
             changingQuestions()
         } else {
@@ -178,6 +135,7 @@ class QuizQuestionResultsViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
+        print(questionNumber)
         backButton.isHidden = false
         if questionNumber < 9 {
             questionNumber += 1
