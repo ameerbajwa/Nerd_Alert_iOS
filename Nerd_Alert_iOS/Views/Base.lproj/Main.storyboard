@@ -585,6 +585,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="t5r-pn-xv8"/>
                     <connections>
+                        <outlet property="backButton" destination="FzI-aB-BVz" id="DvO-5f-le6"/>
                         <outlet property="choiceALabel" destination="aAe-NQ-M9F" id="5eL-BD-hFH"/>
                         <outlet property="choiceBLabel" destination="xre-Gl-8KI" id="uZP-i1-EHz"/>
                         <outlet property="choiceCLabel" destination="fI2-GT-Hhc" id="akk-aV-Rry"/>

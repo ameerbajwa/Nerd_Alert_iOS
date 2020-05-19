@@ -19,6 +19,7 @@ class QuizQuestionResultsViewController: UIViewController {
     @IBOutlet weak var choiceCLabel: UILabel!
     @IBOutlet weak var choiceDLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var quiz_id: Int?
     var user_id: Int?
@@ -28,14 +29,11 @@ class QuizQuestionResultsViewController: UIViewController {
     var quizQuestionService = QuizQuestionSerivce()
     
     var quizQuestionResult: QuizQuestionsResults?
-//    var quizQuestionResults: [QuizQuestionsResults] = []
-    var quizQuestionResults: [String: Any]?
+    var quizQuestionResults: [String: Any] = [:]
     var questionIds: [String] = []
     var questionNumber: Int = 0
-//    var quizQuestion: QuizQuestion?
-//    var quizQuestions: [QuizQuestion] = []
     
-    var quizQuestions: [String: Any]?
+    var quizQuestions: [String: Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +55,9 @@ class QuizQuestionResultsViewController: UIViewController {
                     print(response.count)
                     
                     self.quizQuestions = response
-                    self.changingQuestions()
+                    DispatchQueue.main.async {
+                        self.changingQuestions()
+                    }
                     
                 }, onFailure: { (error) in
                     print("ERROR retrieveQuizQuestionsBasedOnIds API call unsuccessful")
@@ -71,28 +71,121 @@ class QuizQuestionResultsViewController: UIViewController {
         })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func changingQuestions() {
+        
+        quizNumberLabel.text = "Quiz #\(quiz_iteration!)"
+        questionNumberLabel.text = "Question #\(questionNumber+1)"
+        
+        let question_info = quizQuestions[questionIds[questionNumber]]! as! [String: Any]
+        
+        questionLabel.text = question_info["question"] as? String
+        choiceALabel.text = question_info["choice_A"] as? String
+        choiceBLabel.text = question_info["choice_B"] as? String
+        choiceCLabel.text = question_info["choice_C"] as? String
+        choiceDLabel.text = question_info["choice_D"] as? String
+        
+        choiceALabel.backgroundColor = UIColor.white
+        choiceBLabel.backgroundColor = UIColor.white
+        choiceCLabel.backgroundColor = UIColor.white
+        choiceDLabel.backgroundColor = UIColor.white
+        
+        func changingLabelColors(answer: String, color: UIColor) {
+            switch question_info[answer] as? String {
+            case "A.":
+                choiceALabel.backgroundColor = color
+            case "B.":
+                choiceBLabel.backgroundColor = color
+            case "C.":
+                choiceCLabel.backgroundColor = color
+            case "D.":
+                choiceDLabel.backgroundColor = color
+            default:
+                choiceALabel.backgroundColor = UIColor.white
+                choiceBLabel.backgroundColor = UIColor.white
+                choiceCLabel.backgroundColor = UIColor.white
+                choiceDLabel.backgroundColor = UIColor.white
+            }
+        }
+        
+
+        if question_info["correct_answer"] as? String == question_info["user_answer"] as? String {
+//            switch question_info["correct_answer"] {
+//            case "A.":
+//                choiceALabel.backgroundColor = UIColor.green
+//            case "B.":
+//                choiceBLabel.backgroundColor = UIColor.green
+//            case "C.":
+//                choiceCLabel.backgroundColor = UIColor.green
+//            case "D.":
+//                choiceDLabel.backgroundColor = UIColor.green
+//            default:
+//                choiceALabel.backgroundColor = UIColor.white
+//                choiceBLabel.backgroundColor = UIColor.white
+//                choiceCLabel.backgroundColor = UIColor.white
+//                choiceDLabel.backgroundColor = UIColor.white
+//            }
+            changingLabelColors(answer: "correct_answer", color: UIColor.green)
+        } else {
+            changingLabelColors(answer: "correct_answer", color: UIColor.green)
+            changingLabelColors(answer: "user_answer", color: UIColor.red)
+
+//            switch question_info["correct_answer"] {
+//            case "A.":
+//                choiceALabel.backgroundColor = UIColor.green
+//            case "B.":
+//                choiceBLabel.backgroundColor = UIColor.green
+//            case "C.":
+//                choiceCLabel.backgroundColor = UIColor.green
+//            case "D.":
+//                choiceDLabel.backgroundColor = UIColor.green
+//            default:
+//                choiceALabel.backgroundColor = UIColor.white
+//                choiceBLabel.backgroundColor = UIColor.white
+//                choiceCLabel.backgroundColor = UIColor.white
+//                choiceDLabel.backgroundColor = UIColor.white
+//            }
+            
+//            switch question_info["user_answer"] {
+//            case "A.":
+//                choiceALabel.backgroundColor = UIColor.red
+//            case "B.":
+//                choiceBLabel.backgroundColor = UIColor.red
+//            case "C.":
+//                choiceCLabel.backgroundColor = UIColor.red
+//            case "D.":
+//                choiceDLabel.backgroundColor = UIColor.red
+//            default:
+//                choiceALabel.backgroundColor = UIColor.white
+//                choiceBLabel.backgroundColor = UIColor.white
+//                choiceCLabel.backgroundColor = UIColor.white
+//                choiceDLabel.backgroundColor = UIColor.white
+//            }
+        }
         
     }
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        if questionNumber > 1 {
+            questionNumber -= 1
+            changingQuestions()
+        } else {
+            backButton.isHidden = true
+        }
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
+        backButton.isHidden = false
+        if questionNumber < 9 {
+            questionNumber += 1
+            changingQuestions()
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+
     }
     
 }
