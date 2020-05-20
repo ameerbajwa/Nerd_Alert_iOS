@@ -31,6 +31,8 @@
 		DEC24510246786F700BD333F /* CreateEditQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */; };
 		DEC245122469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */; };
 		DEC2451424708B6100BD333F /* QuizQuestionResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */; };
+		DEC245162475E58400BD333F /* quizQuestionDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC245152475E58400BD333F /* quizQuestionDetails.xib */; };
+		DEC245182475E5B700BD333F /* quizQuestionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC245172475E5B700BD333F /* quizQuestionDetails.swift */; };
 		DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18A243C22BA00E57D60 /* QuizService.swift */; };
 		DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */; };
 		DEFDCC9C2435B2B800366CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */; };
@@ -93,6 +95,8 @@
 		DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizViewController.swift; sourceTree = "<group>"; };
 		DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizQuestionsViewController.swift; sourceTree = "<group>"; };
 		DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionResultsViewController.swift; sourceTree = "<group>"; };
+		DEC245152475E58400BD333F /* quizQuestionDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = quizQuestionDetails.xib; sourceTree = "<group>"; };
+		DEC245172475E5B700BD333F /* quizQuestionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizQuestionDetails.swift; sourceTree = "<group>"; };
 		DED9D18A243C22BA00E57D60 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
 		DED9D18C243CD52900E57D60 /* QuizQuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionService.swift; sourceTree = "<group>"; };
 		DEFDCC982435B2B800366CA5 /* Nerd_Alert_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerd_Alert_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +281,8 @@
 				DE8A5965244D04D200EA3EC4 /* quizDetails.swift */,
 				DE09315E245A6B18004FCDE1 /* quizResults.xib */,
 				DE093160245A6B27004FCDE1 /* quizResults.swift */,
+				DEC245152475E58400BD333F /* quizQuestionDetails.xib */,
+				DEC245172475E5B700BD333F /* quizQuestionDetails.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				DEFDCCA82435B2BC00366CA5 /* LaunchScreen.storyboard in Resources */,
 				DE09315F245A6B18004FCDE1 /* quizResults.xib in Resources */,
 				DE093149244D6183004FCDE1 /* homePage.xib in Resources */,
+				DEC245162475E58400BD333F /* quizQuestionDetails.xib in Resources */,
 				DEFDCCA52435B2BC00366CA5 /* Assets.xcassets in Resources */,
 				DEFDCCA32435B2B800366CA5 /* Main.storyboard in Resources */,
 				DE8A5964244CFBB200EA3EC4 /* quizDetails.xib in Resources */,
@@ -538,6 +545,7 @@
 				DEC24510246786F700BD333F /* CreateEditQuizViewController.swift in Sources */,
 				DEC2451424708B6100BD333F /* QuizQuestionResultsViewController.swift in Sources */,
 				DE0931592454C0D8004FCDE1 /* QuizResults.swift in Sources */,
+				DEC245182475E5B700BD333F /* quizQuestionDetails.swift in Sources */,
 				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
 				DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */,
 				DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */,

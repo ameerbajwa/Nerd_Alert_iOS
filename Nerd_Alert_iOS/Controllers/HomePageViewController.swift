@@ -14,6 +14,7 @@ class HomePageViewController: UIViewController {
     var referenceToHomePageView: homePage?
     var referenceToQuizDetailsView : quizDetails?
     var referenceToQuizResultsView: quizResults?
+    var referenceToQuizQuestionDetailsView: quizQuestionDetails?
     
     @IBOutlet weak var quizTableView: UITableView!
     var quizSerivce = QuizService()
@@ -210,6 +211,17 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
     }
     
     func goToAddEditQuizQuestionsPage(quiz_id: Int) {
+        
+        if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
+            topHalfView.addSubview(referenceToQuizQuestionDetailsView)
+            referenceToQuizQuestionDetailsView.frame.size.height = topHalfView.frame.size.height
+            referenceToQuizQuestionDetailsView.frame.size.width = topHalfView.frame.size.width
+//            referenceToQuizQuestionDetailsView.delegate = self
+//            referenceToQuizQuestionDetailsView.homePageXibInit(username: user!.username)
+                        
+        } else {
+            print("could not load xib file")
+        }
         
     }
     

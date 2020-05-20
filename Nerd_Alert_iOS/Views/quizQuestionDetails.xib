@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="quizQuestionDetails" customModule="Nerd_Alert_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsE-Eg-ixM">
+                    <rect key="frame" x="20" y="10" width="111" height="30"/>
+                    <state key="normal" title="Back to Quizzes"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scA-av-kSe">
+                    <rect key="frame" x="364" y="10" width="30" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="+"/>
+                    <connections>
+                        <action selector="addQuestionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="T0Y-02-ogz"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJa-5Z-e4T">
+                    <rect key="frame" x="20" y="74" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaW-D0-fIK">
+                    <rect key="frame" x="30" y="145" width="354" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZN6-zq-y8B">
+                    <rect key="frame" x="30" y="253" width="354" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ne2-TT-Mr8">
+                    <rect key="frame" x="20" y="304" width="374" height="30"/>
+                    <state key="normal" title="Edit Question"/>
+                    <connections>
+                        <action selector="editQuestionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Qcw-Bh-qJd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="QaW-D0-fIK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="1wv-eW-lTI"/>
+                <constraint firstItem="QaW-D0-fIK" firstAttribute="top" secondItem="IJa-5Z-e4T" secondAttribute="bottom" constant="50" id="Ptx-CG-yrx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZN6-zq-y8B" secondAttribute="trailing" constant="30" id="Q6A-DD-DlV"/>
+                <constraint firstItem="Ne2-TT-Mr8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="TpQ-AL-mqp"/>
+                <constraint firstItem="bsE-Eg-ixM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="W3V-Ro-rYb"/>
+                <constraint firstAttribute="trailing" secondItem="scA-av-kSe" secondAttribute="trailing" constant="20" id="YiJ-16-k9c"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IJa-5Z-e4T" secondAttribute="trailing" constant="20" id="ZyI-m9-XAo"/>
+                <constraint firstItem="bsE-Eg-ixM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="bLb-a3-NqU"/>
+                <constraint firstItem="IJa-5Z-e4T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="d5r-6s-kbf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QaW-D0-fIK" secondAttribute="trailing" constant="30" id="eah-yR-bCn"/>
+                <constraint firstItem="scA-av-kSe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="fsf-wn-Wbe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Ne2-TT-Mr8" secondAttribute="bottom" constant="20" id="huV-Rs-oLs"/>
+                <constraint firstItem="ZN6-zq-y8B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="mwx-cQ-uFp"/>
+                <constraint firstItem="Ne2-TT-Mr8" firstAttribute="top" secondItem="ZN6-zq-y8B" secondAttribute="bottom" constant="30" id="syS-eP-PD0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ne2-TT-Mr8" secondAttribute="trailing" constant="20" id="ve7-I3-hhG"/>
+                <constraint firstItem="IJa-5Z-e4T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="xpT-ny-hhe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="correctAnswerLabel" destination="ZN6-zq-y8B" id="dlx-Oe-CIh"/>
+                <outlet property="questionLabel" destination="QaW-D0-fIK" id="p3z-t3-Gxh"/>
+                <outlet property="quizNameLabel" destination="IJa-5Z-e4T" id="TKb-sk-aRa"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="-34.821428571428569"/>
+        </view>
+    </objects>
+</document>
