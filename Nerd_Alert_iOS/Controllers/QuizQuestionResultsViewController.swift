@@ -38,7 +38,6 @@ class QuizQuestionResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(questionNumber)
         backButton.isHidden = true
 
         quizQuestionResultsService.retrieveQuizQuestionsResults(user_id!, quiz_id!, quiz_iteration!, onSuccess: { (response) in
@@ -125,22 +124,21 @@ class QuizQuestionResultsViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        print(questionNumber)
-        if questionNumber > 0 {
-            questionNumber -= 1
-            changingQuestions()
-        } else {
+        questionNumber -= 1
+        changingQuestions()
+
+        if questionNumber == 0 {
             backButton.isHidden = true
         }
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
-        print(questionNumber)
         backButton.isHidden = false
         if questionNumber < 9 {
             questionNumber += 1
             changingQuestions()
         } else {
+            nextButton.setTitle("Finish", for: .normal)
             navigationController?.popViewController(animated: true)
         }
 
