@@ -11,9 +11,9 @@ import UIKit
 @objc protocol actionsFromQuizDetailsDelegate {
     func gettingHomePageView()
     func goToQuizPage(quiz_id: Int, quiz_name: String)
-    func goToAddEditQuizQuestionsPage(quiz_id: Int)
+    func goToAddEditQuizQuestionsView(quiz_id: Int, quiz_name: String)
     func goToEditQuizPage(quiz_id: Int, action: String)
-    func goToQuizResults(quiz_id: Int, quiz_name: String)
+    func goToQuizResultsView(quiz_id: Int, quiz_name: String)
 }
 
 class quizDetails: UIView {
@@ -63,8 +63,8 @@ class quizDetails: UIView {
         if quiz_id != nil {
             if quizActionButton.titleLabel?.text == "Add/Edit Quiz Questions" { // usersQuizzesInstance.usersQuizzes == true
                 print("edit quiz: \(quizNameLabel.text!)")
-                self.delegate?.goToAddEditQuizQuestionsPage(quiz_id: quiz_id!)
-            } else {
+                self.delegate?.goToAddEditQuizQuestionsView(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+            } else if quizActionButton.titleLabel?.text == "Take Quiz" {
                 print("taking quiz: \(quizNameLabel.text!)")
                 self.delegate?.goToQuizPage(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
             }
@@ -80,8 +80,8 @@ class quizDetails: UIView {
         
         if secondaryQuizActionButton.titleLabel?.text == "Edit Quiz Details" {
             self.delegate?.goToEditQuizPage(quiz_id: quiz_id!, action: "Edit")
-        } else {
-            self.delegate?.goToQuizResults(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
+        } else if secondaryQuizActionButton.titleLabel?.text == "View Quiz Results" {
+            self.delegate?.goToQuizResultsView(quiz_id: quiz_id!, quiz_name: quizNameLabel.text!)
         }
 
     }

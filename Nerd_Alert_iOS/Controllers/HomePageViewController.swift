@@ -26,6 +26,9 @@ class HomePageViewController: UIViewController {
     var quiz: Quiz?
     var quizScores: [QuizResults] = []
     var quizScore: QuizResults?
+    var quizQuestions: [QuizQuestion] = []
+    var quizQuestion: QuizQuestion?
+    
     var table: String = "Quizzes"
     
     var quizAction: String?
@@ -82,6 +85,8 @@ class HomePageViewController: UIViewController {
 
 }
 
+// TABLEVIEW DELEGATE FUNCTIONS
+
 extension HomePageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if table == "Quizzes" {
@@ -126,6 +131,18 @@ extension HomePageViewController: UITableViewDelegate {
             } else {
                 print("xib file could not load to the topHalfView")
             }
+        } else if table == "My Quiz Questions" {
+            
+            if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
+                self.topHalfView.addSubview(referenceToQuizQuestionDetailsView)
+                referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
+                referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
+                referenceToQuizQuestionDetailsView.delegate = self
+                referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_name: nameOfQuiz!, question_label: quizQuestions[indexPath.row].question, correct_answer_label: quizQuestions[indexPath.row].correctAnswer)
+                            
+            } else {
+                print("could not load xib file")
+            }
         }
     }
 }
@@ -136,8 +153,8 @@ extension HomePageViewController: UITableViewDataSource {
             return quizzes.count
         } else if table == "Quiz Results" {
             return quizScores.count
-        } else {
-            return 0
+        } else if table == "My Quiz Questions" {
+            return quizQuestions.count
         }
     }
     
@@ -147,11 +164,15 @@ extension HomePageViewController: UITableViewDataSource {
             cell.textLabel?.text = quizzes[indexPath.row].name
         } else if table == "Quiz Results" {
             cell.textLabel?.text = "Quiz Iteration \(quizScores[indexPath.row].quizIteration)"
+        } else if table == "My Quiz Questions" {
+            cell.textLabel?.text = "Question: \(quizQuestions[indexPath.row].question)"
         }
         return cell
     }
         
 }
+
+// HOMEPAGE DELEGATE FUNCTIONS
 
 extension HomePageViewController: homePageDelegate {
     func retrievingQuizzes(users_quizzes: Bool) {
@@ -183,6 +204,8 @@ extension HomePageViewController: homePageDelegate {
     }
 }
 
+// ACTIONS FROM QUIZDETAILS VIEW XIB DELEGATE FUNCTIONS
+
 extension HomePageViewController: actionsFromQuizDetailsDelegate {
     
     func gettingHomePageView() {
@@ -210,18 +233,42 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
 
     }
     
-    func goToAddEditQuizQuestionsPage(quiz_id: Int) {
+    func goToAddEditQuizQuestionsView(quiz_id: Int, quiz_name: String) {
         
-        if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
-            topHalfView.addSubview(referenceToQuizQuestionDetailsView)
-            referenceToQuizQuestionDetailsView.frame.size.height = topHalfView.frame.size.height
-            referenceToQuizQuestionDetailsView.frame.size.width = topHalfView.frame.size.width
-//            referenceToQuizQuestionDetailsView.delegate = self
-//            referenceToQuizQuestionDetailsView.homePageXibInit(username: user!.username)
-                        
-        } else {
-            print("could not load xib file")
-        }
+        nameOfQuiz = quiz_name
+        quizQuestions = []
+        
+        quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, onSuccess: { (response) in
+            print("retrieveQuizQuestions API call successful in retrieving my questions for my quiz")
+            print(response)
+            
+            for i in response.keys {
+                self.quizQuestion = QuizQuestion(json: response[i] as! [String: Any])
+                self.quizQuestions.append(self.quizQuestion!)
+            }
+            
+            DispatchQueue.main.async {
+                self.table = "My Quiz Questions"
+                self.quizTableView.reloadData()
+                
+                if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
+                    self.topHalfView.addSubview(referenceToQuizQuestionDetailsView)
+                    referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
+                    referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
+                    referenceToQuizQuestionDetailsView.delegate = self
+                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_name: quiz_name, question_label: self.quizQuestions[0].question, correct_answer_label: self.quizQuestions[0].correctAnswer)
+                                
+                } else {
+                    print("could not load xib file")
+                }
+            }
+            
+        }, onFailure: { (error) in
+            print("ERROR retrieveQuizQuestions API call unsuccessful in retreving my questions for my quiz")
+            print(error)
+        })
+        
+
         
     }
     
@@ -231,7 +278,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         self.performSegue(withIdentifier: "homePageToCreateEditQuizSegue", sender: nil)
     }
     
-    func goToQuizResults(quiz_id: Int, quiz_name: String) {
+    func goToQuizResultsView(quiz_id: Int, quiz_name: String) {
         
         nameOfQuiz = quiz_name
         quizScores = []
@@ -274,6 +321,8 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         
     }
 }
+
+// ACTIONS FROM QUIZRESULTS VIEW XIB DELEGATE FUNCTIONS
 
 extension HomePageViewController : actionsFromQuizResultsDelegate {
     func viewQuizQuestionResults(quiz_id: Int, quiz_iteration: Int) {
@@ -325,4 +374,19 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
         })
         
     }
+}
+
+
+// ACTION FROM QUIZQUESTIONDETAILS VIEW XIB DELEGATE FUNCTIONS
+
+extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
+    
+    func goToCreateEditQuestionScreen() {
+        <#code#>
+    }
+    
+    func goBackToQuizDetailsView() {
+        
+    }
+    
 }

@@ -11,6 +11,7 @@ import UIKit
 
 @objc protocol actionsFromQuizQuestionDetailsDelegate {
     func goToCreateEditQuestionScreen()
+    func goBackToQuizDetailsView()
 }
 
 class quizQuestionDetails: UIView {
@@ -25,10 +26,16 @@ class quizQuestionDetails: UIView {
         // la di da
     }
     
-    func quizQuestionDetailsXibInit() {
+    func quizQuestionDetailsXibInit(quiz_name: String, question_label: String, correct_answer_label: String) {
+        quizNameLabel.text = "Quiz: \(quiz_name)"
+        questionLabel.text = "Question: \(question_label)"
+        correctAnswerLabel.text = "Correct Answer: \(correct_answer_label)"
         
     }
     
+    @IBAction func backToQuizzesButtonPressed(_ sender: UIButton) {
+        self.delegate?.goBackToQuizDetailsView()
+    }
     
     @IBAction func addQuestionButtonPressed(_ sender: UIButton) {
     }

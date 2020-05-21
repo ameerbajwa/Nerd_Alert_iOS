@@ -12,33 +12,10 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     
     var quiz_id: Int?
     var user_id: Int?
-    
-    var quizService = QuizService()
-    var quizQuestionService = QuizQuestionSerivce()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        quizService.retreiveQuiz(quiz_id!, onSuccess: { (response) in
-            print("retrieveQuiz API call succesful for editing quiz")
-            print(response)
-            
-            DispatchQueue.main.async {
-                self.quizQuestionService.retrieveQuizQuestions(self.quiz_id!, self.user_id!, onSuccess: { (response) in
-                    print("retrieveQuizQuestions API call succesful for editing quiz")
-                    print(response.count)
-                    
-                    
-                }, onFailure: { (error) in
-                    print("error in retrieveQuizQuestions API call")
-                    print(error)
-                })
-            }
-            
-        }, onFailure: { (error) in
-            print("error in retrieveQuiz API call")
-            print(error)
-        })
     }
     
 
