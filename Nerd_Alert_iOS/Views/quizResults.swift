@@ -10,8 +10,12 @@ import UIKit
 
 @objc protocol actionsFromQuizResultsDelegate {
     func viewQuizQuestionResults(quiz_id: Int, quiz_iteration: Int)
-    func goBackToQuizDetails(quiz_id: Int)
+//    func goBackToQuizDetails(quiz_id: Int)
 }
+//
+//@objc protocol backToQuizDetailsDelegate {
+//    func goBackToQuizDetailsView(quiz_id: Int)
+//}
 
 class quizResults: UIView {
     
@@ -21,6 +25,7 @@ class quizResults: UIView {
     @IBOutlet weak var numberOfQuestionsLabel: UILabel!
     
     @IBOutlet var delegate: actionsFromQuizResultsDelegate?
+    @IBOutlet var quizDetailsDelegate: backToQuizDetailsDelegate?
     
     var quizResult: QuizResults?
     var overallscore: Int = 0
@@ -41,7 +46,8 @@ class quizResults: UIView {
     
     @IBAction func returnToQuizDetailsButtonPressed(_ sender: UIButton) {
         print("quiz id returning to: \(quizResult?.score)")
-        self.delegate?.goBackToQuizDetails(quiz_id: quizResult!.quizId)
+//        self.delegate?.goBackToQuizDetails(quiz_id: quizResult!.quizId)
+        self.quizDetailsDelegate?.goBackToQuizDetailsView(quiz_id: quizResult!.quizId)
     }
     
     @IBAction func viewQuestionResultsButtonPressed(_ sender: UIButton) {

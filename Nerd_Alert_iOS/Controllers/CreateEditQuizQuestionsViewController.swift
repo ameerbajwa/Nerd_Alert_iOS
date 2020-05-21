@@ -10,6 +10,14 @@ import UIKit
 
 class CreateEditQuizQuestionsViewController: UIViewController {
     
+    @IBOutlet weak var questionTextField: UITextField!
+    @IBOutlet weak var choiceATextField: UITextField!
+    @IBOutlet weak var choiceBTextField: UITextField!
+    @IBOutlet weak var choiceCTextField: UITextField!
+    @IBOutlet weak var choiceDTextField: UITextField!
+    @IBOutlet weak var correctAnswerTextField: UITextField!
+    @IBOutlet weak var actionButton: UIButton!
+    
     var quiz_id: Int?
     var user_id: Int?
 
@@ -28,5 +36,9 @@ class CreateEditQuizQuestionsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+    }
 }

@@ -330,8 +330,24 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
         changingQuizIteration = quiz_iteration
         self.performSegue(withIdentifier: "homePageToQuizQuestionResultsSegue", sender: nil)
     }
+}
+
+
+// ACTION FROM QUIZQUESTIONDETAILS VIEW XIB DELEGATE FUNCTIONS
+
+extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
     
-    func goBackToQuizDetails(quiz_id: Int) {
+    func goToCreateEditQuestionScreen() {
+        self.performSegue(withIdentifier: "homePageToCreateEditQuizQuestionSegue", sender: nil)
+    }
+    
+}
+
+// DELEGATE FUNCTION FOR GOING BACK TO QUIZ DETAILS XIB VIEW
+
+extension HomePageViewController: backToQuizDetailsDelegate {
+    
+    func goBackToQuizDetailsView(quiz_id: Int) {
         
         quizQuestionService.retrieveNumberOfQuizQuestions(quiz_id, user!.id, onSuccess: { (response) in
             print("retrieveNumberOfQuizQuestions API call successful")
@@ -372,20 +388,6 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
             print("ERROR retrieveNumberOfQuizQuestions API call unsucessful")
             print(error)
         })
-        
-    }
-}
-
-
-// ACTION FROM QUIZQUESTIONDETAILS VIEW XIB DELEGATE FUNCTIONS
-
-extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
-    
-    func goToCreateEditQuestionScreen() {
-        <#code#>
-    }
-    
-    func goBackToQuizDetailsView() {
         
     }
     

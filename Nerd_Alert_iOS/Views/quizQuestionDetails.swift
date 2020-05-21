@@ -11,7 +11,11 @@ import UIKit
 
 @objc protocol actionsFromQuizQuestionDetailsDelegate {
     func goToCreateEditQuestionScreen()
-    func goBackToQuizDetailsView()
+//    func goBackToQuizDetailsView(quiz_id: Int)
+}
+
+@objc protocol backToQuizDetailsDelegate {
+    func goBackToQuizDetailsView(quiz_id: Int)
 }
 
 class quizQuestionDetails: UIView {
@@ -21,6 +25,7 @@ class quizQuestionDetails: UIView {
     @IBOutlet weak var correctAnswerLabel: UILabel!
     
     @IBOutlet var delegate: actionsFromQuizQuestionDetailsDelegate?
+    @IBOutlet var goBackToQuizDetailsDelegate: backToQuizDetailsDelegate?
     
     override class func awakeFromNib() {
         // la di da
@@ -34,7 +39,7 @@ class quizQuestionDetails: UIView {
     }
     
     @IBAction func backToQuizzesButtonPressed(_ sender: UIButton) {
-        self.delegate?.goBackToQuizDetailsView()
+        self.goBackToQuizDetailsDelegate?.goBackToQuizDetailsView(quiz_id: )
     }
     
     @IBAction func addQuestionButtonPressed(_ sender: UIButton) {
