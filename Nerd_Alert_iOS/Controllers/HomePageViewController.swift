@@ -34,6 +34,7 @@ class HomePageViewController: UIViewController {
     var quizAction: String?
     var changingQuizId: Int?
     var changingQuizIteration: Int?
+    var changingQuestionId: String?
     var nameOfQuiz: String?
     var numberOfQuestions: Int?
     
@@ -81,6 +82,14 @@ class HomePageViewController: UIViewController {
                 vc.quiz_iteration = changingQuizIteration
             }
         }
+        
+        if segue.identifier == "homePageToCreateEditQuizQuestionsSegue" && segue.destination is CreateEditQuizQuestionsViewController {
+            if let vc = segue.destination as? CreateEditQuizQuestionsViewController {
+                vc.quiz_id = changingQuizId
+                vc.question_id = changingQuestionId
+                vc.user_id = user?.id
+            }
+        }
     }
 
 }
@@ -92,6 +101,7 @@ extension HomePageViewController: UITableViewDelegate {
         if table == "Quizzes" {
             print(quizzes[indexPath.row].description)
             numberOfQuestions = 0
+            changingQuizId = quizzes[indexPath.row].id
             // display all the quiz details on the top half of the screen
             
             quizQuestionService.retrieveNumberOfQuizQuestions(quizzes[indexPath.row].id, user!.id, onSuccess: { (response) in
@@ -138,7 +148,7 @@ extension HomePageViewController: UITableViewDelegate {
                 referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
                 referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
                 referenceToQuizQuestionDetailsView.delegate = self
-                referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_name: nameOfQuiz!, question_label: quizQuestions[indexPath.row].question, correct_answer_label: quizQuestions[indexPath.row].correctAnswer)
+                referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: changingQuizId!, quiz_name: nameOfQuiz!, question_id: quizQuestions[indexPath.row].id, question_label: quizQuestions[indexPath.row].question, correct_answer_label: quizQuestions[indexPath.row].correctAnswer)
                             
             } else {
                 print("could not load xib file")
@@ -155,6 +165,8 @@ extension HomePageViewController: UITableViewDataSource {
             return quizScores.count
         } else if table == "My Quiz Questions" {
             return quizQuestions.count
+        } else {
+            return 0
         }
     }
     
@@ -256,7 +268,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
                     referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
                     referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
                     referenceToQuizQuestionDetailsView.delegate = self
-                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_name: quiz_name, question_label: self.quizQuestions[0].question, correct_answer_label: self.quizQuestions[0].correctAnswer)
+                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quiz_name, question_id: self.quizQuestions[0].id, question_label: self.quizQuestions[0].question, correct_answer_label: self.quizQuestions[0].correctAnswer)
                                 
                 } else {
                     print("could not load xib file")
@@ -325,11 +337,13 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
 // ACTIONS FROM QUIZRESULTS VIEW XIB DELEGATE FUNCTIONS
 
 extension HomePageViewController : actionsFromQuizResultsDelegate {
+    
     func viewQuizQuestionResults(quiz_id: Int, quiz_iteration: Int) {
         changingQuizId = quiz_id
         changingQuizIteration = quiz_iteration
         self.performSegue(withIdentifier: "homePageToQuizQuestionResultsSegue", sender: nil)
     }
+    
 }
 
 
@@ -337,7 +351,10 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
 
 extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
     
-    func goToCreateEditQuestionScreen() {
+    func goToCreateEditQuestionScreen(quiz_id: Int, question_id: String) {
+        changingQuizId = quiz_id
+        changingQuestionId = question_id
+        
         self.performSegue(withIdentifier: "homePageToCreateEditQuizQuestionSegue", sender: nil)
     }
     

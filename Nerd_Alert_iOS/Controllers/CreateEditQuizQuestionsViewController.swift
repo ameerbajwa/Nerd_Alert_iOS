@@ -19,10 +19,15 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton!
     
     var quiz_id: Int?
+    var question_id: String?
     var user_id: Int?
+    
+    var quizQuestionService = QuizQuestionSerivce()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
     }
     
