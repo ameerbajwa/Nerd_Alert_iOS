@@ -29,19 +29,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJa-5Z-e4T">
-                    <rect key="frame" x="20" y="74" width="374" height="21"/>
+                    <rect key="frame" x="20" y="94" width="374" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaW-D0-fIK">
-                    <rect key="frame" x="30" y="145" width="354" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaW-D0-fIK">
+                    <rect key="frame" x="30" y="165" width="354" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZN6-zq-y8B">
-                    <rect key="frame" x="30" y="253" width="354" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZN6-zq-y8B">
+                    <rect key="frame" x="30" y="253.5" width="354" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                 <constraint firstItem="ZN6-zq-y8B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="mwx-cQ-uFp"/>
                 <constraint firstItem="Ne2-TT-Mr8" firstAttribute="top" secondItem="ZN6-zq-y8B" secondAttribute="bottom" constant="30" id="syS-eP-PD0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ne2-TT-Mr8" secondAttribute="trailing" constant="20" id="ve7-I3-hhG"/>
-                <constraint firstItem="IJa-5Z-e4T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="xpT-ny-hhe"/>
+                <constraint firstItem="IJa-5Z-e4T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="xpT-ny-hhe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

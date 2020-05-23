@@ -29,9 +29,9 @@ class CreateEditQuizQuestionsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true);
         
-        if let questionId = question_id {
+        if question_id != "0" {
             actionButton.setTitle("Save Question", for: .normal)
-            quizQuestionService.retrieveQuizQuestion(question_id: questionId, onSuccess: { (response) in
+            quizQuestionService.retrieveQuizQuestion(question_id: question_id!, onSuccess: { (response) in
                 print("retrieveQuizQuestion API call successful")
                 print(response)
                 

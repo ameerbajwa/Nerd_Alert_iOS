@@ -39,6 +39,7 @@ class HomePageViewController: UIViewController {
     var changingQuestionId: String?
     var nameOfQuiz: String?
     var numberOfQuestions: Int?
+    var correctAnswerLabel: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,13 +133,29 @@ class HomePageViewController: UIViewController {
             }
         }
         
-        if segue.identifier == "homePageToCreateEditQuizQuestionsSegue" && segue.destination is CreateEditQuizQuestionsViewController {
+        if segue.identifier == "homePageToCreateEditQuizQuestionSegue" && segue.destination is CreateEditQuizQuestionsViewController {
             if let vc = segue.destination as? CreateEditQuizQuestionsViewController {
                 vc.quiz_id = changingQuizId
                 vc.question_id = changingQuestionId
                 vc.user_id = user?.id
             }
         }
+    }
+    
+    func creatingCorrectAnswerLabel(quiz_question: QuizQuestion) {
+        
+        switch quiz_question.correctAnswer {
+        case "A.":
+            correctAnswerLabel = "\(quiz_question.choiceA!)"
+        case "B.":
+            correctAnswerLabel = "\(quiz_question.choiceB!)"
+        case "C.":
+            correctAnswerLabel = "\(quiz_question.choiceC!)"
+        case "D.":
+            correctAnswerLabel = "\(quiz_question.choiceD!)"
+        default: break
+        }
+        
     }
     
     @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
@@ -196,12 +213,14 @@ extension HomePageViewController: UITableViewDelegate {
             }
         } else if table == "My Quiz Questions" {
             
+            creatingCorrectAnswerLabel(quiz_question: quizQuestions[indexPath.row])
+            
             if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
                 self.topHalfView.addSubview(referenceToQuizQuestionDetailsView)
                 referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
                 referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
                 referenceToQuizQuestionDetailsView.delegate = self
-                referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: changingQuizId!, quiz_name: nameOfQuiz!, question_id: quizQuestions[indexPath.row].id, question_label: quizQuestions[indexPath.row].question, correct_answer_label: quizQuestions[indexPath.row].correctAnswer)
+                referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: changingQuizId!, quiz_name: nameOfQuiz!, question_id: quizQuestions[indexPath.row].id, question_label: quizQuestions[indexPath.row].question, correct_answer_label: correctAnswerLabel!)
                             
             } else {
                 print("could not load xib file")
@@ -314,15 +333,16 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             
             DispatchQueue.main.async {
                 self.table = "My Quiz Questions"
-                print(self.quizQuestions.count)
                 self.quizTableView.reloadData()
+                
+                self.creatingCorrectAnswerLabel(quiz_question: self.quizQuestions[0])
                 
                 if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
                     self.topHalfView.addSubview(referenceToQuizQuestionDetailsView)
                     referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
                     referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
                     referenceToQuizQuestionDetailsView.delegate = self
-                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quiz_name, question_id: self.quizQuestions[0].id, question_label: self.quizQuestions[0].question, correct_answer_label: self.quizQuestions[0].correctAnswer)
+                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quiz_name, question_id: self.quizQuestions[0].id, question_label: self.quizQuestions[0].question, correct_answer_label: self.correctAnswerLabel!)
                                 
                 } else {
                     print("could not load xib file")
