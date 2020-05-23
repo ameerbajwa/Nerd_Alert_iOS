@@ -303,7 +303,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         nameOfQuiz = quiz_name
         quizQuestions = []
         
-        quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, "Editing Questions", onSuccess: { (response) in
+        quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, "Editing_Questions", onSuccess: { (response) in
             print("retrieveQuizQuestions API call successful in retrieving my questions for my quiz")
             print(response)
             

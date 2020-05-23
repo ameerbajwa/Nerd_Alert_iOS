@@ -56,7 +56,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         
         self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
-        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, "Taking Quiz", onSuccess: { (response) in
+        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, "Taking_Quiz", onSuccess: { (response) in
             print("From Swift Application: retrieveQuizQuestions function called")
             print(response.count)
             
