@@ -27,6 +27,7 @@ class CreateEditQuizQuestionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true);
         
         if let questionId = question_id {
             actionButton.setTitle("Save Question", for: .normal)
@@ -82,4 +83,5 @@ class CreateEditQuizQuestionsViewController: UIViewController {
             
         }
     }
+    
 }

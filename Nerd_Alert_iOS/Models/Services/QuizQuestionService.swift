@@ -35,13 +35,13 @@ class QuizQuestionSerivce {
     }
     
     
-    func retrieveQuizQuestions(_ quiz_id: Int, _ user_id: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
-        let commandURL = "/retrieve_quiz_questions"
+    func retrieveQuizQuestions(_ quiz_id: Int, _ user_id: Int, _ quiz_action: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/retrieve_quiz_questions/quizId/\(quiz_id)/userId/\(user_id)/\(quiz_action)"
         
-        let jsonBody: [String: Int] = ["quiz_id": quiz_id, "user_id": user_id]
-        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
+//        let jsonBody: [String: Int] = ["quiz_id": quiz_id, "user_id": user_id]
+//        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
         
-        restAPIManager.httpRequest(url: commandURL, body: jsonData, method: "POST",
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET",
                                    onSuccess: { responseJSON -> Void in
                                        onSuccess(responseJSON)
                                    },

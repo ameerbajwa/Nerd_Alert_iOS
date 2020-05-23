@@ -43,6 +43,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true);
         
         self.choiceAButton.layer.cornerRadius = 10
         self.choiceAButton.layer.borderWidth = 3
@@ -55,7 +56,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         
         self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
-        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, onSuccess: { (response) in
+        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, "Taking Quiz", onSuccess: { (response) in
             print("From Swift Application: retrieveQuizQuestions function called")
             print(response.count)
             

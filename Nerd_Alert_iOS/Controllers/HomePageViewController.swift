@@ -10,6 +10,8 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
+    @IBOutlet weak var signOut: UIBarButtonItem!
+    
     @IBOutlet weak var topHalfView: UIView!
     var referenceToHomePageView: homePage?
     var referenceToQuizDetailsView : quizDetails?
@@ -41,12 +43,59 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("home page view controller called")
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         gettingHomePageView()
         retrievingQuizzes(users_quizzes: usersQuizzesInstance.usersQuizzes)
         quizTableView.dataSource = self
         quizTableView.delegate = self
         
+    }
+    
+    func referenceBackToQuizDetailsView(quizId: Int) {
+        
+        print("in homepage view controller goBackToQuizDetailsView Delegate function")
+        print(quizId)
+        
+        quizQuestionService.retrieveNumberOfQuizQuestions(quizId, user!.id, onSuccess: { (response) in
+            print("retrieveNumberOfQuizQuestions API call successful")
+            print(response)
+            
+            self.numberOfQuestions = response["number of questions in quiz"] as? Int
+            
+            DispatchQueue.main.async {
+                self.quizSerivce.retreiveQuiz(quizId, onSuccess: { (response) in
+                    print("retrieveQuiz API call successful")
+                    print(response)
+                    
+                    DispatchQueue.main.async {
+                        if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
+                            self.topHalfView.addSubview(referenceToQuizDetailsView)
+                            referenceToQuizDetailsView.frame.size.height = self.topHalfView.frame.size.height
+                            referenceToQuizDetailsView.frame.size.width = self.topHalfView.frame.size.width
+                            referenceToQuizDetailsView.delegate = self
+                            referenceToQuizDetailsView.quizDetailsXibInit(quizId: response["quiz_id"] as! Int, quiz_name: response["quiz_name"] as! String, created_by: response["createdBy"] as! String, description: response["quiz_description"] as! String, source: response["source"] as! String, title_of_source: response["title_of_source"] as! String, username: self.user?.username, numberOfQuestions: self.numberOfQuestions!)
+                            
+                            DispatchQueue.main.async {
+                                self.table = "Quizzes"
+                                self.quizTableView.reloadData()
+                            }
+                            
+                        } else {
+                            print("xib file could not load to the topHalfView")
+                        }
+                    }
+                    
+                }, onFailure: { (error) in
+                    print("retreiveQuiz API call unsuccessful")
+                    print(error)
+                })
+            }
+            
+        }, onFailure: { (error) in
+            print("ERROR retrieveNumberOfQuizQuestions API call unsucessful")
+            print(error)
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,7 +140,11 @@ class HomePageViewController: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
 }
 
 // TABLEVIEW DELEGATE FUNCTIONS
@@ -250,7 +303,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         nameOfQuiz = quiz_name
         quizQuestions = []
         
-        quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, onSuccess: { (response) in
+        quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, "Editing Questions", onSuccess: { (response) in
             print("retrieveQuizQuestions API call successful in retrieving my questions for my quiz")
             print(response)
             
@@ -261,6 +314,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             
             DispatchQueue.main.async {
                 self.table = "My Quiz Questions"
+                print(self.quizQuestions.count)
                 self.quizTableView.reloadData()
                 
                 if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
@@ -338,6 +392,10 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
 
 extension HomePageViewController : actionsFromQuizResultsDelegate {
     
+    func goBackToQuizDetailsView(quiz_id: Int) {
+        referenceBackToQuizDetailsView(quizId: quiz_id)
+    }
+    
     func viewQuizQuestionResults(quiz_id: Int, quiz_iteration: Int) {
         changingQuizId = quiz_id
         changingQuizIteration = quiz_iteration
@@ -351,6 +409,10 @@ extension HomePageViewController : actionsFromQuizResultsDelegate {
 
 extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
     
+    func backToQuizDetailsView(quiz_id: Int) {
+        referenceBackToQuizDetailsView(quizId: quiz_id)
+    }
+    
     func goToCreateEditQuestionScreen(quiz_id: Int, question_id: String) {
         changingQuizId = quiz_id
         changingQuestionId = question_id
@@ -362,50 +424,7 @@ extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
 
 // DELEGATE FUNCTION FOR GOING BACK TO QUIZ DETAILS XIB VIEW
 
-extension HomePageViewController: backToQuizDetailsDelegate {
-    
-    func goBackToQuizDetailsView(quiz_id: Int) {
-        
-        quizQuestionService.retrieveNumberOfQuizQuestions(quiz_id, user!.id, onSuccess: { (response) in
-            print("retrieveNumberOfQuizQuestions API call successful")
-            print(response)
-            
-            self.numberOfQuestions = response["number of questions in quiz"] as? Int
-            
-            DispatchQueue.main.async {
-                self.quizSerivce.retreiveQuiz(quiz_id, onSuccess: { (response) in
-                    print("retrieveQuiz API call successful")
-                    print(response)
-                    
-                    DispatchQueue.main.async {
-                        if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
-                            self.topHalfView.addSubview(referenceToQuizDetailsView)
-                            referenceToQuizDetailsView.frame.size.height = self.topHalfView.frame.size.height
-                            referenceToQuizDetailsView.frame.size.width = self.topHalfView.frame.size.width
-                            referenceToQuizDetailsView.delegate = self
-                            referenceToQuizDetailsView.quizDetailsXibInit(quizId: response["quiz_id"] as! Int, quiz_name: response["quiz_name"] as! String, created_by: response["createdBy"] as! String, description: response["quiz_description"] as! String, source: response["source"] as! String, title_of_source: response["title_of_source"] as! String, username: self.user?.username, numberOfQuestions: self.numberOfQuestions!)
-                            
-                            DispatchQueue.main.async {
-                                self.table = "Quizzes"
-                                self.quizTableView.reloadData()
-                            }
-                            
-                        } else {
-                            print("xib file could not load to the topHalfView")
-                        }
-                    }
-                    
-                }, onFailure: { (error) in
-                    print("retreiveQuiz API call unsuccessful")
-                    print(error)
-                })
-            }
-            
-        }, onFailure: { (error) in
-            print("ERROR retrieveNumberOfQuizQuestions API call unsucessful")
-            print(error)
-        })
-        
-    }
-    
-}
+//extension HomePageViewController: backToQuizDetailsDelegate {
+//
+//
+//}

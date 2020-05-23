@@ -258,9 +258,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CzM-c0-fGg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6ap-E8-S8J"/>
+                    <navigationItem key="navigationItem" id="6ap-E8-S8J">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="pw2-GZ-TQF">
+                            <connections>
+                                <action selector="signOutButtonPressed:" destination="Aau-hP-ra0" id="cJC-wB-FQL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="quizTableView" destination="P1E-L7-Xze" id="dkZ-Sw-VoI"/>
+                        <outlet property="signOut" destination="pw2-GZ-TQF" id="Sir-IR-cP6"/>
                         <outlet property="topHalfView" destination="Ro7-us-KIl" id="0dV-XI-CIF"/>
                         <segue destination="fJd-cc-gI1" kind="show" identifier="homePageToQuizSegue" id="zMX-kp-yVn"/>
                         <segue destination="G9p-ql-hh4" kind="show" identifier="homePageToCreateEditQuizSegue" id="L4r-Dm-Kyt"/>

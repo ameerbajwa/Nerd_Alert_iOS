@@ -26,9 +26,10 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true);
 
         // Do any additional setup after loading the view.
-        quizDescriptionTextField.frame.size.height = 200
+//        quizDescriptionTextField.frame.size.height = 200
         
         if action == "Edit" {
             if let quiz_id = quizId {
@@ -111,5 +112,6 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
     
 }

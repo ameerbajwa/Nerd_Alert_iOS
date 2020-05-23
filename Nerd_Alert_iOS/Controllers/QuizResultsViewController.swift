@@ -34,10 +34,10 @@ class QuizResultsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        for i in 0...9 {
-            print(quizQuestions[i])
-            print(usersAnswers[i])
-        }
+//        for i in 0...9 {
+//            print(quizQuestions[i])
+//            print(usersAnswers[i])
+//        }
         
         for i in 0...9 {
             
