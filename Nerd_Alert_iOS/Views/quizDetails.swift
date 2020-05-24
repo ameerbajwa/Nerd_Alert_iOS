@@ -44,7 +44,7 @@ class quizDetails: UIView {
         createdByLabel.text = "Created By: \(created_by)"
         quizDescriptionLabel.text = description
         sourceLabel.text = "Source: \(source)"
-        titleOfSourceLabel.text = title_of_source
+        titleOfSourceLabel.text = "Title of Source: \(title_of_source)"
         numberOfQuestionsLabel.text = "Number of Questions: \(numberOfQuestions)"
         
         quiz_id = quizId
