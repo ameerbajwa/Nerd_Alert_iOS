@@ -18,6 +18,8 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     @IBOutlet weak var correctAnswerTextView: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var quiz_id: Int?
     var question_id: String?
     var user_id: Int?
@@ -28,6 +30,10 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true);
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         questionTextView.creatingPresentableTextFields(textView: questionTextView)
         choiceATextView.creatingPresentableTextFields(textView: choiceATextView)
@@ -47,7 +53,7 @@ class CreateEditQuizQuestionsViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.questionTextView.text = self.quizQuestion?.question
                     self.choiceATextView.text = self.quizQuestion?.choiceA
-                    self.choiceBTextView.text = self.quizQuestion?.choiceC
+                    self.choiceBTextView.text = self.quizQuestion?.choiceB
                     self.choiceCTextView.text = self.quizQuestion?.choiceC
                     self.choiceDTextView.text = self.quizQuestion?.choiceD
                     self.correctAnswerTextView.text = self.quizQuestion?.correctAnswer
@@ -61,6 +67,23 @@ class CreateEditQuizQuestionsViewController: UIViewController {
             actionButton.setTitle("Add Question", for: .normal)
         }
 
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            scrollView.contentInset = .zero
+        } else {
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
