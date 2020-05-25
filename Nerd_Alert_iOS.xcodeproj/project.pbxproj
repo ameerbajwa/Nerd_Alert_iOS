@@ -28,6 +28,7 @@
 		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
 		DE8A5964244CFBB200EA3EC4 /* quizDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */; };
 		DE8A5966244D04D200EA3EC4 /* quizDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A5965244D04D200EA3EC4 /* quizDetails.swift */; };
+		DE955811247B33DE003EC506 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE955810247B33DE003EC506 /* UITextViewExtension.swift */; };
 		DEC24510246786F700BD333F /* CreateEditQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */; };
 		DEC245122469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */; };
 		DEC2451424708B6100BD333F /* QuizQuestionResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */; };
@@ -92,6 +93,7 @@
 		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = quizDetails.xib; sourceTree = "<group>"; };
 		DE8A5965244D04D200EA3EC4 /* quizDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizDetails.swift; sourceTree = "<group>"; };
+		DE955810247B33DE003EC506 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizViewController.swift; sourceTree = "<group>"; };
 		DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizQuestionsViewController.swift; sourceTree = "<group>"; };
 		DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionResultsViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DE95580F247B33C3003EC506 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE955810247B33DE003EC506 /* UITextViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DEBEC392243A5B4A00CB9FD2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 				DEFDCC9B2435B2B800366CA5 /* AppDelegate.swift */,
 				DEFDCC9D2435B2B800366CA5 /* SceneDelegate.swift */,
 				DEFDCCCE2435B5EC00366CA5 /* Models */,
+				DE95580F247B33C3003EC506 /* Extensions */,
 				DEFDCCCF2435B5FD00366CA5 /* Views */,
 				DEFDCCCD2435B5D800366CA5 /* Controllers */,
 				DEFDCCA42435B2BC00366CA5 /* Assets.xcassets */,
@@ -534,6 +545,7 @@
 				DE09315324520F1B004FCDE1 /* QuizViewController.swift in Sources */,
 				DED9D18B243C22BA00E57D60 /* QuizService.swift in Sources */,
 				DEFDCCD4243640B700366CA5 /* SignUpController.swift in Sources */,
+				DE955811247B33DE003EC506 /* UITextViewExtension.swift in Sources */,
 				DE09315B2454C5A2004FCDE1 /* QuizQuestionResultsService.swift in Sources */,
 				DE0931552454ACFB004FCDE1 /* QuizResultsViewController.swift in Sources */,
 				DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */,

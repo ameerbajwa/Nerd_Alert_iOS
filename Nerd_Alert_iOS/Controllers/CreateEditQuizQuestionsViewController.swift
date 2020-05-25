@@ -10,12 +10,12 @@ import UIKit
 
 class CreateEditQuizQuestionsViewController: UIViewController {
     
-    @IBOutlet weak var questionTextField: UITextField!
-    @IBOutlet weak var choiceATextField: UITextField!
-    @IBOutlet weak var choiceBTextField: UITextField!
-    @IBOutlet weak var choiceCTextField: UITextField!
-    @IBOutlet weak var choiceDTextField: UITextField!
-    @IBOutlet weak var correctAnswerTextField: UITextField!
+    @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var choiceATextView: UITextView!
+    @IBOutlet weak var choiceBTextView: UITextView!
+    @IBOutlet weak var choiceCTextView: UITextView!
+    @IBOutlet weak var choiceDTextView: UITextView!
+    @IBOutlet weak var correctAnswerTextView: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     
     var quiz_id: Int?
@@ -29,6 +29,13 @@ class CreateEditQuizQuestionsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true);
         
+        questionTextView.creatingPresentableTextFields(textView: questionTextView)
+        choiceATextView.creatingPresentableTextFields(textView: choiceATextView)
+        choiceBTextView.creatingPresentableTextFields(textView: choiceBTextView)
+        choiceCTextView.creatingPresentableTextFields(textView: choiceCTextView)
+        choiceDTextView.creatingPresentableTextFields(textView: choiceDTextView)
+        correctAnswerTextView.creatingPresentableTextFields(textView: correctAnswerTextView)
+        
         if question_id != "0" {
             actionButton.setTitle("Save Question", for: .normal)
             quizQuestionService.retrieveQuizQuestion(question_id: question_id!, onSuccess: { (response) in
@@ -38,12 +45,12 @@ class CreateEditQuizQuestionsViewController: UIViewController {
                 self.quizQuestion = QuizQuestion(json: response)
                 
                 DispatchQueue.main.async {
-                    self.questionTextField.text = self.quizQuestion?.question
-                    self.choiceATextField.text = self.quizQuestion?.choiceA
-                    self.choiceBTextField.text = self.quizQuestion?.choiceC
-                    self.choiceCTextField.text = self.quizQuestion?.choiceC
-                    self.choiceDTextField.text = self.quizQuestion?.choiceD
-                    self.correctAnswerTextField.text = self.quizQuestion?.correctAnswer
+                    self.questionTextView.text = self.quizQuestion?.question
+                    self.choiceATextView.text = self.quizQuestion?.choiceA
+                    self.choiceBTextView.text = self.quizQuestion?.choiceC
+                    self.choiceCTextView.text = self.quizQuestion?.choiceC
+                    self.choiceDTextView.text = self.quizQuestion?.choiceD
+                    self.correctAnswerTextView.text = self.quizQuestion?.correctAnswer
                 }
                 
             }, onFailure: {(error) in
@@ -61,10 +68,10 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     }
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
-        if questionTextField.text != "" && choiceATextField.text != "" && choiceBTextField.text != "" && choiceCTextField.text != "" && choiceDTextField.text != "" && correctAnswerTextField.text != "" {
+        if questionTextView.text != "" && choiceATextView.text != "" && choiceBTextView.text != "" && choiceCTextView.text != "" && choiceDTextView.text != "" && correctAnswerTextView.text != "" {
             
             if actionButton.titleLabel?.text == "Add Question" {
-                quizQuestionService.injectQuizQuestion(quiz_id!, questionTextField.text!, choiceATextField.text!, choiceBTextField.text!, choiceCTextField.text!, choiceDTextField.text!, correctAnswerTextField.text!, onSuccess: { (response) in
+                quizQuestionService.injectQuizQuestion(quiz_id!, questionTextView.text!, choiceATextView.text!, choiceBTextView.text!, choiceCTextView.text!, choiceDTextView.text!, correctAnswerTextView.text!, onSuccess: { (response) in
                     print("generateQuizQuestion API call successful")
                     self.navigationController?.popViewController(animated: true)
                 }, onFailure: { (error) in
@@ -72,7 +79,7 @@ class CreateEditQuizQuestionsViewController: UIViewController {
                     print(error)
                 })
             } else if actionButton.titleLabel?.text == "Save Question" {
-                quizQuestionService.reviseQuizQuestion(question_id!, questionTextField.text!, choiceATextField.text!, choiceBTextField.text!, choiceCTextField.text!, choiceDTextField.text!, correctAnswerTextField.text!, onSuccess: { (response) in
+                quizQuestionService.reviseQuizQuestion(question_id!, questionTextView.text!, choiceATextView.text!, choiceBTextView.text!, choiceCTextView.text!, choiceDTextView.text!, correctAnswerTextView.text!, onSuccess: { (response) in
                     print("reviseQuizQuestion API call successful")
                     self.navigationController?.popViewController(animated: true)
                 }, onFailure: { (error) in

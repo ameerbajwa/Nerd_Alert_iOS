@@ -10,10 +10,11 @@ import UIKit
 
 class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var quizNameTextField: UITextField!
-    @IBOutlet weak var titleOfSourceTextField: UITextField!
-    @IBOutlet weak var sourceTextField: UITextField!
-    @IBOutlet weak var quizDescriptionTextField: UITextField!
+    @IBOutlet weak var quizNameTextView: UITextView!
+    @IBOutlet weak var titleOfSourceTextView: UITextView!
+    @IBOutlet weak var sourceTextView: UITextView!
+    @IBOutlet weak var quizDescriptionTextView: UITextView!
+        
     @IBOutlet weak var quizActionButton: UIButton!
     
     var user: User?
@@ -26,10 +27,14 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true);
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        quizNameTextView.creatingPresentableTextFields(textView: quizNameTextView)
+        titleOfSourceTextView.creatingPresentableTextFields(textView: titleOfSourceTextView)
+        sourceTextView.creatingPresentableTextFields(textView: sourceTextView)
+        quizDescriptionTextView.creatingPresentableTextFields(textView: quizDescriptionTextView)
 
         // Do any additional setup after loading the view.
-//        quizDescriptionTextField.frame.size.height = 200
         
         if action == "Edit" {
             if let quiz_id = quizId {
@@ -41,10 +46,10 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
                     
                     DispatchQueue.main.async {
                         if let selectedQuiz = self.quiz {
-                            self.quizNameTextField.text = selectedQuiz.name
-                            self.titleOfSourceTextField.text = selectedQuiz.titleOfSource
-                            self.sourceTextField.text = selectedQuiz.source
-                            self.quizDescriptionTextField.text = selectedQuiz.description
+                            self.quizNameTextView.text = selectedQuiz.name
+                            self.titleOfSourceTextView.text = selectedQuiz.titleOfSource
+                            self.sourceTextView.text = selectedQuiz.source
+                            self.quizDescriptionTextView.text = selectedQuiz.description
                             self.quizActionButton.setTitle("Save Quiz Details", for: .normal)
                         }
                     }
@@ -70,7 +75,7 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
             // API call to update quiz with quiz_id! with the new textfield
             
             if let quiz_id = quizId {
-                quizService.reviseQuiz(quiz_name: quizNameTextField.text!, quiz_description: quizDescriptionTextField.text!, source: sourceTextField.text!, title_of_source: titleOfSourceTextField.text!, quiz_id: quiz_id, onSuccess: { (response) in
+                quizService.reviseQuiz(quiz_name: quizNameTextView.text!, quiz_description: quizDescriptionTextView.text!, source: sourceTextView.text!, title_of_source: titleOfSourceTextView.text!, quiz_id: quiz_id, onSuccess: { (response) in
                     print("reviseQuiz API call to PUT a new quiz to the database was successful")
                     print(response)
                     DispatchQueue.main.async {
@@ -85,7 +90,7 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
             }
             
         } else {
-            quizService.injectQuiz(quiz_name: quizNameTextField.text!, quiz_description: quizDescriptionTextField.text!, source: sourceTextField.text!, title_of_source: titleOfSourceTextField.text!, createdBy: user!.username, createdBy_user_id: user!.id, onSuccess: { (response) in
+            quizService.injectQuiz(quiz_name: quizNameTextView.text!, quiz_description: quizDescriptionTextView.text!, source: sourceTextView.text!, title_of_source: titleOfSourceTextView.text!, createdBy: user!.username, createdBy_user_id: user!.id, onSuccess: { (response) in
                 print("injectQuiz API call to POST a new quiz to the database was successful")
                 print(response)
                 DispatchQueue.main.async {
