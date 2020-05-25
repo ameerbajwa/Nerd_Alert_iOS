@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
+class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var quizNameTextView: UITextView!
     @IBOutlet weak var titleOfSourceTextView: UITextView!
@@ -29,6 +29,7 @@ class CreateEditQuizViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        self.setupToHideKeyboardOnTapOnView()
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(Keyboard), name: Notification.Name.UIResponder.keyboardWillHideNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(Keyboard), name: Notification.Name.UIResponder.keyboardWillChangeFrameNotification, object: nil)

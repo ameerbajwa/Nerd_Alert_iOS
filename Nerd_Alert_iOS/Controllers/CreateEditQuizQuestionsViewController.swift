@@ -29,7 +29,8 @@ class CreateEditQuizQuestionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true);
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.setupToHideKeyboardOnTapOnView()
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)

@@ -23,6 +23,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupToHideKeyboardOnTapOnView()
 
         emailTextField.delegate = self
         usernameTextField.delegate = self

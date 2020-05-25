@@ -21,6 +21,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupToHideKeyboardOnTapOnView()
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
