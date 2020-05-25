@@ -21,6 +21,7 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var quiz_id: Int?
+    var quiz_name: String?
     var question_id: String?
     var user_id: Int?
     
@@ -95,9 +96,13 @@ class CreateEditQuizQuestionsViewController: UIViewController {
         if questionTextView.text != "" && choiceATextView.text != "" && choiceBTextView.text != "" && choiceCTextView.text != "" && choiceDTextView.text != "" && correctAnswerTextView.text != "" {
             
             if actionButton.titleLabel?.text == "Add Question" {
-                quizQuestionService.injectQuizQuestion(quiz_id!, questionTextView.text!, choiceATextView.text!, choiceBTextView.text!, choiceCTextView.text!, choiceDTextView.text!, correctAnswerTextView.text!, onSuccess: { (response) in
+                quizQuestionService.injectQuizQuestion(quiz_id!, questionTextView.text!, "A. \(choiceATextView.text!)", "B. \(choiceBTextView.text!)", "C. \(choiceCTextView.text!)", "D. \(choiceDTextView.text!)", correctAnswerTextView.text!, onSuccess: { (response) in
                     print("generateQuizQuestion API call successful")
-                    self.navigationController?.popViewController(animated: true)
+                    print(response)
+                    self.question_id = response["question_id"] as! String
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "CreateEditQuizQuestionsToHomePage", sender: nil)
+                    }
                 }, onFailure: { (error) in
                     print("ERROR generateQuizQuestion API call unsuccessful")
                     print(error)
@@ -105,13 +110,24 @@ class CreateEditQuizQuestionsViewController: UIViewController {
             } else if actionButton.titleLabel?.text == "Save Question" {
                 quizQuestionService.reviseQuizQuestion(question_id!, questionTextView.text!, choiceATextView.text!, choiceBTextView.text!, choiceCTextView.text!, choiceDTextView.text!, correctAnswerTextView.text!, onSuccess: { (response) in
                     print("reviseQuizQuestion API call successful")
-                    self.navigationController?.popViewController(animated: true)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "CreateEditQuizQuestionsToHomePage", sender: nil)
+                    }
                 }, onFailure: { (error) in
                     print("ERROR reviseQuizQuestion API call unsuccessful")
                     print(error)
                 })
             }
             
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreateEditQuizQuestionsToHomePage" && segue.destination is HomePageViewController {
+            if let vc = segue.destination as? HomePageViewController {
+                vc.question_id = question_id!
+                vc.quiz_name = quiz_name!
+            }
         }
     }
     

@@ -24,6 +24,10 @@ class HomePageViewController: UIViewController {
     var quizResultsService = QuizResultsService()
     var user: User?
     
+    var quiz_id: Int?
+    var question_id: String?
+    var quiz_name: String?
+    
     var quizzes: [Quiz] = []
     var quiz: Quiz?
     var quizScores: [QuizResults] = []
@@ -46,11 +50,27 @@ class HomePageViewController: UIViewController {
         print("home page view controller called")
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-        gettingHomePageView()
         retrievingQuizzes(users_quizzes: usersQuizzesInstance.usersQuizzes)
         quizTableView.dataSource = self
         quizTableView.delegate = self
         
+        quizTableView.layer.borderColor = UIColor.gray.cgColor
+        quizTableView.layer.borderWidth = 5.0
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("home page activated")
+        
+        if let quizId = quiz_id {
+            referenceBackToQuizDetailsView(quizId: quizId)
+        } else {
+            if let questionId = question_id {
+                referenceBackToQuizQuestionDetailsView(questionId: questionId, quizName: quiz_name!)
+            } else {
+                gettingHomePageView()
+            }
+        }
     }
     
     func referenceBackToQuizDetailsView(quizId: Int) {
@@ -94,9 +114,48 @@ class HomePageViewController: UIViewController {
             }
             
         }, onFailure: { (error) in
-            print("ERROR retrieveNumberOfQuizQuestions API call unsucessful")
+            print("ERROR retrieveNumberOfQuizQuestions API call unsuccessful")
             print(error)
         })
+    }
+    
+    func referenceBackToQuizQuestionDetailsView(questionId: String, quizName: String) {
+        print("in homepage view controller referencing quiz question details view")
+        print(questionId)
+        
+        quizQuestionService.retrieveQuizQuestion(question_id: questionId, onSuccess: { (response) in
+            print("retrieveQuizQuestion API call successful")
+            print(response)
+            
+            let newQuizQuestion: QuizQuestion?
+            
+            newQuizQuestion = QuizQuestion(json: response)
+            
+            DispatchQueue.main.async {
+                self.table = "My Quiz Questions"
+                self.quizTableView.reloadData()
+                
+                self.creatingCorrectAnswerLabel(quiz_question: newQuizQuestion!)
+                
+                if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
+                    self.topHalfView.addSubview(referenceToQuizQuestionDetailsView)
+                    referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
+                    referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
+                    referenceToQuizQuestionDetailsView.delegate = self
+                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quizName, question_id: newQuizQuestion!.id, question_label: newQuizQuestion!.question, correct_answer_label: self.correctAnswerLabel!)
+                                
+                } else {
+                    print("could not load xib file")
+                }
+            }
+            
+        }, onFailure: { (error) in
+            print("ERROR retrieveQuizQuestion API call unsuccessful")
+        })
+    }
+    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,6 +195,7 @@ class HomePageViewController: UIViewController {
         if segue.identifier == "homePageToCreateEditQuizQuestionSegue" && segue.destination is CreateEditQuizQuestionsViewController {
             if let vc = segue.destination as? CreateEditQuizQuestionsViewController {
                 vc.quiz_id = changingQuizId
+                vc.quiz_name = nameOfQuiz
                 vc.question_id = changingQuestionId
                 vc.user_id = user?.id
             }
@@ -146,13 +206,13 @@ class HomePageViewController: UIViewController {
         
         switch quiz_question.correctAnswer {
         case "A.":
-            correctAnswerLabel = "\(quiz_question.choiceA!)"
+            correctAnswerLabel = "A. \(quiz_question.choiceA!)"
         case "B.":
-            correctAnswerLabel = "\(quiz_question.choiceB!)"
+            correctAnswerLabel = "B. \(quiz_question.choiceB!)"
         case "C.":
-            correctAnswerLabel = "\(quiz_question.choiceC!)"
+            correctAnswerLabel = "C. \(quiz_question.choiceC!)"
         case "D.":
-            correctAnswerLabel = "\(quiz_question.choiceD!)"
+            correctAnswerLabel = "D. \(quiz_question.choiceD!)"
         default: break
         }
         
@@ -249,6 +309,8 @@ extension HomePageViewController: UITableViewDataSource {
         } else if table == "Quiz Results" {
             cell.textLabel?.text = "Quiz Iteration \(quizScores[indexPath.row].quizIteration)"
         } else if table == "My Quiz Questions" {
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont(name: "New Times Roman", size: 10)
             cell.textLabel?.text = "Question: \(quizQuestions[indexPath.row].question)"
         }
         return cell
@@ -441,10 +503,3 @@ extension HomePageViewController: actionsFromQuizQuestionDetailsDelegate {
     }
     
 }
-
-// DELEGATE FUNCTION FOR GOING BACK TO QUIZ DETAILS XIB VIEW
-
-//extension HomePageViewController: backToQuizDetailsDelegate {
-//
-//
-//}

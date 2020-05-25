@@ -85,13 +85,14 @@ class QuizResultsViewController: UIViewController {
     }
     
     @IBAction func backToHomeButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "quizResultsToHomePageSegue", sender: nil)
+        self.performSegue(withIdentifier: "backToHomePageSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "quizResultsToHomePageSegue" && segue.destination is HomePageViewController {
+        if segue.identifier == "backToHomePageSegue" && segue.destination is HomePageViewController {
             if let vc = segue.destination as? HomePageViewController {
                 vc.user = user
+                vc.quiz_id = quiz_id!
             }
         }
     }

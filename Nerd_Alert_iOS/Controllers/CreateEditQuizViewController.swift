@@ -31,9 +31,6 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.setupToHideKeyboardOnTapOnView()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(Keyboard), name: Notification.Name.UIResponder.keyboardWillHideNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(Keyboard), name: Notification.Name.UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -105,7 +102,7 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
                     print("reviseQuiz API call to PUT a new quiz to the database was successful")
                     print(response)
                     DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
+                        self.performSegue(withIdentifier: "CreateEditQuizToHomePage", sender: nil)
                     }
                     
                 }, onFailure: { (error) in
@@ -120,7 +117,7 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
                 print("injectQuiz API call to POST a new quiz to the database was successful")
                 print(response)
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                    self.performSegue(withIdentifier: "CreateEditQuizToHomePage", sender: nil)
                 }
                 
             }, onFailure: { (error) in
@@ -134,15 +131,16 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "CreateEditQuizToHomePage" && segue.destination is HomePageViewController {
+            if let vc = segue.destination as? HomePageViewController {
+                vc.quiz_id = quizId!
+            }
+        }
     }
-    */
     
     
 }

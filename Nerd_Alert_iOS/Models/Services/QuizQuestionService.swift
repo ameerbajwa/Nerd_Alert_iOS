@@ -16,6 +16,7 @@ class QuizQuestionSerivce {
         let commandURL = "/generate_quiz_questions"
         
         let jsonBody: [String: Any] = [
+                                        "quiz_id": quiz_id,
                                         "question": question,
                                         "choice_A": choice_A,
                                         "choice_B": choice_B,
