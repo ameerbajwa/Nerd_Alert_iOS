@@ -17,7 +17,7 @@ struct QuizQuestion: Decodable {
     var choiceC: String?
     var choiceD: String?
     var correctAnswer: String
-    var dateCreated: String
+    var dateCreated: Date
     
     init(json: [String: Any]) {
         id = json["question_id"] as? String ?? "BLANK"
@@ -28,6 +28,6 @@ struct QuizQuestion: Decodable {
         choiceC = json["choice_C"] as? String ?? "BLANK"
         choiceD = json["choice_D"] as? String ?? "BLANK"
         correctAnswer = json["correct_answer"] as? String ?? "BLANK"
-        dateCreated = json["date_created"] as? String ?? "BLANK"
+        dateCreated = json["date_created"] as? Date ?? Date(timeIntervalSinceNow: 0)
     }
 }

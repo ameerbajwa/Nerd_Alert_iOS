@@ -386,12 +386,29 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         
         quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, "Editing_Questions", onSuccess: { (response) in
             print("retrieveQuizQuestions API call successful in retrieving my questions for my quiz")
-            print(response)
+//            print(response)
+            if let exampleResponse = response["2"] as? [String: Any] {
+                print(type(of: exampleResponse["question_id"]!))
+                print(exampleResponse["question_id"]!)
+                print(type(of: exampleResponse["quiz_id"]!))
+                print(exampleResponse["quiz_id"]!)
+                print(type(of: exampleResponse["date_created"]!))
+                print(exampleResponse["date_created"]!)
+            }
             
             for i in response.keys {
-                self.quizQuestion = QuizQuestion(json: response[i] as! [String: Any])
-                self.quizQuestions.append(self.quizQuestion!)
+                if var question = response[i] as? [String: Any] {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:MM:SS"
+                    print(question["date_created"])
+                    question["date_created"] = dateFormatter.date(from: question["date_created"] as! String)
+                    print(question["date_created"])
+                    
+                    self.quizQuestion = QuizQuestion(json: question)
+                    self.quizQuestions.append(self.quizQuestion!)
+                }
             }
+            print(self.quizQuestions[0].dateCreated)
             
             DispatchQueue.main.async {
                 self.table = "My Quiz Questions"
