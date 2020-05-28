@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -27,37 +27,44 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAA-8F-ctH">
                     <rect key="frame" x="303" y="304" width="81" height="30"/>
-                    <state key="normal" title="Create Quiz"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Create Quiz">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="createQuizButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="R8H-v8-yXC"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-zg-PDq">
-                    <rect key="frame" x="30" y="304" width="55" height="30"/>
-                    <state key="normal" title="Quizzes"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O2D-ar-Cx2">
+                    <rect key="frame" x="20" y="303" width="131" height="32"/>
+                    <segments>
+                        <segment title="First"/>
+                        <segment title="Second"/>
+                    </segments>
                     <connections>
-                        <action selector="quizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="EpH-pW-dNM"/>
+                        <action selector="quizControlChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="OHQ-0d-5pX"/>
                     </connections>
-                </button>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rf5-zg-PDq" secondAttribute="bottom" constant="20" id="1xE-lE-KIU"/>
+                <constraint firstItem="O2D-ar-Cx2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="AIf-pG-QSI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6hT-YO-00W" secondAttribute="trailing" constant="30" id="AcL-RZ-hav"/>
                 <constraint firstItem="6hT-YO-00W" firstAttribute="top" secondItem="hYY-uY-S2d" secondAttribute="bottom" constant="40" id="BMO-vm-F2v"/>
                 <constraint firstItem="6hT-YO-00W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="QJo-rw-B5W"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hYY-uY-S2d" secondAttribute="trailing" constant="30" id="Rds-Bf-WgA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zAA-8F-ctH" secondAttribute="trailing" constant="30" id="Zbr-a1-AsW"/>
                 <constraint firstItem="hYY-uY-S2d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="bKe-Ej-rUu"/>
-                <constraint firstItem="rf5-zg-PDq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="g5t-dL-SLX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zAA-8F-ctH" secondAttribute="bottom" constant="20" id="ijb-31-QrO"/>
                 <constraint firstItem="hYY-uY-S2d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="mg6-9b-huM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O2D-ar-Cx2" secondAttribute="bottom" constant="20" id="qP1-Y6-TCn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="createQuizButton" destination="zAA-8F-ctH" id="adl-1m-k3X"/>
-                <outlet property="quizActionButton" destination="rf5-zg-PDq" id="XyR-DK-n1m"/>
+                <outlet property="quizControl" destination="O2D-ar-Cx2" id="ju9-jl-qjt"/>
                 <outlet property="usernameLabel" destination="6hT-YO-00W" id="eHN-Zl-lAR"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="-28.125"/>
