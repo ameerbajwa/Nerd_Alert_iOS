@@ -15,6 +15,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordAgainTextField: UITextField!
     
+    @IBOutlet weak var invalidLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     
     let userService = UserService()
@@ -24,6 +25,8 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupToHideKeyboardOnTapOnView()
+        invalidLabel.textColor = UIColor.red
+        invalidLabel.isHidden = true
 
         emailTextField.delegate = self
         usernameTextField.delegate = self
@@ -35,23 +38,24 @@ class SignUpController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
+        invalidLabel.isHidden = true
         if emailTextField.text! != "" && usernameTextField.text! != "" && passwordTextField.text! != "" && passwordAgainTextField.text! != "" && passwordTextField.text! == passwordAgainTextField.text! {
             // sign up POST API call
             
             userService.registerUser(emailTextField.text!, usernameTextField.text!, passwordTextField.text!, passwordAgainTextField.text!, onSuccess: {(response) -> Void in
-                print("From Swift Application : registerUser API called")
+                print("registerUser API called successfully")
                 print(response)
                 print("new user created")
                 
                 DispatchQueue.main.async {
                     self.userService.authenticateUser(self.usernameTextField.text!, self.passwordTextField.text!, onSuccess: {(response) -> Void in
-                        print("From Swift Application : authenticateUser API called")
+                        print("authenticateUser API called successfully")
                         print(response)
                         self.accessTokenJSON = response
                             
                         DispatchQueue.main.async {
                             self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
-                                print("From Swift Application : retrieveUserInfo API called")
+                                print("retrieveUserInfo API called successfully")
                                 print(response)
 
                                 self.userInfo = User(json: response)
@@ -60,6 +64,8 @@ class SignUpController: UIViewController, UITextFieldDelegate {
                                     self.userInfo?.accessToken = accessToken
                                 } else {
                                     print("couldn't pass accessToken value to userInfo struct")
+                                    self.invalidLabel.text = "Could not authenticate username and password. Please try another combination."
+                                    self.invalidLabel.isHidden = false
                                 }
                                 
                                 print("user information obtained and ready to be segued to home page view controller")
@@ -72,34 +78,46 @@ class SignUpController: UIViewController, UITextFieldDelegate {
                                         }
                                     } else {
                                         print("user has no id, could not return any information on user")
+                                        self.invalidLabel.text = "Newly created user has no id. Please use another username/password combination or ask the all-mighty creator OneBeer for assistance."
+                                        self.invalidLabel.isHidden = false
                                     }
                                 } else {
                                     print("userInfo class has not been properly populated")
+                                    self.invalidLabel.text = "Server Error. Address the all-mighty creator OneBeer for further inquiries"
+                                    self.invalidLabel.isHidden = false
                                 }
 
                             }) { (error) -> Void in
-                                print("From Swift Application : retrieveUserInfo API called")
+                                print("ERROR retrieveUserInfo API called unsuccessfully")
                                 print(error)
+                                self.invalidLabel.text = "Server Error. Address the all-mighty creator OneBeer for further inquiries"
+                                self.invalidLabel.isHidden = false
                             }
                         }
 
                     },
                         onFailure: { (error) -> Void in
-                           print("From Swift Application : authenticateUser API called")
+                           print("ERROR authenticateUser API called unsuccessfully")
                            print(error)
+                            self.invalidLabel.text = "Authentication of newly created user failed. Address the all-mighty creator OneBeer for further inquiries"
+                            self.invalidLabel.isHidden = false
                         }
                     )
                 }
                 
             },
                 onFailure: { (error) -> Void in
-                   print("From Swift Application : registerUser API called")
+                   print("ERROR registerUser API called unsuccessfully")
                    print(error)
+                    self.invalidLabel.text = "Invalid username/password. Please try another combination."
+                    self.invalidLabel.isHidden = false
             })
             
             //userInfo = userService.retrieveUserInfo()
 //            self.performSegue(withIdentifier: "signUpToHomePage", sender: self)
         } else {
+            invalidLabel.text = "Invalid information. Make sure you fill all necessary fields to sign up please."
+            invalidLabel.isHidden = false
             // send error message that you need to fill all the textfields
         }
     }
@@ -107,8 +125,6 @@ class SignUpController: UIViewController, UITextFieldDelegate {
 //  MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "signUpToHomePage" && segue.destination is HomePageViewController {
             let destinationRVC = segue.destination as! HomePageViewController
             destinationRVC.user = userInfo

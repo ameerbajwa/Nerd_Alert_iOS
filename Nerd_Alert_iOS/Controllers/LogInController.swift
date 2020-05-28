@@ -13,6 +13,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var invalidLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
     
     let userService = UserService()
@@ -22,6 +23,8 @@ class LogInController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupToHideKeyboardOnTapOnView()
+        invalidLabel.textColor = UIColor.red
+        invalidLabel.isHidden = true
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -33,11 +36,11 @@ class LogInController: UIViewController, UITextFieldDelegate {
     @IBAction func logInPressed(_ sender: UIButton) {
         print("Log In Button Pressed")
 
-        if usernameTextField.text != nil && passwordTextField.text != nil {
+        if usernameTextField.text != "" && passwordTextField.text != "" {
             // log in POST API CALL and user information GET API CALL
 
             userService.authenticateUser(usernameTextField.text!, passwordTextField.text!, onSuccess: { (response) -> Void in
-                print("From Swift Application : authenticateUser API called")
+                print("authenticateUser API called successfully")
                 print(response)
                 self.accessTokenJSON = response
                     
@@ -47,7 +50,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
                         self.userInfo?.accessToken = accessToken
                         
                         self.userService.retrieveUserInfo(self.usernameTextField.text!, onSuccess: { (response) -> Void in
-                            print("From Swift Application : retrieveUserInfo API called")
+                            print("retrieveUserInfo API called successfully")
                             print(response)
 
                             self.userInfo = User(json: response)
@@ -68,25 +71,32 @@ class LogInController: UIViewController, UITextFieldDelegate {
                             }
 
                         }) { (error) -> Void in
-                            print("From Swift Application : retrieveUserInfo API called")
+                            print("ERROR retrieveUserInfo API called unsuccessfully")
                             print(error)
                         }
                         
                     } else {
                         print("couldn't pass accessToken value to userInfo struct")
+                        self.invalidLabel.isHidden = false
                     }
                 }
 
             },
                 onFailure: { (error) -> Void in
-                   print("From Swift Application : authenticateUser API called")
-                   print(error)
+                    print("ERROR authenticateUser API called unsuccessfully")
+                    print(error)
+                    DispatchQueue.main.async {
+                        self.invalidLabel.isHidden = false
+                    }
                 }
             )
 
         } else {
             // send error message all textfields need to be filled out
             print("Need to fill out username and password textfields")
+            DispatchQueue.main.async {
+                self.invalidLabel.isHidden = false
+            }
         }
 
     }
