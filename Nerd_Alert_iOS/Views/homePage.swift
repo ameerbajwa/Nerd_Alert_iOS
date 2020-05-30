@@ -31,12 +31,7 @@ class homePage: UIView {
         quizControl.setTitle("Quizzes", forSegmentAt: 0)
         quizControl.setTitle("My Quizzes", forSegmentAt: 1)
         
-        createQuizButton.layer.borderWidth = 3
-        createQuizButton.layer.cornerRadius = 10
-        createQuizButton.layer.borderColor = UIColor.black.cgColor
-        createQuizButton.titleLabel?.textColor = UIColor.black
-        createQuizButton.frame.size.height = 40
-        createQuizButton.frame.size.width = 90
+        createQuizButton.xibViewDisplayButtonDesign(button: createQuizButton)
         createQuizButton.isHidden = true
 //        changingButtonTitles()
         

@@ -24,6 +24,10 @@ class quizQuestionDetails: UIView {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var correctAnswerLabel: UILabel!
     
+    @IBOutlet weak var backToQuizzesButton: UIButton!
+    @IBOutlet weak var addQuestionButton: UIButton!
+    @IBOutlet weak var editQuestionButton: UIButton!
+    
     var questionId: String?
     var quizId: Int?
     
@@ -38,6 +42,9 @@ class quizQuestionDetails: UIView {
         quizNameLabel.text = "Quiz: \(quiz_name)"
         questionLabel.text = "Question: \(question_label)"
         correctAnswerLabel.text = "Correct Answer: \(correct_answer_label)"
+        
+        backToQuizzesButton.xibViewDisplayButtonDesign(button: backToQuizzesButton)
+        editQuestionButton.xibViewDisplayButtonDesign(button: editQuestionButton)
         
         quizId = quiz_id
         questionId = question_id

@@ -13,13 +13,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsE-Eg-ixM">
-                    <rect key="frame" x="20" y="10" width="111" height="30"/>
-                    <state key="normal" title="Back to Quizzes"/>
-                    <connections>
-                        <action selector="backToQuizzesButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="2a8-e6-wiP"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scA-av-kSe">
                     <rect key="frame" x="364" y="10" width="30" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -53,6 +46,13 @@
                         <action selector="editQuestionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Qcw-Bh-qJd"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsE-Eg-ixM">
+                    <rect key="frame" x="20" y="19" width="111" height="30"/>
+                    <state key="normal" title="Back to Quizzes"/>
+                    <connections>
+                        <action selector="backToQuizzesButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="2a8-e6-wiP"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -76,7 +76,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addQuestionButton" destination="scA-av-kSe" id="BBh-If-pQO"/>
+                <outlet property="backToQuizzesButton" destination="bsE-Eg-ixM" id="Wab-iD-Gt7"/>
                 <outlet property="correctAnswerLabel" destination="ZN6-zq-y8B" id="dlx-Oe-CIh"/>
+                <outlet property="editQuestionButton" destination="Ne2-TT-Mr8" id="QFm-ug-3Fy"/>
                 <outlet property="questionLabel" destination="QaW-D0-fIK" id="p3z-t3-Gxh"/>
                 <outlet property="quizNameLabel" destination="IJa-5Z-e4T" id="TKb-sk-aRa"/>
             </connections>

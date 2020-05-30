@@ -16,6 +16,5 @@ extension UITextView {
         textView.layer.borderWidth = 2.5
         textView.clipsToBounds = true
         textView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        
     }
 }

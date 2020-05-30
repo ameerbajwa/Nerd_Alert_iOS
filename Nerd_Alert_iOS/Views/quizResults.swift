@@ -23,6 +23,8 @@ class quizResults: UIView {
     @IBOutlet weak var overallScoreLabel: UILabel!
     @IBOutlet weak var quizIterationScore: UILabel!
     @IBOutlet weak var numberOfQuestionsLabel: UILabel!
+    @IBOutlet weak var goBackToQuizDetailsButton: UIButton!
+    @IBOutlet weak var viewQuestionResultsButton: UIButton!
     
     @IBOutlet var delegate: actionsFromQuizResultsDelegate?
 //    @IBOutlet var quizDetailsDelegate: backToQuizDetailsDelegate?
@@ -41,6 +43,9 @@ class quizResults: UIView {
         overallScoreLabel.text = "User's overall score for this quiz: \(overallscore)/\(quiz_results.count*10)"
         quizIterationScore.text = "Score: \(quizResult!.score)/10"
         numberOfQuestionsLabel.text = "Questions answered over total questions: \(quiz_results.count*10)/\(number_of_questions)"
+        
+        goBackToQuizDetailsButton.xibViewDisplayButtonDesign(button: goBackToQuizDetailsButton)
+        viewQuestionResultsButton.xibViewDisplayButtonDesign(button: viewQuestionResultsButton)
         
     }
     

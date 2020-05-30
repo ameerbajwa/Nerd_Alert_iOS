@@ -30,6 +30,7 @@
 		DE8A5966244D04D200EA3EC4 /* quizDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A5965244D04D200EA3EC4 /* quizDetails.swift */; };
 		DE955811247B33DE003EC506 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE955810247B33DE003EC506 /* UITextViewExtension.swift */; };
 		DE955813247C3E43003EC506 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE955812247C3E43003EC506 /* UIViewControllerExtension.swift */; };
+		DEA794D62481FB0E00D28A49 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA794D52481FB0E00D28A49 /* UIButtonExtension.swift */; };
 		DEC24510246786F700BD333F /* CreateEditQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */; };
 		DEC245122469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */; };
 		DEC2451424708B6100BD333F /* QuizQuestionResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */; };
@@ -96,6 +97,7 @@
 		DE8A5965244D04D200EA3EC4 /* quizDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizDetails.swift; sourceTree = "<group>"; };
 		DE955810247B33DE003EC506 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		DE955812247C3E43003EC506 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		DEA794D52481FB0E00D28A49 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizViewController.swift; sourceTree = "<group>"; };
 		DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizQuestionsViewController.swift; sourceTree = "<group>"; };
 		DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionResultsViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				DE955810247B33DE003EC506 /* UITextViewExtension.swift */,
 				DE955812247C3E43003EC506 /* UIViewControllerExtension.swift */,
+				DEA794D52481FB0E00D28A49 /* UIButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				DEC245182475E5B700BD333F /* quizQuestionDetails.swift in Sources */,
 				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
 				DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */,
+				DEA794D62481FB0E00D28A49 /* UIButtonExtension.swift in Sources */,
 				DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */,
 				DE093163245F6591004FCDE1 /* Error.swift in Sources */,
 				DE093161245A6B27004FCDE1 /* quizResults.swift in Sources */,

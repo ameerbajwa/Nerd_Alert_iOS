@@ -47,6 +47,10 @@ class quizDetails: UIView {
         titleOfSourceLabel.text = "Title of Source: \(title_of_source)"
         numberOfQuestionsLabel.text = "Number of Questions: \(numberOfQuestions)"
         
+        homePageButton.xibViewDisplayButtonDesign(button: homePageButton)
+        secondaryQuizActionButton.xibViewDisplayButtonDesign(button: secondaryQuizActionButton)
+        quizActionButton.xibViewDisplayButtonDesign(button: quizActionButton)
+        
         quiz_id = quizId
         
         if username == created_by {
