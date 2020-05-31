@@ -28,16 +28,12 @@ class QuizResultsViewController: UIViewController {
     var quizQuestionResult: QuizQuestionsResults?
     var quizResults: QuizResults?
     var score: Int = 0
+    var referenceBackToHomePageViewController: String = "Quiz Details"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-//        for i in 0...9 {
-//            print(quizQuestions[i])
-//            print(usersAnswers[i])
-//        }
         
         for i in 0...9 {
             
@@ -92,7 +88,8 @@ class QuizResultsViewController: UIViewController {
         if segue.identifier == "backToHomePageSegue" && segue.destination is HomePageViewController {
             if let vc = segue.destination as? HomePageViewController {
                 vc.user = user
-                vc.quiz_id = quiz_id!
+                vc.changingQuizId = quiz_id!
+                vc.referenceBackToHomePageViewController = referenceBackToHomePageViewController
             }
         }
     }

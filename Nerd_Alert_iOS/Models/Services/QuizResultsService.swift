@@ -47,6 +47,18 @@ class QuizResultsService {
         
     }
     
+    func retrieveQuizResult(userId: Int, quizId: Int, quizIteration: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/retrieve_user_quiz_result/user_id/\(userId)/quiz_id/\(quizId)/quiz_iteration/\(quizIteration)"
+        
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET",
+                                   onSuccess: { responseJSON -> Void in
+                                       onSuccess(responseJSON)
+                                   },
+                                   onFailure: { responseJSON -> Void in
+                                       onFailure(responseJSON)
+                                   })
+    }
+    
     func retrieveQuizIteration(_ userId: Int, _ quizId: Int, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/retrieve_quiz_iteration"
         

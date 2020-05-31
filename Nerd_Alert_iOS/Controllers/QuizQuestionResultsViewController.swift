@@ -34,6 +34,7 @@ class QuizQuestionResultsViewController: UIViewController {
     var questionNumber: Int = 0
     
     var quizQuestions: [String: Any] = [:]
+    var referenceBackToHomePageViewController: String = "My Quiz Results"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +122,8 @@ class QuizQuestionResultsViewController: UIViewController {
     }
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: "quizQuestionResultsViewControllerToHomePageViewController", sender: nil)
+//        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -140,9 +142,20 @@ class QuizQuestionResultsViewController: UIViewController {
             changingQuestions()
         } else {
             nextButton.setTitle("Finish", for: .normal)
-            navigationController?.popViewController(animated: true)
+//            navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "quizQuestionResultsViewControllerToHomePageViewController", sender: nil)
         }
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "quizQuestionResultsViewControllerToHomePageViewController" && segue.destination is HomePageViewController {
+            if let vc = segue.destination as? HomePageViewController {
+                vc.changingQuizId = quiz_id!
+                vc.changingQuizIteration = quiz_iteration!
+                vc.referenceBackToHomePageViewController = referenceBackToHomePageViewController
+            }
+        }
     }
     
 }

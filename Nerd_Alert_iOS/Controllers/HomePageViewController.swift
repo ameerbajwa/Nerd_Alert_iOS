@@ -23,12 +23,7 @@ class HomePageViewController: UIViewController {
     var quizQuestionService = QuizQuestionSerivce()
     var quizResultsService = QuizResultsService()
     var user: User?
-    
-    var quiz_id: Int?
-    var question_id: String?
-    var referenceBackToHomePageViewController: String = "Home Page Details"
-    var quiz_name: String?
-    
+        
     var quizzes: [Quiz] = []
     var quiz: Quiz?
     var quizScores: [QuizResults] = []
@@ -45,6 +40,7 @@ class HomePageViewController: UIViewController {
     var nameOfQuiz: String?
     var numberOfQuestions: Int?
     var correctAnswerLabel: String?
+    var referenceBackToHomePageViewController: String = "Home Page Details"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,27 +62,17 @@ class HomePageViewController: UIViewController {
         
         if referenceBackToHomePageViewController == "Quiz Details" {
             print("reference to Quiz Details View activated")
-            referenceBackToQuizDetailsView(quizId: quiz_id!)
+            referenceBackToQuizDetailsView(quizId: changingQuizId!)
         } else if referenceBackToHomePageViewController == "Quiz Question Details" {
             print("reference to Quiz Question Details View activated")
-            referenceBackToQuizQuestionDetailsView(questionId: question_id!, quizName: quiz_name!)
+            referenceBackToQuizQuestionDetailsView(questionId: changingQuestionId!, quizName: nameOfQuiz!)
+        } else if referenceBackToHomePageViewController == "My Quiz Results" {
+            print("reference to Quiz Results View activated")
+            referenceBackToQuizResultsView(quizId: changingQuizId!, quizIteration: changingQuizIteration!)
         } else if referenceBackToHomePageViewController == "Home Page Details" {
             print("reference to home page view activated")
             gettingHomePageView()
         }
-        
-//        if let quizId = quiz_id {
-//            print("reference to Quiz Details View activated")
-//            referenceBackToQuizDetailsView(quizId: quizId)
-//        } else {
-//            if let questionId = question_id {
-//                print("reference to Quiz Question Details View activated")
-//                referenceBackToQuizQuestionDetailsView(questionId: questionId, quizName: quiz_name!)
-//            } else {
-//                print("reference to home page view activated")
-//                gettingHomePageView()
-//            }
-//        }
     }
     
     func referenceBackToQuizDetailsView(quizId: Int) {
@@ -106,17 +92,15 @@ class HomePageViewController: UIViewController {
                     print(response)
                     
                     DispatchQueue.main.async {
+                        self.table = "Quizzes"
+                        self.quizTableView.reloadData()
+                        
                         if let referenceToQuizDetailsView = Bundle.main.loadNibNamed("quizDetails", owner: self, options: nil)?.first as? quizDetails {
                             self.topHalfView.addSubview(referenceToQuizDetailsView)
                             referenceToQuizDetailsView.frame.size.height = self.topHalfView.frame.size.height
                             referenceToQuizDetailsView.frame.size.width = self.topHalfView.frame.size.width
                             referenceToQuizDetailsView.delegate = self
                             referenceToQuizDetailsView.quizDetailsXibInit(quizId: response["quiz_id"] as! Int, quiz_name: response["quiz_name"] as! String, created_by: response["createdBy"] as! String, description: response["quiz_description"] as! String, source: response["source"] as! String, title_of_source: response["title_of_source"] as! String, username: self.user?.username, numberOfQuestions: self.numberOfQuestions!)
-                            
-                            DispatchQueue.main.async {
-                                self.table = "Quizzes"
-                                self.quizTableView.reloadData()
-                            }
                             
                         } else {
                             print("xib file could not load to the topHalfView")
@@ -170,10 +154,46 @@ class HomePageViewController: UIViewController {
         })
     }
     
+    func referenceBackToQuizResultsView(quizId: Int, quizIteration: Int) {
+        
+        quizResultsService.retrieveQuizResult(userId: user!.id, quizId: quizId, quizIteration: quizIteration, onSuccess: { (response) in
+            print("retrieveQuizResult API call successful")
+            print(response)
+            
+            let newQuizScore: QuizResults?
+            newQuizScore = QuizResults(json: response)
+            
+            DispatchQueue.main.async {
+                self.table = "Quiz Results"
+                self.quizTableView.reloadData()
+                
+                if let referenceToQuizResultsView = Bundle.main.loadNibNamed("quizResults", owner: self, options: nil)?.first as? quizResults {
+                    print("switching topHalfView of controller to QuizResultsView")
+                    self.topHalfView.addSubview(referenceToQuizResultsView)
+                    referenceToQuizResultsView.frame.size.height = self.topHalfView.frame.size.height
+                    referenceToQuizResultsView.frame.size.width = self.topHalfView.frame.size.width
+                    referenceToQuizResultsView.delegate = self
+                    referenceToQuizResultsView.quizResultsXibInit(quiz_name: self.nameOfQuiz!, quiz_result: newQuizScore!, quiz_results: self.quizScores, number_of_questions: self.numberOfQuestions!)
+                                
+                } else {
+                    print("could not load xib file")
+                }
+            }
+            
+        }, onFailure: {(error) in
+            print("ERROR retrieveQuizResult API call unsuccessful")
+            print(error)
+        })
+        
+    }
+    
     @IBAction func unwindFromCreateEditQuiz( _ seg: UIStoryboardSegue) {
     }
     
     @IBAction func unwindFromCreateEditQuizQuestion(_ seg: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindFromQuizQuestionResults( _ seg: UIStoryboardSegue){
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

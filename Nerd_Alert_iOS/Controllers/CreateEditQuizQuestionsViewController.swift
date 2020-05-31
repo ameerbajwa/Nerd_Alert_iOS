@@ -129,8 +129,8 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateEditQuizQuestionsToHomePage" && segue.destination is HomePageViewController {
             if let vc = segue.destination as? HomePageViewController {
-                vc.question_id = question_id!
-                vc.quiz_name = quiz_name!
+                vc.changingQuestionId = question_id!
+                vc.nameOfQuiz = quiz_name!
                 vc.referenceBackToHomePageViewController = referenceBackToHomePageViewController
             }
         }

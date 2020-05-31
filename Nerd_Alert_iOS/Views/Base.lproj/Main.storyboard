@@ -857,9 +857,11 @@
                         <outlet property="questionNumberLabel" destination="Teh-FD-G1M" id="LCF-Ne-9Pl"/>
                         <outlet property="quizNameLabel" destination="W1q-NM-n9H" id="gQi-8C-U9o"/>
                         <outlet property="quizNumberLabel" destination="FyM-6j-jEN" id="OtU-tC-jwT"/>
+                        <segue destination="ZbD-ge-p8T" kind="unwind" identifier="quizQuestionResultsViewControllerToHomePageViewController" unwindAction="unwindFromQuizQuestionResults:" id="2MZ-kd-OcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMv-Ah-hSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ZbD-ge-p8T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4665" y="146"/>
         </scene>
