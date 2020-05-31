@@ -20,7 +20,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-xe-zfC">
-                    <rect key="frame" x="20" y="5" width="374" height="30"/>
+                    <rect key="frame" x="20" y="5" width="164" height="30"/>
                     <state key="normal" title="Go Back To Quiz Details"/>
                     <connections>
                         <action selector="returnToQuizDetailsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ea1-H8-6oG"/>
@@ -54,7 +54,6 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="1DJ-xe-zfC" secondAttribute="trailing" constant="20" id="1z4-Ut-F7y"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dC4-pB-QSd" secondAttribute="trailing" constant="20" id="4iJ-da-Pyt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wOI-yg-tWS" secondAttribute="bottom" constant="20" id="4sh-iE-rS5"/>
                 <constraint firstItem="cgF-sW-kbX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="9Kq-ZH-PW8"/>

@@ -32,7 +32,17 @@ class homePage: UIView {
         quizControl.setTitle("My Quizzes", forSegmentAt: 1)
         
         createQuizButton.xibViewDisplayButtonDesign(button: createQuizButton)
-        createQuizButton.isHidden = true
+        
+        if usersQuizzesInstance.usersQuizzes == true {
+            quizControl.selectedSegmentIndex = 1
+            quizControl.setEnabled(true, forSegmentAt: 1)
+            createQuizButton.isHidden = false
+        } else {
+            quizControl.selectedSegmentIndex = 0
+            quizControl.setEnabled(true, forSegmentAt: 0)
+            createQuizButton.isHidden = true
+        }
+        
 //        changingButtonTitles()
         
 //        if usersQuizzesInstance.usersQuizzes == true {

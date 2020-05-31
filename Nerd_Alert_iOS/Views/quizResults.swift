@@ -45,7 +45,9 @@ class quizResults: UIView {
         numberOfQuestionsLabel.text = "Questions answered over total questions: \(quiz_results.count*10)/\(number_of_questions)"
         
         goBackToQuizDetailsButton.xibViewDisplayButtonDesign(button: goBackToQuizDetailsButton)
+        goBackToQuizDetailsButton.setTitle("Back To Quiz Details", for: .normal)
         viewQuestionResultsButton.xibViewDisplayButtonDesign(button: viewQuestionResultsButton)
+        viewQuestionResultsButton.setTitle("View Quiz Question Results", for: .normal)
         
     }
     

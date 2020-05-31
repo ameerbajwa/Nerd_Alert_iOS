@@ -511,7 +511,7 @@
                         <outlet property="scrollView" destination="VYb-5j-65t" id="Qyc-dk-yeQ"/>
                         <outlet property="sourceTextView" destination="aOm-hP-fo2" id="m9d-fw-nm5"/>
                         <outlet property="titleOfSourceTextView" destination="jUM-6c-028" id="Hep-5j-gaK"/>
-                        <segue destination="uZ6-eN-dnb" kind="unwind" identifier="CreateEditQuizToHomePage" unwindAction="unwind:" id="IxT-46-wby"/>
+                        <segue destination="uZ6-eN-dnb" kind="unwind" identifier="CreateEditQuizToHomePage" unwindAction="unwindFromCreateEditQuiz:" id="IxT-46-wby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uc0-Nq-MDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -724,7 +724,7 @@
                         <outlet property="correctAnswerTextView" destination="i9V-n9-vJk" id="9bt-l3-C70"/>
                         <outlet property="questionTextView" destination="UTh-N2-rgx" id="OTM-7v-6AB"/>
                         <outlet property="scrollView" destination="7ZQ-m5-pXx" id="IxJ-eJ-faB"/>
-                        <segue destination="xQG-dA-1ar" kind="unwind" identifier="CreateEditQuizQuestionsToHomePage" unwindAction="unwind:" id="ozH-oF-5ci"/>
+                        <segue destination="xQG-dA-1ar" kind="unwind" identifier="CreateEditQuizQuestionsToHomePage" unwindAction="unwindFromCreateEditQuizQuestion:" id="ozH-oF-5ci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ad5-o3-zFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -21,6 +21,7 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
     var user: User?
     var action: String?
     var quizId: Int?
+    var referenceBackToHomePageViewController: String = "Quiz Details"
     
     var quiz: Quiz?
     
@@ -89,7 +90,8 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-         navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: "CreateEditQuizToHomePage", sender: nil)
     }
     
     @IBAction func quizActionButtonPressed(_ sender: UIButton) {
@@ -133,11 +135,11 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Navigation
 
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateEditQuizToHomePage" && segue.destination is HomePageViewController {
             if let vc = segue.destination as? HomePageViewController {
                 vc.quiz_id = quizId!
+                vc.referenceBackToHomePageViewController = referenceBackToHomePageViewController
             }
         }
     }

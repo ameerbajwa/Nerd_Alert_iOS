@@ -26,6 +26,7 @@ class HomePageViewController: UIViewController {
     
     var quiz_id: Int?
     var question_id: String?
+    var referenceBackToHomePageViewController: String = "Home Page Details"
     var quiz_name: String?
     
     var quizzes: [Quiz] = []
@@ -61,16 +62,31 @@ class HomePageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("home page activated")
+        print(referenceBackToHomePageViewController)
         
-        if let quizId = quiz_id {
-            referenceBackToQuizDetailsView(quizId: quizId)
-        } else {
-            if let questionId = question_id {
-                referenceBackToQuizQuestionDetailsView(questionId: questionId, quizName: quiz_name!)
-            } else {
-                gettingHomePageView()
-            }
+        if referenceBackToHomePageViewController == "Quiz Details" {
+            print("reference to Quiz Details View activated")
+            referenceBackToQuizDetailsView(quizId: quiz_id!)
+        } else if referenceBackToHomePageViewController == "Quiz Question Details" {
+            print("reference to Quiz Question Details View activated")
+            referenceBackToQuizQuestionDetailsView(questionId: question_id!, quizName: quiz_name!)
+        } else if referenceBackToHomePageViewController == "Home Page Details" {
+            print("reference to home page view activated")
+            gettingHomePageView()
         }
+        
+//        if let quizId = quiz_id {
+//            print("reference to Quiz Details View activated")
+//            referenceBackToQuizDetailsView(quizId: quizId)
+//        } else {
+//            if let questionId = question_id {
+//                print("reference to Quiz Question Details View activated")
+//                referenceBackToQuizQuestionDetailsView(questionId: questionId, quizName: quiz_name!)
+//            } else {
+//                print("reference to home page view activated")
+//                gettingHomePageView()
+//            }
+//        }
     }
     
     func referenceBackToQuizDetailsView(quizId: Int) {
@@ -154,8 +170,10 @@ class HomePageViewController: UIViewController {
         })
     }
     
-    @IBAction func unwind( _ seg: UIStoryboardSegue) {
-        
+    @IBAction func unwindFromCreateEditQuiz( _ seg: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindFromCreateEditQuizQuestion(_ seg: UIStoryboardSegue) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -361,7 +379,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             referenceToHomePageView.frame.size.width = topHalfView.frame.size.width
             referenceToHomePageView.delegate = self
             referenceToHomePageView.homePageXibInit(username: user!.username)
-                        
+            print("usersQuizzes boolean value: \(usersQuizzesInstance.usersQuizzes)")
         } else {
             print("could not load xib file")
         }

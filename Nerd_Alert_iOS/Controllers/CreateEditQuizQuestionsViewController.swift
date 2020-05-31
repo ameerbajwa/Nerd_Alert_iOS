@@ -25,6 +25,8 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     var question_id: String?
     var user_id: Int?
     
+    var referenceBackToHomePageViewController: String = "Quiz Question Details"
+    
     var quizQuestionService = QuizQuestionSerivce()
     var quizQuestion: QuizQuestion?
 
@@ -89,7 +91,9 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: "CreateEditQuizQuestionsToHomePage", sender: nil)
+
+//        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
@@ -127,6 +131,7 @@ class CreateEditQuizQuestionsViewController: UIViewController {
             if let vc = segue.destination as? HomePageViewController {
                 vc.question_id = question_id!
                 vc.quiz_name = quiz_name!
+                vc.referenceBackToHomePageViewController = referenceBackToHomePageViewController
             }
         }
     }
