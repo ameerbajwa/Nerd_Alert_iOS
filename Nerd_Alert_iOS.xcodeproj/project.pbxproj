@@ -31,6 +31,7 @@
 		DE955811247B33DE003EC506 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE955810247B33DE003EC506 /* UITextViewExtension.swift */; };
 		DE955813247C3E43003EC506 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE955812247C3E43003EC506 /* UIViewControllerExtension.swift */; };
 		DEA794D62481FB0E00D28A49 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA794D52481FB0E00D28A49 /* UIButtonExtension.swift */; };
+		DEA794D82489E18D00D28A49 /* ForgotUsernamePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA794D72489E18D00D28A49 /* ForgotUsernamePasswordViewController.swift */; };
 		DEC24510246786F700BD333F /* CreateEditQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */; };
 		DEC245122469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */; };
 		DEC2451424708B6100BD333F /* QuizQuestionResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */; };
@@ -98,6 +99,7 @@
 		DE955810247B33DE003EC506 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		DE955812247C3E43003EC506 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		DEA794D52481FB0E00D28A49 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		DEA794D72489E18D00D28A49 /* ForgotUsernamePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotUsernamePasswordViewController.swift; sourceTree = "<group>"; };
 		DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizViewController.swift; sourceTree = "<group>"; };
 		DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditQuizQuestionsViewController.swift; sourceTree = "<group>"; };
 		DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionResultsViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				DEFDCC9F2435B2B800366CA5 /* WelcomePageController.swift */,
 				DEFDCCD124363EDD00366CA5 /* LogInController.swift */,
 				DEFDCCD3243640B700366CA5 /* SignUpController.swift */,
+				DEA794D72489E18D00D28A49 /* ForgotUsernamePasswordViewController.swift */,
 				DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */,
 				DEC2450F246786F700BD333F /* CreateEditQuizViewController.swift */,
 				DEC245112469C4AE00BD333F /* CreateEditQuizQuestionsViewController.swift */,
@@ -555,6 +558,7 @@
 				DE955811247B33DE003EC506 /* UITextViewExtension.swift in Sources */,
 				DE09315B2454C5A2004FCDE1 /* QuizQuestionResultsService.swift in Sources */,
 				DE0931552454ACFB004FCDE1 /* QuizResultsViewController.swift in Sources */,
+				DEA794D82489E18D00D28A49 /* ForgotUsernamePasswordViewController.swift in Sources */,
 				DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */,
 				DEFDCCA02435B2B800366CA5 /* WelcomePageController.swift in Sources */,
 				DEFDCCD6243651C900366CA5 /* User.swift in Sources */,

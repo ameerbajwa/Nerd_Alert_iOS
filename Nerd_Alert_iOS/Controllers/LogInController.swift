@@ -19,6 +19,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     let userService = UserService()
     var accessTokenJSON: [String: Any] = [:]
     var userInfo: User?
+    var forgotAction: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,40 +102,29 @@ class LogInController: UIViewController, UITextFieldDelegate {
 
     }
     
+    @IBAction func forgotUsernameButtonPressed(_ sender: UIButton) {
+        forgotAction = "username"
+        self.performSegue(withIdentifier: "forgotUsernamePasswordSegue", sender: nil)
+    }
+    
+    @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
+        forgotAction = "password"
+        self.performSegue(withIdentifier: "forgotUsernamePasswordSegue", sender: nil)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logInToHomePage" && segue.destination is HomePageViewController {
             if let vc = segue.destination as? HomePageViewController {
                 vc.user = self.userInfo
             }
         }
+        
+        if segue.identifier == "forgotUsernamePasswordSegue" && segue.destination is ForgotUsernamePasswordViewController {
+            if let vc = segue.destination as? ForgotUsernamePasswordViewController {
+                vc.forgot = forgotAction
+            }
+        }
     }
-    
-//    // MARK: - Navigation
-//
-
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if usernameTextField.text != nil && passwordTextField.text != nil {
-//            // log in POST API CALL and user information GET API CALL
-//            return true
-//        } else {
-//            // send error message all textfields need to be filled out
-//            return false
-//        }
-//    }
-//    
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if usernameTextField.text != "" && passwordTextField.text != "" {
-//            return true
-//        } else {
-//            // send error message: need to fill out all textfields
-//            return false
-//        }
-//    }
-//    
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        usernameTextField.text! = ""
-//        passwordTextField.text! = ""
-//    }
 
 }

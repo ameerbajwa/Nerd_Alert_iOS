@@ -190,6 +190,67 @@
             </objects>
             <point key="canvasLocation" x="2055.072463768116" y="611.38392857142856"/>
         </scene>
+        <!--Forgot Username Password View Controller-->
+        <scene sceneID="kkK-1l-Ozb">
+            <objects>
+                <viewController id="KLo-X2-Rzg" customClass="ForgotUsernamePasswordViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sF5-0I-yb9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ado-Zh-iAy">
+                                <rect key="frame" x="20" y="138" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCs-TJ-nie">
+                                <rect key="frame" x="30" y="169" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLD-vO-mEL">
+                                <rect key="frame" x="20" y="223" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xqO-8n-cer">
+                                <rect key="frame" x="30" y="254" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxl-bK-iRu">
+                                <rect key="frame" x="50" y="318" width="314" height="30"/>
+                                <state key="normal" title="Send Email"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xqO-8n-cer" firstAttribute="leading" secondItem="y2k-99-ODe" secondAttribute="leading" constant="30" id="7br-xm-Kho"/>
+                            <constraint firstItem="BCs-TJ-nie" firstAttribute="top" secondItem="Ado-Zh-iAy" secondAttribute="bottom" constant="10" id="Gn9-Vg-CJj"/>
+                            <constraint firstItem="SLD-vO-mEL" firstAttribute="top" secondItem="BCs-TJ-nie" secondAttribute="bottom" constant="20" id="K2A-eM-PMG"/>
+                            <constraint firstItem="nxl-bK-iRu" firstAttribute="top" secondItem="xqO-8n-cer" secondAttribute="bottom" constant="30" id="K8X-AG-ZDt"/>
+                            <constraint firstItem="Ado-Zh-iAy" firstAttribute="top" secondItem="y2k-99-ODe" secondAttribute="top" constant="50" id="MeR-XQ-67i"/>
+                            <constraint firstItem="y2k-99-ODe" firstAttribute="trailing" secondItem="nxl-bK-iRu" secondAttribute="trailing" constant="50" id="YQK-iU-jSD"/>
+                            <constraint firstItem="BCs-TJ-nie" firstAttribute="leading" secondItem="y2k-99-ODe" secondAttribute="leading" constant="30" id="ZvY-dN-dXN"/>
+                            <constraint firstItem="y2k-99-ODe" firstAttribute="trailing" secondItem="SLD-vO-mEL" secondAttribute="trailing" constant="20" id="acQ-nr-y7W"/>
+                            <constraint firstItem="y2k-99-ODe" firstAttribute="trailing" secondItem="BCs-TJ-nie" secondAttribute="trailing" constant="30" id="bMl-QM-kRs"/>
+                            <constraint firstItem="y2k-99-ODe" firstAttribute="trailing" secondItem="Ado-Zh-iAy" secondAttribute="trailing" constant="20" id="et2-tl-CLk"/>
+                            <constraint firstItem="xqO-8n-cer" firstAttribute="top" secondItem="SLD-vO-mEL" secondAttribute="bottom" constant="10" id="gfO-9k-fPg"/>
+                            <constraint firstItem="y2k-99-ODe" firstAttribute="trailing" secondItem="xqO-8n-cer" secondAttribute="trailing" constant="30" id="nbJ-5p-9Xj"/>
+                            <constraint firstItem="SLD-vO-mEL" firstAttribute="leading" secondItem="y2k-99-ODe" secondAttribute="leading" constant="20" id="tBZ-05-tLV"/>
+                            <constraint firstItem="nxl-bK-iRu" firstAttribute="leading" secondItem="y2k-99-ODe" secondAttribute="leading" constant="50" id="wSW-L4-fEc"/>
+                            <constraint firstItem="Ado-Zh-iAy" firstAttribute="leading" secondItem="y2k-99-ODe" secondAttribute="leading" constant="20" id="xRA-2g-9HL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y2k-99-ODe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gSw-GQ-ahY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsF-Dr-pYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="-1035"/>
+        </scene>
         <!--Log In Controller-->
         <scene sceneID="mMR-Fr-mEy">
             <objects>
@@ -222,10 +283,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-zD-3Wm">
                                 <rect key="frame" x="50" y="453.5" width="120" height="30"/>
                                 <state key="normal" title="Forgot Username"/>
+                                <connections>
+                                    <action selector="forgotUsernameButtonPressed:" destination="ZyH-m7-Ygh" eventType="touchUpInside" id="BxN-pr-fCx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsU-qs-dh1">
                                 <rect key="frame" x="249" y="453.5" width="115" height="30"/>
                                 <state key="normal" title="Forgot Password"/>
+                                <connections>
+                                    <action selector="forgotPasswordButtonPressed:" destination="ZyH-m7-Ygh" eventType="touchUpInside" id="9Ex-Qm-26t"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvj-nC-7FU">
                                 <rect key="frame" x="30" y="138" width="354" height="21"/>
@@ -280,6 +347,7 @@
                         <outlet property="passwordTextField" destination="TNF-li-GxI" id="cF4-gG-WI5"/>
                         <outlet property="usernameTextField" destination="h98-Ce-XQi" id="IoD-hb-esB"/>
                         <segue destination="Aau-hP-ra0" kind="show" identifier="logInToHomePage" id="JvN-sK-fUI"/>
+                        <segue destination="KLo-X2-Rzg" kind="show" identifier="forgotUsernamePasswordSegue" id="d2O-bn-qTl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Pc-wV-HOc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
