@@ -40,6 +40,17 @@ class UserService {
               })
     }
     
+    func retrieveUserForgottenInfo(email: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
+        let commandURL = "/user_forgotten_info/\(email)"
+        
+        restAPIManager.httpRequest(url: commandURL, body: nil, method: "GET", onSuccess: {responseJSON -> Void in
+                  onSuccess(responseJSON)
+              },
+              onFailure: { responseJSON -> Void in
+                  onFailure(responseJSON)
+              })
+    }
+    
     
     func registerUser(_ email: String, _ username: String, _ password: String, _ passwordAgain: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let commandURL = "/register_user"

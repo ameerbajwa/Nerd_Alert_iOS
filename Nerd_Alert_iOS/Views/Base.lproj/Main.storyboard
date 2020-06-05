@@ -223,6 +223,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxl-bK-iRu">
                                 <rect key="frame" x="50" y="318" width="314" height="30"/>
                                 <state key="normal" title="Send Email"/>
+                                <connections>
+                                    <action selector="sendEmailButtonPressed:" destination="KLo-X2-Rzg" eventType="touchUpInside" id="OlG-mX-ZVk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -246,6 +249,12 @@
                         <viewLayoutGuide key="safeArea" id="y2k-99-ODe"/>
                     </view>
                     <navigationItem key="navigationItem" id="gSw-GQ-ahY"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="BCs-TJ-nie" id="RdM-N9-6eX"/>
+                        <outlet property="sendEmailButton" destination="nxl-bK-iRu" id="5FV-2O-SLT"/>
+                        <outlet property="usernameLabel" destination="SLD-vO-mEL" id="bv7-dB-ys6"/>
+                        <outlet property="usernameTextField" destination="xqO-8n-cer" id="mDk-v1-eHI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsF-Dr-pYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
