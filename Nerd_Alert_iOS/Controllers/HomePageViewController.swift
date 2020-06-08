@@ -421,57 +421,42 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
         
         nameOfQuiz = quiz_name
         quizQuestions = []
+        var number_of_questions: String = "many"
         
         quizQuestionService.retrieveQuizQuestions(quiz_id, user!.id, "Editing_Questions", onSuccess: { (response) in
             print("retrieveQuizQuestions API call successful in retrieving my questions for my quiz")
             print(response)
-//            if let exampleResponse = response["2"] as? [String: Any] {
-//                print(type(of: exampleResponse["question_id"]!))
-//                print(exampleResponse["question_id"]!)
-//                print(type(of: exampleResponse["quiz_id"]!))
-//                print(exampleResponse["quiz_id"]!)
-//                print(type(of: exampleResponse["date_created"]!))
-//                print(exampleResponse["date_created"]!)
-//            }
+            
+            
             
             for i in response.keys {
-                
-                self.quizQuestion = QuizQuestion(json: response[i] as! [String: Any])
-                self.quizQuestions.append(self.quizQuestion!)
-                
-//                if var question = response[i] as? [String: Any] {
-//                    let dateFormatter = DateFormatter()
-//                    dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss"
-//                    print(type(of: question["date_created"]!))
-//                    print(question["date_created"]!)
-//                    print(type(of: dateFormatter.date(from: question["date_created"]! as! String)))
-//                    print(dateFormatter.date(from: question["date_created"]! as! String))
-//                    if let date = dateFormatter.date(from: question["date_created"]! as! String) {
-//                        print(date)
-//                        question["date_created"] = date
-//                    }
-//                    print(type(of: question["date_created"]!))
-//                    print(question["date_created"]!)
-//
-//                    self.quizQuestion = QuizQuestion(json: question)
-//                    self.quizQuestions.append(self.quizQuestion!)
-//                }
+                if i == "No questions" {
+                    number_of_questions = "none"
+                } else {
+                    self.quizQuestion = QuizQuestion(json: response[i] as! [String: Any])
+                    self.quizQuestions.append(self.quizQuestion!)
+                }
             }
-            print(self.quizQuestions[0].dateCreated)
-            
+                        
             DispatchQueue.main.async {
                 self.table = "My Quiz Questions"
                 self.quizTableView.reloadData()
                 
-                self.creatingCorrectAnswerLabel(quiz_question: self.quizQuestions[0])
+                if number_of_questions == "many" {
+                    self.creatingCorrectAnswerLabel(quiz_question: self.quizQuestions[0])
+                }
                 
                 if let referenceToQuizQuestionDetailsView = Bundle.main.loadNibNamed("quizQuestionDetails", owner: self, options: nil)?.first as? quizQuestionDetails {
                     self.topHalfView.addSubview(referenceToQuizQuestionDetailsView)
                     referenceToQuizQuestionDetailsView.frame.size.height = self.topHalfView.frame.size.height
                     referenceToQuizQuestionDetailsView.frame.size.width = self.topHalfView.frame.size.width
                     referenceToQuizQuestionDetailsView.delegate = self
-                    referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quiz_name, question_id: self.quizQuestions[0].id, question_label: self.quizQuestions[0].question, correct_answer_label: self.correctAnswerLabel!)
-                                
+                    if number_of_questions == "many" {
+                       referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quiz_name, question_id: self.quizQuestions[0].id, question_label: self.quizQuestions[0].question, correct_answer_label: self.correctAnswerLabel!)
+                    } else {
+                        referenceToQuizQuestionDetailsView.quizQuestionDetailsXibInit(quiz_id: self.changingQuizId!, quiz_name: quiz_name, question_id: "", question_label: "No questions, Must add a new question", correct_answer_label: "")
+                    }
+
                 } else {
                     print("could not load xib file")
                 }
@@ -481,8 +466,6 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             print("ERROR retrieveQuizQuestions API call unsuccessful in retreving my questions for my quiz")
             print(error)
         })
-        
-
         
     }
     

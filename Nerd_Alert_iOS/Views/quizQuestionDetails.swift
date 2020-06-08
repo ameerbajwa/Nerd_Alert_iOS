@@ -40,9 +40,15 @@ class quizQuestionDetails: UIView {
     
     func quizQuestionDetailsXibInit(quiz_id: Int, quiz_name: String, question_id: String, question_label: String, correct_answer_label: String) {
         quizNameLabel.text = "Quiz: \(quiz_name)"
-        questionLabel.text = "Question: \(question_label)"
-        correctAnswerLabel.text = "Correct Answer: \(correct_answer_label)"
-        
+        if correct_answer_label == "" {
+            questionLabel.text = "\(question_label)"
+            correctAnswerLabel.text = ""
+            editQuestionButton.isHidden = true
+        } else {
+            questionLabel.text = "Question: \(question_label)"
+            correctAnswerLabel.text = "Correct Answer: \(correct_answer_label)"
+        }
+
         backToQuizzesButton.simpleButtonDesign(button: backToQuizzesButton)
         editQuestionButton.simpleButtonDesign(button: editQuestionButton)
         
