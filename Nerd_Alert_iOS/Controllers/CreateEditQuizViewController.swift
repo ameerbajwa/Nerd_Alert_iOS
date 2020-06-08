@@ -14,7 +14,8 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var titleOfSourceTextView: UITextView!
     @IBOutlet weak var sourceTextView: UITextView!
     @IBOutlet weak var quizDescriptionTextView: UITextView!
-        
+    
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var quizActionButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -40,6 +41,9 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
         titleOfSourceTextView.creatingPresentableTextFields(textView: titleOfSourceTextView)
         sourceTextView.creatingPresentableTextFields(textView: sourceTextView)
         quizDescriptionTextView.creatingPresentableTextFields(textView: quizDescriptionTextView)
+        
+        quizActionButton.simpleButtonDesign(button: quizActionButton)
+        cancelButton.simpleButtonDesign(button: cancelButton)
 
         // Do any additional setup after loading the view.
         
@@ -128,8 +132,6 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
                 
             })
         }
-        
-
         
     }
     

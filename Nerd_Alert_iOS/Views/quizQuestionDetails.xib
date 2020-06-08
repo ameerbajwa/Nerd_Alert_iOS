@@ -16,7 +16,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scA-av-kSe">
                     <rect key="frame" x="364" y="10" width="30" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <state key="normal" title="+"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" red="0.81110085229999995" green="1" blue="0.62196856749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="addQuestionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="T0Y-02-ogz"/>
                     </connections>
@@ -41,14 +43,20 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ne2-TT-Mr8">
                     <rect key="frame" x="20" y="304" width="374" height="30"/>
-                    <state key="normal" title="Edit Question"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Edit Question">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="editQuestionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Qcw-Bh-qJd"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsE-Eg-ixM">
                     <rect key="frame" x="20" y="19" width="111" height="30"/>
-                    <state key="normal" title="Back to Quizzes"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Back to Quizzes">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="backToQuizzesButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="2a8-e6-wiP"/>
                     </connections>

@@ -30,8 +30,9 @@ class LogInController: UIViewController, UITextFieldDelegate {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         
-        logInButton.layer.cornerRadius = 10
-        logInButton.layer.borderWidth = 3
+        logInButton.simpleButtonDesign(button: logInButton)
+//        logInButton.layer.cornerRadius = 10
+//        logInButton.layer.borderWidth = 3
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {

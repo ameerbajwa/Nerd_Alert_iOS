@@ -21,7 +21,10 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-xe-zfC">
                     <rect key="frame" x="20" y="5" width="164" height="30"/>
-                    <state key="normal" title="Go Back To Quiz Details"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Go Back To Quiz Details">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="returnToQuizDetailsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ea1-H8-6oG"/>
                     </connections>
@@ -40,7 +43,10 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOI-yg-tWS">
                     <rect key="frame" x="20" y="304" width="374" height="30"/>
-                    <state key="normal" title="View Question Results"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="View Question Results">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="viewQuestionResultsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ny2-JW-ADX"/>
                     </connections>

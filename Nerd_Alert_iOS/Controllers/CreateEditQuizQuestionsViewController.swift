@@ -17,6 +17,7 @@ class CreateEditQuizQuestionsViewController: UIViewController {
     @IBOutlet weak var choiceDTextView: UITextView!
     @IBOutlet weak var correctAnswerTextView: UITextView!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -45,6 +46,9 @@ class CreateEditQuizQuestionsViewController: UIViewController {
         choiceCTextView.creatingPresentableTextFields(textView: choiceCTextView)
         choiceDTextView.creatingPresentableTextFields(textView: choiceDTextView)
         correctAnswerTextView.creatingPresentableTextFields(textView: correctAnswerTextView)
+        
+        actionButton.simpleButtonDesign(button: actionButton)
+        cancelButton.simpleButtonDesign(button: cancelButton)
         
         if question_id != "0" {
             actionButton.setTitle("Save Question", for: .normal)

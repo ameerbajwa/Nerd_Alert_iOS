@@ -45,21 +45,30 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppB-XT-DyX">
                     <rect key="frame" x="20" y="5" width="79" height="30"/>
-                    <state key="normal" title="Home Page"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Home Page">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="homePageButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="7qT-GT-Z7b"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tN4-Dq-Vim">
                     <rect key="frame" x="315" y="304" width="79" height="30"/>
-                    <state key="normal" title="Quiz Action"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Quiz Action">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="quizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="YjV-A5-CQm"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvB-qX-eWO">
                     <rect key="frame" x="20" y="304" width="157" height="30"/>
-                    <state key="normal" title="Secondary Quiz Action"/>
+                    <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Secondary Quiz Action">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="secondaryQuizActionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="yAY-IP-rdO"/>
                     </connections>

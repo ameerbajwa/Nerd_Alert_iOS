@@ -45,6 +45,13 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true);
         
+        nextButton.simpleButtonDesign(button: nextButton)
+        
+//        choiceAButton.xibViewDisplayButtonDesign(button: choiceAButton)
+//        choiceBButton.xibViewDisplayButtonDesign(button: choiceBButton)
+//        choiceCButton.xibViewDisplayButtonDesign(button: choiceCButton)
+//        choiceDButton.xibViewDisplayButtonDesign(button: choiceDButton)
+        
         self.choiceAButton.layer.cornerRadius = 10
         self.choiceAButton.layer.borderWidth = 3
         self.choiceBButton.layer.cornerRadius = 10

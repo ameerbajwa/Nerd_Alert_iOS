@@ -17,11 +17,9 @@ class WelcomePageController: UIViewController {
         super.viewDidLoad()
         print("Welcome to the Nerd Alert App! Find out if your a big ole nerd or some who doesn't have a clue from all these different quizzes!")
         // Do any additional setup after loading the view.
-        
-        logInButton.layer.cornerRadius = 10
-        logInButton.layer.borderWidth = 3
-        signUpButton.layer.cornerRadius = 10
-        signUpButton.layer.borderWidth = 3
+  
+        logInButton.simpleButtonDesign(button: logInButton)
+        signUpButton.simpleButtonDesign(button: signUpButton)
         
     }
     

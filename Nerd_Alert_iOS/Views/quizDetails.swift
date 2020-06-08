@@ -47,9 +47,9 @@ class quizDetails: UIView {
         titleOfSourceLabel.text = "Title of Source: \(title_of_source)"
         numberOfQuestionsLabel.text = "Number of Questions: \(numberOfQuestions)"
         
-        homePageButton.xibViewDisplayButtonDesign(button: homePageButton)
-        secondaryQuizActionButton.xibViewDisplayButtonDesign(button: secondaryQuizActionButton)
-        quizActionButton.xibViewDisplayButtonDesign(button: quizActionButton)
+        homePageButton.simpleButtonDesign(button: homePageButton)
+        secondaryQuizActionButton.simpleButtonDesign(button: secondaryQuizActionButton)
+        quizActionButton.simpleButtonDesign(button: quizActionButton)
         
         quiz_id = quizId
         

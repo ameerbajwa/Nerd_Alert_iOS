@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ForgotUsernamePasswordViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ForgotUsernamePasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -22,7 +22,7 @@ class ForgotUsernamePasswordViewController: UIViewController, MFMailComposeViewC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendEmailButton.xibViewDisplayButtonDesign(button: sendEmailButton)
+        sendEmailButton.simpleButtonDesign(button: sendEmailButton)
         
         if forgot == "username" {
             usernameLabel.isHidden = true
@@ -42,17 +42,6 @@ class ForgotUsernamePasswordViewController: UIViewController, MFMailComposeViewC
             let user_info: User?
             user_info = User(json: response)
             
-            DispatchQueue.main.async {
-                if let userInfo = user_info {
-                    let mail = MFMailComposeViewController()
-                    mail.mailComposeDelegate = self
-                    mail.setToRecipients(["\(self.emailTextField.text!)"])
-                    mail.setSubject("Nerd Alert Message - Retrieval of forgotten username/password")
-                    mail.setMessageBody("Username: \(userInfo.username) Password: \(userInfo.password) Now don't forget it!", isHTML: false)
-                }
-            }
-
-            
         }, onFailure: { (error) in
             print("ERROR retrieveUserForgottenInfo API call unsuccessful")
             print(error)
@@ -66,6 +55,7 @@ class ForgotUsernamePasswordViewController: UIViewController, MFMailComposeViewC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "forgotUsernamePasswordToLogInSegue" && segue.destination is LogInController {
             if let vc = segue.destination as? LogInController {
+                
             }
         }
     }

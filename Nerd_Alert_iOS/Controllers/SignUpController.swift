@@ -33,8 +33,9 @@ class SignUpController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         passwordAgainTextField.delegate = self
 
-        signUpButton.layer.cornerRadius = 10
-        signUpButton.layer.borderWidth = 3
+        signUpButton.simpleButtonDesign(button: signUpButton)
+//        signUpButton.layer.cornerRadius = 10
+//        signUpButton.layer.borderWidth = 3
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {

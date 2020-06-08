@@ -18,6 +18,7 @@ class QuizQuestionResultsViewController: UIViewController {
     @IBOutlet weak var choiceBLabel: UILabel!
     @IBOutlet weak var choiceCLabel: UILabel!
     @IBOutlet weak var choiceDLabel: UILabel!
+    @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
@@ -39,6 +40,10 @@ class QuizQuestionResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true);
+        
+        homeButton.simpleButtonDesign(button: homeButton)
+        nextButton.simpleButtonDesign(button: nextButton)
+        backButton.simpleButtonDesign(button: backButton)
         
         backButton.isHidden = true
 

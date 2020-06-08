@@ -13,6 +13,7 @@ class QuizResultsViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var quizNameLabel: UILabel!
+    @IBOutlet weak var backHomeButton: UIButton!
     
     var user: User?
     var quiz_id: Int?
@@ -34,6 +35,7 @@ class QuizResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        backHomeButton.simpleButtonDesign(button: backHomeButton)
         
         for i in 0...9 {
             

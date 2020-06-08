@@ -31,7 +31,7 @@ class homePage: UIView {
         quizControl.setTitle("Quizzes", forSegmentAt: 0)
         quizControl.setTitle("My Quizzes", forSegmentAt: 1)
         
-        createQuizButton.xibViewDisplayButtonDesign(button: createQuizButton)
+        createQuizButton.simpleButtonDesign(button: createQuizButton)
         
         if usersQuizzesInstance.usersQuizzes == true {
             quizControl.selectedSegmentIndex = 1
