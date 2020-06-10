@@ -25,6 +25,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextButton: UIButton!
 //    @IBOutlet weak var backButton: UIButton!
     
+    var number_of_quiz_questions: Int?
     var quiz_id: Int?
     var quiz_name: String?
     var question_number: Int = 0
@@ -63,28 +64,14 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         
         self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
-        quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, "Taking_Quiz", onSuccess: { (response) in
-            print("From Swift Application: retrieveQuizQuestions function called")
-            print(response.count)
-            
-            if response.count == 1 {
-                self.error = Error(json: response)
-                self.quizQuestion.text = self.error?.error_message
-                
-                self.quizIterationLabel.isHidden = true
-                self.quizQuestionNumberLabel.isHidden = true
-                self.choiceAButton.isHidden = true
-                self.choiceBButton.isHidden = true
-                self.choiceCButton.isHidden = true
-                self.choiceDButton.isHidden = true
-                self.userAnswerTextField.isHidden = true
-                self.nextButton.isHidden = true
-                
-            } else {
-                
-                DispatchQueue.main.async {
-                    self.goBackHomeButton.isHidden = true
-                }
+        if number_of_quiz_questions! != 0 {
+            quizQuestionService.retrieveQuizQuestions(quiz_id!, user!.id, "Taking_Quiz", onSuccess: { (response) in
+                print("From Swift Application: retrieveQuizQuestions function called")
+                print(response.count)
+                    
+//                DispatchQueue.main.async {
+//                    self.goBackHomeButton.isHidden = true
+//                }
                 
                 for i in response.keys {
                     self.question = QuizQuestion(json: response[i] as! [String : Any])
@@ -92,7 +79,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
                 }
                 
                 DispatchQueue.main.async {
-                    
+                    self.goBackHomeButton.isHidden = true
                     self.quizResultsService.retrieveQuizIteration(self.user!.id, self.quiz_id!, onSuccess: { (response) in
                         print("From Swift Application: retrieveQuizIteration function called")
                         print(response)
@@ -107,15 +94,28 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
                         print(error)
                     })
                 }
-                
-            }
             
-        }, onFailure: { (error) in
-            print("From Swift Application: retrieveQuizzes function called and an error occured")
-            print(error)
-        })
-        
+            }, onFailure: { (error) in
+                print("From Swift Application: retrieveQuizzes function called and an error occured")
+                print(error)
+            })
+        } else {
+//            self.error = Error(json: response)
+//            self.quizQuestion.text = self.error?.error_message
+            self.quizQuestion.text = "No questions are available to answer for this quiz right now."
+            
+            self.quizIterationLabel.isHidden = true
+            self.quizQuestionNumberLabel.isHidden = true
+            self.choiceAButton.isHidden = true
+            self.choiceBButton.isHidden = true
+            self.choiceCButton.isHidden = true
+            self.choiceDButton.isHidden = true
+            self.userAnswerTextField.isHidden = true
+            self.nextButton.isHidden = true
+            
+        }
     }
+
     
     func changingQuestions() {
         

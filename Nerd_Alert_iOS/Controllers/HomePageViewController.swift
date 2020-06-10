@@ -210,6 +210,7 @@ class HomePageViewController: UIViewController {
                 if changingQuizId != nil {
                     vc.quiz_id = changingQuizId!
                     vc.quiz_name = nameOfQuiz!
+                    vc.number_of_quiz_questions = numberOfQuestions!
                     vc.user = user
                 }
             }
