@@ -487,6 +487,14 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             
             if response.count == 0 {
                 print("user hasn't taken any questions from this quiz")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Quiz Results Not accessible for this quiz", message: "You have no results for this quiz. Please take a quiz to access this page.", preferredStyle: .alert)
+
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+                    self.present(alert, animated: true)
+                }
+                
             } else {
                 print("user has taken questions from this quiz")
                 
