@@ -35,7 +35,7 @@ class QuizResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        backHomeButton.simpleButtonDesign(button: backHomeButton)
+        backHomeButton.simpleButtonDesign(button: backHomeButton, borderWidth: 0)
         
         for i in 0...9 {
             

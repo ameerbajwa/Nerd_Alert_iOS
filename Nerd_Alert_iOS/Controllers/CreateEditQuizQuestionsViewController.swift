@@ -33,6 +33,10 @@ class CreateEditQuizQuestionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        actionButton.simpleButtonDesign(button: actionButton, borderWidth: 0)
+        cancelButton.simpleButtonDesign(button: cancelButton, borderWidth: 0)
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.setupToHideKeyboardOnTapOnView()
         
@@ -46,9 +50,6 @@ class CreateEditQuizQuestionsViewController: UIViewController {
         choiceCTextView.creatingPresentableTextFields(textView: choiceCTextView)
         choiceDTextView.creatingPresentableTextFields(textView: choiceDTextView)
         correctAnswerTextView.creatingPresentableTextFields(textView: correctAnswerTextView)
-        
-        actionButton.simpleButtonDesign(button: actionButton)
-        cancelButton.simpleButtonDesign(button: cancelButton)
         
         if question_id != "0" {
             actionButton.setTitle("Save Question", for: .normal)

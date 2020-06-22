@@ -193,7 +193,10 @@ class HomePageViewController: UIViewController {
     @IBAction func unwindFromCreateEditQuizQuestion(_ seg: UIStoryboardSegue) {
     }
     
-    @IBAction func unwindFromQuizQuestionResults( _ seg: UIStoryboardSegue){
+    @IBAction func unwindFromQuizQuestionResults( _ seg: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindFromQuizResults(_ seg: UIStoryboardSegue) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -488,7 +491,7 @@ extension HomePageViewController: actionsFromQuizDetailsDelegate {
             if response.count == 0 {
                 print("user hasn't taken any questions from this quiz")
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Quiz Results Not accessible for this quiz", message: "You have no results for this quiz. Please take a quiz to access this page.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Quiz Results Not Accessible", message: "You have no results for this quiz. Please take a quiz to access this page.", preferredStyle: .alert)
 
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 

@@ -807,7 +807,7 @@
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="actionButton" destination="m4B-9X-Yna" id="uZ3-L2-ZZF"/>
-                        <outlet property="cancelButton" destination="m4B-9X-Yna" id="Bz1-H0-4Pm"/>
+                        <outlet property="cancelButton" destination="klC-r2-T7I" id="DBc-jD-vTC"/>
                         <outlet property="choiceATextView" destination="Ro1-my-IxH" id="2gj-SQ-bR0"/>
                         <outlet property="choiceBTextView" destination="BS6-xS-aVy" id="Xuy-Hg-DuH"/>
                         <outlet property="choiceCTextView" destination="AR9-EW-etr" id="Q66-1E-1EX"/>
@@ -900,9 +900,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-iv-Tar">
-                                <rect key="frame" x="372" y="842" width="32" height="30"/>
+                                <rect key="frame" x="374" y="842" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Next">
+                                <state key="normal">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1051,7 +1051,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPq-fM-Ify">
                                 <rect key="frame" x="30" y="551" width="354" height="30"/>
-                                <state key="normal" title="Go Back Home"/>
+                                <color key="backgroundColor" red="0.65490196079999996" green="0.84566096660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Go Back Home">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="goBackHomeButtonPressed:" destination="fJd-cc-gI1" eventType="touchUpInside" id="77q-dD-XYQ"/>
                                 </connections>
@@ -1174,7 +1177,7 @@
                         <outlet property="quizNameLabel" destination="w4y-Ha-e5z" id="0XN-Wp-3VQ"/>
                         <outlet property="scoreLabel" destination="EFd-1i-xiC" id="ftf-V7-YPj"/>
                         <outlet property="usernameLabel" destination="jgf-cF-xCa" id="PUh-4j-FQc"/>
-                        <segue destination="jYt-6O-O1v" kind="unwind" identifier="backToHomePageSegue" unwindAction="unwind:" id="oZt-yn-yqt"/>
+                        <segue destination="jYt-6O-O1v" kind="unwind" identifier="backToHomePageSegue" unwindAction="unwindFromQuizResults:" id="oZt-yn-yqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZW-82-gyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

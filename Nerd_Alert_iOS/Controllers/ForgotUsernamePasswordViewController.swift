@@ -22,7 +22,7 @@ class ForgotUsernamePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendEmailButton.simpleButtonDesign(button: sendEmailButton)
+        sendEmailButton.simpleButtonDesign(button: sendEmailButton, borderWidth: 0)
         
         if forgot == "username" {
             usernameLabel.isHidden = true

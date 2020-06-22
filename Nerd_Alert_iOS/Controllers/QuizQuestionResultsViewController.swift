@@ -41,9 +41,11 @@ class QuizQuestionResultsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true);
         
-        homeButton.simpleButtonDesign(button: homeButton)
-        nextButton.simpleButtonDesign(button: nextButton)
-        backButton.simpleButtonDesign(button: backButton)
+        nextButton.setTitle("Next", for: .normal)
+        
+        homeButton.simpleButtonDesign(button: homeButton, borderWidth: 0)
+        nextButton.simpleButtonDesign(button: nextButton, borderWidth: 0)
+        backButton.simpleButtonDesign(button: backButton, borderWidth: 0)
         
         backButton.isHidden = true
 
@@ -124,6 +126,10 @@ class QuizQuestionResultsViewController: UIViewController {
             changingLabelColors(answer: "user_answer", color: UIColor.red, information: user_question_info)
         }
         
+        if questionNumber == 9 {
+            nextButton.setTitle("Finish", for: .normal)
+        }
+        
     }
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
@@ -146,8 +152,6 @@ class QuizQuestionResultsViewController: UIViewController {
             questionNumber += 1
             changingQuestions()
         } else {
-            nextButton.setTitle("Finish", for: .normal)
-//            navigationController?.popViewController(animated: true)
             self.performSegue(withIdentifier: "quizQuestionResultsViewControllerToHomePageViewController", sender: nil)
         }
 

@@ -42,8 +42,8 @@ class CreateEditQuizViewController: UIViewController, UITextViewDelegate {
         sourceTextView.creatingPresentableTextFields(textView: sourceTextView)
         quizDescriptionTextView.creatingPresentableTextFields(textView: quizDescriptionTextView)
         
-        quizActionButton.simpleButtonDesign(button: quizActionButton)
-        cancelButton.simpleButtonDesign(button: cancelButton)
+        quizActionButton.simpleButtonDesign(button: quizActionButton, borderWidth: 0)
+        cancelButton.simpleButtonDesign(button: cancelButton, borderWidth: 0)
 
         // Do any additional setup after loading the view.
         

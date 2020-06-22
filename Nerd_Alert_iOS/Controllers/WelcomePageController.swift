@@ -18,8 +18,8 @@ class WelcomePageController: UIViewController {
         print("Welcome to the Nerd Alert App! Find out if your a big ole nerd or some who doesn't have a clue from all these different quizzes!")
         // Do any additional setup after loading the view.
   
-        logInButton.simpleButtonDesign(button: logInButton)
-        signUpButton.simpleButtonDesign(button: signUpButton)
+        logInButton.simpleButtonDesign(button: logInButton, borderWidth: 0)
+        signUpButton.simpleButtonDesign(button: signUpButton, borderWidth: 0)
         
     }
     

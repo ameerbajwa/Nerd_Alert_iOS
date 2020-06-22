@@ -49,8 +49,8 @@ class quizQuestionDetails: UIView {
             correctAnswerLabel.text = "Correct Answer: \(correct_answer_label)"
         }
 
-        backToQuizzesButton.simpleButtonDesign(button: backToQuizzesButton)
-        editQuestionButton.simpleButtonDesign(button: editQuestionButton)
+        backToQuizzesButton.simpleButtonDesign(button: backToQuizzesButton, borderWidth: 0)
+        editQuestionButton.simpleButtonDesign(button: editQuestionButton, borderWidth: 0)
         
         quizId = quiz_id
         questionId = question_id

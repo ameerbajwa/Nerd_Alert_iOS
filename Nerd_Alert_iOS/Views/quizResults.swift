@@ -44,9 +44,9 @@ class quizResults: UIView {
         quizIterationScore.text = "Score: \(quizResult!.score)/10"
         numberOfQuestionsLabel.text = "Questions answered over total questions: \(quiz_results.count*10)/\(number_of_questions)"
         
-        goBackToQuizDetailsButton.simpleButtonDesign(button: goBackToQuizDetailsButton)
+        goBackToQuizDetailsButton.simpleButtonDesign(button: goBackToQuizDetailsButton, borderWidth: 0)
         goBackToQuizDetailsButton.setTitle("Back To Quiz Details", for: .normal)
-        viewQuestionResultsButton.simpleButtonDesign(button: viewQuestionResultsButton)
+        viewQuestionResultsButton.simpleButtonDesign(button: viewQuestionResultsButton, borderWidth: 0)
         viewQuestionResultsButton.setTitle("View Quiz Question Results", for: .normal)
         
     }
