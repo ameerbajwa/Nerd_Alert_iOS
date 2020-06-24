@@ -85,18 +85,18 @@ class QuizQuestionResultsViewController: UIViewController {
     func changingLabelColors(answer: String, color: UIColor, information: [String: Any]) {
         switch information[answer] as? String {
         case "A.":
-            choiceALabel.backgroundColor = color
+            choiceALabel.textColor = color
         case "B.":
-            choiceBLabel.backgroundColor = color
+            choiceBLabel.textColor = color
         case "C.":
-            choiceCLabel.backgroundColor = color
+            choiceCLabel.textColor = color
         case "D.":
-            choiceDLabel.backgroundColor = color
+            choiceDLabel.textColor = color
         default:
-            choiceALabel.backgroundColor = UIColor.white
-            choiceBLabel.backgroundColor = UIColor.white
-            choiceCLabel.backgroundColor = UIColor.white
-            choiceDLabel.backgroundColor = UIColor.white
+            choiceALabel.textColor = UIColor.black
+            choiceBLabel.textColor = UIColor.black
+            choiceCLabel.textColor = UIColor.black
+            choiceDLabel.textColor = UIColor.black
         }
     }
     
@@ -114,10 +114,10 @@ class QuizQuestionResultsViewController: UIViewController {
         choiceCLabel.text = question_info["choice_C"] as? String
         choiceDLabel.text = question_info["choice_D"] as? String
         
-        choiceALabel.backgroundColor = UIColor.white
-        choiceBLabel.backgroundColor = UIColor.white
-        choiceCLabel.backgroundColor = UIColor.white
-        choiceDLabel.backgroundColor = UIColor.white
+        choiceALabel.textColor = UIColor.black
+        choiceBLabel.textColor = UIColor.black
+        choiceCLabel.textColor = UIColor.black
+        choiceDLabel.textColor = UIColor.black
 
         if question_info["correct_answer"] as? String == user_question_info["user_answer"] as? String {
             changingLabelColors(answer: "correct_answer", color: UIColor.green, information: question_info)

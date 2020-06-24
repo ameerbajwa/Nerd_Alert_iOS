@@ -49,15 +49,6 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         choiceBButton.simpleButtonDesign(button: choiceBButton, borderWidth: 3)
         choiceCButton.simpleButtonDesign(button: choiceCButton, borderWidth: 3)
         choiceDButton.simpleButtonDesign(button: choiceDButton, borderWidth: 3)
-
-//        self.choiceAButton.layer.cornerRadius = 10
-//        self.choiceAButton.layer.borderWidth = 3
-//        self.choiceBButton.layer.cornerRadius = 10
-//        self.choiceBButton.layer.borderWidth = 3
-//        self.choiceCButton.layer.cornerRadius = 10
-//        self.choiceCButton.layer.borderWidth = 3
-//        self.choiceDButton.layer.cornerRadius = 10
-//        self.choiceDButton.layer.borderWidth = 3
         
         self.quizNameLabel.text = "Quiz: \(self.quiz_name!)"
         
@@ -127,10 +118,10 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     func changingQuestions() {
         
-        choiceAButton.isSelected = false
-        choiceBButton.isSelected = false
-        choiceCButton.isSelected = false
-        choiceDButton.isSelected = false
+        choiceAButton.backgroundColor = UIColor.clear
+        choiceBButton.backgroundColor = UIColor.clear
+        choiceCButton.backgroundColor = UIColor.clear
+        choiceDButton.backgroundColor = UIColor.clear
         
         if question_number == 9 {
             nextButton.setTitle("Submit Quiz", for: .normal)
@@ -173,34 +164,34 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func choiceAButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceAButton.titleLabel?.text?.prefix(2))!)
-        choiceAButton.isSelected = true
-        choiceBButton.isSelected = false
-        choiceCButton.isSelected = false
-        choiceDButton.isSelected = false
+        choiceAButton.backgroundColor = UIColor.lightGray
+        choiceBButton.backgroundColor = UIColor.clear
+        choiceCButton.backgroundColor = UIColor.clear
+        choiceDButton.backgroundColor = UIColor.clear
     }
     
     @IBAction func choiceBButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceBButton.titleLabel?.text?.prefix(2))!)
-        choiceBButton.isSelected = true
-        choiceAButton.isSelected = false
-        choiceCButton.isSelected = false
-        choiceDButton.isSelected = false
+        choiceBButton.backgroundColor = UIColor.lightGray
+        choiceAButton.backgroundColor = UIColor.clear
+        choiceCButton.backgroundColor = UIColor.clear
+        choiceDButton.backgroundColor = UIColor.clear
     }
     
     @IBAction func choiceCButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceCButton.titleLabel?.text?.prefix(2))!)
-        choiceCButton.isSelected = true
-        choiceBButton.isSelected = false
-        choiceAButton.isSelected = false
-        choiceDButton.isSelected = false
+        choiceCButton.backgroundColor = UIColor.lightGray
+        choiceBButton.backgroundColor = UIColor.clear
+        choiceAButton.backgroundColor = UIColor.clear
+        choiceDButton.backgroundColor = UIColor.clear
     }
     
     @IBAction func choiceDButtonPressed(_ sender: UIButton) {
         users_answers[question_number] = String((choiceDButton.titleLabel?.text?.prefix(2))!)
-        choiceDButton.isSelected = true
-        choiceBButton.isSelected = false
-        choiceCButton.isSelected = false
-        choiceAButton.isSelected = false
+        choiceDButton.backgroundColor = UIColor.lightGray
+        choiceBButton.backgroundColor = UIColor.clear
+        choiceCButton.backgroundColor = UIColor.clear
+        choiceAButton.backgroundColor = UIColor.clear
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
