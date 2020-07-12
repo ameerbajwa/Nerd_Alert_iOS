@@ -31,6 +31,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         logInButton.simpleButtonDesign(button: logInButton, borderWidth: 0)
+        self.view.backgroundColor = UIColor(red: 80/255, green: 93/255, blue: 159/255, alpha: 1.0)
 
     }
     
@@ -62,7 +63,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
                             if let id = self.userInfo?.id {
                                 if id > 0 {
                                     DispatchQueue.main.async {
-                                        self.performSegue(withIdentifier: "logInToHomePage", sender: self)
+                                        self.performSegue(withIdentifier: "logInToDashboardSegue", sender: self)
                                     }
                                 } else {
                                     print("user has no id, could not return any information on user")
@@ -116,6 +117,12 @@ class LogInController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logInToHomePage" && segue.destination is HomePageViewController {
             if let vc = segue.destination as? HomePageViewController {
+                vc.user = self.userInfo
+            }
+        }
+        
+        if segue.identifier == "logInToDashboardSegue" && segue.destination is DashboardViewController {
+            if let vc = segue.destination as? DashboardViewController {
                 vc.user = self.userInfo
             }
         }

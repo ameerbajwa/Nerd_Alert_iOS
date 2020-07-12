@@ -18,7 +18,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nerd Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYz-1K-hAz">
                                 <rect key="frame" x="50" y="238" width="314" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wab-qf-47O">
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.31426605801894797" green="0.36512707713861869" blue="0.6238498839522546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XYz-1K-hAz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="HPM-xT-Q4h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XYz-1K-hAz" secondAttribute="trailing" constant="50" id="NBc-qo-fqj"/>
@@ -112,25 +112,25 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKj-ry-evY">
                                 <rect key="frame" x="30" y="138" width="354" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prx-Mt-fUh">
                                 <rect key="frame" x="30" y="238" width="354" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Password Again:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px8-4F-Mgh">
                                 <rect key="frame" x="30" y="438" width="354" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBH-XE-sCw">
                                 <rect key="frame" x="30" y="338" width="354" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-5u-LTs">
@@ -140,7 +140,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.31426605800000001" green="0.36512707709999997" blue="0.62384988399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a0s-TW-bXN" firstAttribute="leading" secondItem="jn1-aF-GgY" secondAttribute="leading" constant="30" id="0sC-sf-Bw6"/>
                             <constraint firstItem="prx-Mt-fUh" firstAttribute="leading" secondItem="jn1-aF-GgY" secondAttribute="leading" constant="30" id="36s-S8-6As"/>
@@ -184,6 +184,7 @@
                         <outlet property="signUpButton" destination="785-Iu-2Lk" id="RGQ-Th-yae"/>
                         <outlet property="usernameTextField" destination="MrW-FM-W7n" id="9FL-rF-nAQ"/>
                         <segue destination="Aau-hP-ra0" kind="show" identifier="signUpToHomePage" id="dFW-d3-aEu"/>
+                        <segue destination="P7N-tr-sw0" kind="show" identifier="signUpToDashboardSegue" id="MxI-QC-6O9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6k-hw-6Hf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -258,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsF-Dr-pYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2055" y="-1035"/>
+            <point key="canvasLocation" x="3075" y="-1031"/>
         </scene>
         <!--Log In Controller-->
         <scene sceneID="mMR-Fr-mEy">
@@ -306,23 +307,23 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvj-nC-7FU">
                                 <rect key="frame" x="30" y="138" width="354" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpP-fS-IDa">
                                 <rect key="frame" x="30" y="238" width="354" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Username/Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qeu-go-XM1">
                                 <rect key="frame" x="50" y="317.5" width="314" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.31426605800000001" green="0.36512707709999997" blue="0.62384988399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TpP-fS-IDa" firstAttribute="top" secondItem="h98-Ce-XQi" secondAttribute="bottom" constant="30" id="35l-4K-K7j"/>
                             <constraint firstItem="Jvj-nC-7FU" firstAttribute="top" secondItem="s7v-3a-9pV" secondAttribute="top" constant="50" id="3BT-Zb-Gf4"/>
@@ -357,6 +358,7 @@
                         <outlet property="usernameTextField" destination="h98-Ce-XQi" id="IoD-hb-esB"/>
                         <segue destination="Aau-hP-ra0" kind="show" identifier="logInToHomePage" id="JvN-sK-fUI"/>
                         <segue destination="KLo-X2-Rzg" kind="show" identifier="forgotUsernamePasswordSegue" id="d2O-bn-qTl"/>
+                        <segue destination="P7N-tr-sw0" kind="show" identifier="logInToDashboardSegue" id="585-6f-rtX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Pc-wV-HOc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -428,7 +430,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVJ-9a-b7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279.7101449275365" y="145.98214285714286"/>
+            <point key="canvasLocation" x="5464" y="146"/>
         </scene>
         <!--Create Edit Quiz View Controller-->
         <scene sceneID="STZ-hU-ngB">
@@ -601,7 +603,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uc0-Nq-MDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="uZ6-eN-dnb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3279.7101449275365" y="-658.25892857142856"/>
+            <point key="canvasLocation" x="5465" y="-658"/>
         </scene>
         <!--Create Edit Quiz Questions View Controller-->
         <scene sceneID="YWg-i3-nIP">
@@ -821,7 +823,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ad5-o3-zFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="xQG-dA-1ar" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4647.826086956522" y="-658.25892857142856"/>
+            <point key="canvasLocation" x="6428" y="-658"/>
         </scene>
         <!--Quiz Question Results View Controller-->
         <scene sceneID="7Mj-31-JvG">
@@ -964,7 +966,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMv-Ah-hSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ZbD-ge-p8T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4665" y="146"/>
+            <point key="canvasLocation" x="6429" y="146"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="O2j-xa-QqO">
+            <objects>
+                <viewController id="P7N-tr-sw0" customClass="DashboardViewController" customModule="Nerd_Alert_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wSW-F2-Mfs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="m8h-jI-vA0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2u2-dZ-OUO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FAh-Cn-HlT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3381" y="1820"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="3cI-nI-RsE">
@@ -1114,7 +1132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJW-tl-eWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3991" y="874"/>
+            <point key="canvasLocation" x="5464" y="874"/>
         </scene>
         <!--Quiz Results View Controller-->
         <scene sceneID="Hgu-i0-5q3">
@@ -1183,7 +1201,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZW-82-gyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="jYt-6O-O1v" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5123" y="874"/>
+            <point key="canvasLocation" x="6430" y="874"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9dT-0f-CaO">
@@ -1205,6 +1223,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="585-6f-rtX"/>
         <segue reference="JvN-sK-fUI"/>
     </inferredMetricsTieBreakers>
 </document>

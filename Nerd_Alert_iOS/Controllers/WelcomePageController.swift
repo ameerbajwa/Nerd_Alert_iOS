@@ -20,6 +20,7 @@ class WelcomePageController: UIViewController {
   
         logInButton.simpleButtonDesign(button: logInButton, borderWidth: 0)
         signUpButton.simpleButtonDesign(button: signUpButton, borderWidth: 0)
+        self.view.backgroundColor = UIColor(red: 80/255, green: 93/255, blue: 159/255, alpha: 1.0)
         
     }
     

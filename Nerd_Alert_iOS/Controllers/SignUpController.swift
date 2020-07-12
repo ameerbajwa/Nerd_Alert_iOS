@@ -34,6 +34,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
         passwordAgainTextField.delegate = self
 
         signUpButton.simpleButtonDesign(button: signUpButton, borderWidth: 0)
+        self.view.backgroundColor = UIColor(red: 80/255, green: 93/255, blue: 159/255, alpha: 1.0)
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {

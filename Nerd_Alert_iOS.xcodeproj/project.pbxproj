@@ -25,6 +25,9 @@
 		DE1CCACE244CB3E400E5CEBD /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CCACD244CB3E400E5CEBD /* QuizQuestion.swift */; };
 		DE56DB622443F7F500DA82E6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */; };
 		DE56DB642447A02300DA82E6 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56DB632447A02300DA82E6 /* Quiz.swift */; };
+		DE64E78224BB93BE0054CBFC /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64E78124BB93BE0054CBFC /* DashboardViewController.swift */; };
+		DE64E78324BB93BE0054CBFC /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64E78124BB93BE0054CBFC /* DashboardViewController.swift */; };
+		DE64E78424BB93BE0054CBFC /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64E78124BB93BE0054CBFC /* DashboardViewController.swift */; };
 		DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C7D8F243A73D200AD4197 /* UserService.swift */; };
 		DE8A5964244CFBB200EA3EC4 /* quizDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */; };
 		DE8A5966244D04D200EA3EC4 /* quizDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A5965244D04D200EA3EC4 /* quizDetails.swift */; };
@@ -93,6 +96,7 @@
 		DE1CCACD244CB3E400E5CEBD /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		DE56DB612443F7F500DA82E6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		DE56DB632447A02300DA82E6 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		DE64E78124BB93BE0054CBFC /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		DE6C7D8F243A73D200AD4197 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		DE8A5963244CFBB200EA3EC4 /* quizDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = quizDetails.xib; sourceTree = "<group>"; };
 		DE8A5965244D04D200EA3EC4 /* quizDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizDetails.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				DEC2451324708B6100BD333F /* QuizQuestionResultsViewController.swift */,
 				DE09315224520F1B004FCDE1 /* QuizViewController.swift */,
 				DE0931542454ACFB004FCDE1 /* QuizResultsViewController.swift */,
+				DE64E78124BB93BE0054CBFC /* DashboardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				DEC2451424708B6100BD333F /* QuizQuestionResultsViewController.swift in Sources */,
 				DE0931592454C0D8004FCDE1 /* QuizResults.swift in Sources */,
 				DEC245182475E5B700BD333F /* quizQuestionDetails.swift in Sources */,
+				DE64E78224BB93BE0054CBFC /* DashboardViewController.swift in Sources */,
 				DE6C7D90243A73D200AD4197 /* UserService.swift in Sources */,
 				DED9D18D243CD52900E57D60 /* QuizQuestionService.swift in Sources */,
 				DEA794D62481FB0E00D28A49 /* UIButtonExtension.swift in Sources */,
@@ -590,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEFDCCB32435B2BC00366CA5 /* Nerd_Alert_iOSTests.swift in Sources */,
+				DE64E78324BB93BE0054CBFC /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEFDCCBE2435B2BC00366CA5 /* Nerd_Alert_iOSUITests.swift in Sources */,
+				DE64E78424BB93BE0054CBFC /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

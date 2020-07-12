@@ -10,7 +10,12 @@ import Foundation
 
 
 class RestAPIManager {
+    // development
     let baseURL = "http://127.0.0.1:6373"
+    // QA
+    // let baseURL = "http://forsurenerd.com/qa"
+    // production
+    // let baseURL = "http://forsurenerd.com"
     
     func httpRequest(url: String, body: Data?, method: String, onSuccess: @escaping ([String: Any]) -> Void, onFailure: @escaping ([String: Any]) -> Void) {
         let apiURL = URL(string: baseURL + url)!
